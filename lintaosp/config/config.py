@@ -35,6 +35,7 @@ class ConfigException(Exception):
 class Config(object):
     def __init__(self):
         self._config_file = None
+        self._input_text = ""
         self._listen_url = ""
         self._output_file = ""
 
@@ -54,6 +55,16 @@ class Config(object):
             self._config_file = yaml.load(file, Loader=yaml.FullLoader)
         if self._config_file is None:
             raise ConfigException("config invalid")
+
+    @property
+    def input_text(self):
+        return self._input_text
+
+    @input_text.setter
+    def input_text(self, text):
+        if not isinstance(text, str):
+            raise ConfigException("text invalid")
+        self._input_text = text.strip()
 
     @property
     def listen_url(self):

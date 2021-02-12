@@ -20,7 +20,7 @@ def main():
     try:
         config = Config()
         config.config_file = arg.config_file
-        config.inxi_file = arg.inxi_file
+        config.input_text = arg.input_text
         config.listen_url = arg.listen_url
         config.output_file = arg.output_file
     except ConfigException as e:

@@ -104,6 +104,37 @@ spec:
 
 
 
+## Errorformat
+
+- **Error type**
+
+```
+E: Error
+I: Information
+W: Warning
+```
+
+- **JSON format**
+
+```json
+{
+  "fileName": "/path/to/file",
+  "lineNum": 1,
+  "colNum": 1,
+  "errorNum": "1",
+  "errorDetails": "details",
+  "errorType": "E"
+}
+```
+
+- **Text format**
+
+```text
+{fileName}:{lineNum}:{colNum}:{errorNum}:{errorDetails}:{errorType}
+```
+
+
+
 ## License
 
 Project License can be found [here](LICENSE).

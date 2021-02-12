@@ -20,6 +20,14 @@ class Argument(object):
         )
         group = self._parser.add_mutually_exclusive_group()
         group.add_argument(
+            "--input-text",
+            action="store",
+            default="",
+            dest="input_text",
+            help="input text (base64)",
+            required=False,
+        )
+        group.add_argument(
             "--listen-url",
             action="store",
             default="",
@@ -27,7 +35,7 @@ class Argument(object):
             help="listen url (host:port)",
             required=False,
         )
-        group.add_argument(
+        self._parser.add_argument(
             "--output-file",
             action="store",
             default="",
