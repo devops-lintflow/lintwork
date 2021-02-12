@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import metalmetrics.flow.flow_pb2 as flow__pb2
+import lintaosp.flow.flow_pb2 as flow__pb2
 
 
 class FlowProtoStub(object):

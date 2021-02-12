@@ -29,7 +29,7 @@ git clone https://github.com/craftslab/lintaosp.git
 
 cd lintaosp
 pip install -Ur requirements.txt
-python aosp.py --config-file="config.yml" --output-file="output.json"
+python aosp.py --config-file="config.yml" --input-text="{base64}" --output-file="output.json"
 ```
 
 
@@ -55,7 +55,7 @@ git clone https://github.com/craftslab/lintaosp.git
 
 cd lintaosp
 docker build --no-cache -f Dockerfile -t craftslab/lintaosp:latest .
-docker run -it -v /tmp:/tmp craftslab/lintaosp:latest ./lintaosp --config-file="config.yml" --output-file="/tmp/output.json"
+docker run -it -v /tmp:/tmp craftslab/lintaosp:latest ./lintaosp --config-file="config.yml" --input-text="{base64}" --output-file="/tmp/output.json"
 ```
 
 
@@ -75,7 +75,23 @@ docker run -it -p 9090:9090 craftslab/lintaosp:latest ./lintaosp --config-file="
 ## Usage
 
 ```
-TODO
+usage: aosp.py [-h] --config-file CONFIG_FILE
+               [--input-text INPUT_TEXT | --listen-url LISTEN_URL]
+               [--output-file OUTPUT_FILE] [-v]
+
+Lint AOSP
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --config-file CONFIG_FILE
+                        config file (.yml)
+  --input-text INPUT_TEXT
+                        input text (base64)
+  --listen-url LISTEN_URL
+                        listen url (host:port)
+  --output-file OUTPUT_FILE
+                        output file (.json|.txt|.xlsx)
+  -v, --version         show program's version number and exit
 ```
 
 
