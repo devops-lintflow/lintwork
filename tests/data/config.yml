@@ -3,5 +3,4 @@ kind: worker
 metadata:
   name: lintaosp
 spec:
-  lint:
-    - strings
+  - strings

@@ -56,6 +56,6 @@ class Worker(threading.Thread):
 
     def run(self):
         while True:
-            func, _ = self._queue.get()
-            func()
+            routine, args = self._queue.get()
+            routine(args)
             self._queue.task_done()

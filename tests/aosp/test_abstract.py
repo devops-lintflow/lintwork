@@ -9,14 +9,13 @@ def test_aospabstract():
         def __init__(self, config):
             super().__init__(config)
 
-        def _execution(self):
-            return {"cpu": "1CPU"}
+        def _execution(self, _):
+            return "_execution"
 
     config = Config()
     aosp = AospTest(config)
 
-    result = aosp.run("foo")
-    assert result is None
+    data = ["PHN0cmluZyBuYW1lPSJsaW50X2Fvc3AiPkxpbnQgQU9TUDwvc3RyaW5nPg=="]
 
-    result = aosp.run("cpu")
-    assert result is not None
+    result = aosp.run(data)
+    assert len(result) != 0

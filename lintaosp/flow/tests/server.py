@@ -14,7 +14,7 @@ from concurrent import futures
 
 class FlowProto(FlowProtoServicer):
     def SendFlow(self, request, _):
-        return FlowReply(message="1 CPU")
+        return FlowReply(message="message")
 
 
 def serve():

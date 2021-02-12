@@ -14,16 +14,16 @@ from concurrent import futures
 
 class FlowProto(FlowProtoServicer):
     def SendFlow(self, request, _):
-        if request.message == "lintaosp/lint/strings":
-            return FlowReply(message="PASS")
+        if request.message == "lintaosp/strings":
+            return FlowReply(message="message")
         else:
-            return FlowReply(message="FAIL")
+            return FlowReply(message="")
 
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     add_FlowProtoServicer_to_server(FlowProto(), server)
-    server.add_insecure_port("[::]:9091")
+    server.add_insecure_port("[::]:9090")
     server.start()
     server.wait_for_termination()
 

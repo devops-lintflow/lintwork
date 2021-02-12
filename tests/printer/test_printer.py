@@ -2,8 +2,8 @@
 
 import os
 
-from lintaosp.config.config import Lint
 from lintaosp.printer.printer import Printer, PrinterException
+from lintaosp.proto.proto import ErrorFormat, ErrorType
 
 
 def test_exception():
@@ -13,8 +13,13 @@ def test_exception():
 
 def test_printer():
     buf = {
-        "lint": {
-            Lint.STRINGS: "strings",
+        "strings": {
+            ErrorFormat.FILENAME: "/path/to/file",
+            ErrorFormat.LINENUM: 1,
+            ErrorFormat.COLNUM: 1,
+            ErrorFormat.ERRORNUM: "strings",
+            ErrorFormat.ERRORDETAILS: "details",
+            ErrorFormat.ERRORTYPE: ErrorType.ERROR,
         }
     }
 

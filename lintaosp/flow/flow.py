@@ -39,7 +39,7 @@ class Flow(object):
 
 
 class FlowProto(FlowProtoServicer):
-    _len = 3
+    _len = 2
     _prefix = "lintaosp"
     _sep = "/"
 
@@ -56,12 +56,9 @@ class FlowProto(FlowProtoServicer):
         return msg[1], msg[2]
 
     def SendFlow(self, request, _):
-        host, spec = self._parse(request.message)
-        if host is None or spec is None:
+        _, spec = self._parse(request.message)
+        if spec is None:
             return FlowReply(message="")
-        buf = self._routine(host=host, spec=spec).get(host, None)
-        if buf is not None:
-            message = buf.get(spec, "")
-        else:
-            message = ""
+        buf = self._routine(self._args)
+        message = buf if buf is not None else ""
         return FlowReply(message=message)

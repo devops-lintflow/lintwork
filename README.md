@@ -108,8 +108,7 @@ kind: worker
 metadata:
   name: lintaosp
 spec:
-  lint:
-    - strings
+  - strings
 ```
 
 
@@ -137,7 +136,7 @@ W: Warning
   "fileName": "/path/to/file",
   "lineNum": 1,
   "colNum": 1,
-  "errorNum": "1",
+  "errorNum": "strings",
   "errorDetails": "details",
   "errorType": "E"
 }
@@ -160,6 +159,5 @@ Project License can be found [here](LICENSE).
 ## Reference
 
 - [errorformat](https://github.com/reviewdog/errorformat)
-- [etcd](https://etcd.io/docs/)
 - [gRPC](https://grpc.io/docs/languages/python/)
 - [protocol-buffers](https://developers.google.com/protocol-buffers/docs/proto3)

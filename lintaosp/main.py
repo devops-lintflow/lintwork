@@ -38,14 +38,14 @@ def main():
     if len(config.listen_url) != 0:
         try:
             flow = Flow(config)
-            flow.run(aosp.routine)
+            flow.run(aosp.routine, config.input_text)
         except FlowException as e:
             Logger.error(str(e))
             return -3
     else:
         try:
             queue = Queue(config)
-            queue.run(aosp.routine)
+            queue.run(aosp.routine, config.input_text)
         except QueueException as e:
             Logger.error(str(e))
             return -4

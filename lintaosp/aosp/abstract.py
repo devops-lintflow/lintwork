@@ -8,11 +8,8 @@ class AospAbstract(abc.ABC):
         self._config = config
 
     @abc.abstractmethod
-    def _execution(self):
+    def _execution(self, data):
         pass
 
-    def run(self, spec):
-        _exec = self._execution()
-        if _exec is None or not isinstance(_exec, dict):
-            return None
-        return _exec.get(spec, None)
+    def run(self, data):
+        return self._execution(data)

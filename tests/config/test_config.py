@@ -51,6 +51,20 @@ def test_config():
         assert True
 
     try:
+        config.input_text = 0
+    except ConfigException as _:
+        assert True
+    else:
+        assert False
+
+    try:
+        config.input_text = "base64"
+    except ConfigException as _:
+        assert False
+    else:
+        assert True
+
+    try:
         config.listen_url = 0
     except ConfigException as _:
         assert True

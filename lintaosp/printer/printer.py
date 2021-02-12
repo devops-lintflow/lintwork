@@ -5,12 +5,16 @@ import openpyxl
 import os
 import time
 
-from lintaosp.config.config import Lint
+from lintaosp.proto.proto import ErrorFormat
 from openpyxl.styles import Alignment, Font
 
-
 head = {
-    "A": Lint.STRINGS,
+    "A": ErrorFormat.FILENAME,
+    "B": ErrorFormat.LINENUM,
+    "C": ErrorFormat.COLNUM,
+    "D": ErrorFormat.ERRORNUM,
+    "E": ErrorFormat.ERRORDETAILS,
+    "F": ErrorFormat.ERRORTYPE,
 }
 
 

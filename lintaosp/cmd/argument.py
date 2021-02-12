@@ -24,7 +24,7 @@ class Argument(object):
             action="store",
             default="",
             dest="input_text",
-            help="input text (base64)",
+            help="input text (base64,base64,...)",
             required=False,
         )
         group.add_argument(

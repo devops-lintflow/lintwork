@@ -3,6 +3,8 @@
 import os
 import yaml
 
+INPUT_TEXT_SEP = ","
+
 
 class ConfigFile:
     APIVERSION = "apiVersion"
@@ -13,14 +15,6 @@ class ConfigFile:
 
 class MetaData:
     NAME = "name"
-
-
-class Spec:
-    LINT = "lint"
-
-
-class Lint:
-    STRINGS = "strings"
 
 
 class ConfigException(Exception):
@@ -35,7 +29,7 @@ class ConfigException(Exception):
 class Config(object):
     def __init__(self):
         self._config_file = None
-        self._input_text = ""
+        self._input_text = []
         self._listen_url = ""
         self._output_file = ""
 
@@ -64,7 +58,7 @@ class Config(object):
     def input_text(self, text):
         if not isinstance(text, str):
             raise ConfigException("text invalid")
-        self._input_text = text.strip()
+        self._input_text = text.strip().split(INPUT_TEXT_SEP)
 
     @property
     def listen_url(self):

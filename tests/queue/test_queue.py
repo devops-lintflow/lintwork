@@ -6,7 +6,7 @@ from lintaosp.queue.queue import Queue, QueueException
 from lintaosp.queue.queue import Worker, WorkerException
 
 
-def routine():
+def routine(_):
     pass
 
 
@@ -23,7 +23,7 @@ def test_queue():
     else:
         assert True
 
-    args = ["event"]
+    args = ["args"]
 
     try:
         q.run(routine, args)
@@ -40,7 +40,7 @@ def test_workerexception():
 
 def test_worker():
     _queue = queue.Queue(1)
-    _queue.put((routine, "routine"))
+    _queue.put((routine, ["args"]))
 
     try:
         _ = Worker(_queue=_queue)
