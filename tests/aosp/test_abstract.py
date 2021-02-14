@@ -2,6 +2,7 @@
 
 from lintaosp.aosp.abstract import AospAbstract
 from lintaosp.config.config import Config
+from lintaosp.proto.proto import Format
 
 
 def test_aospabstract():
@@ -10,12 +11,12 @@ def test_aospabstract():
             super().__init__(config)
 
         def _execution(self, _):
-            return "_execution"
+            return {Format.COLNUM: 1}
 
     config = Config()
     aosp = AospTest(config)
 
-    data = ["PHN0cmluZyBuYW1lPSJsaW50X2Fvc3AiPkxpbnQgQU9TUDwvc3RyaW5nPg=="]
+    data = "PHN0cmluZyBuYW1lPSJsaW50X2Fvc3AiPkxpbnQgQU9TUDwvc3RyaW5nPg=="
 
     result = aosp.run(data)
-    assert len(result) != 0
+    assert result is not None

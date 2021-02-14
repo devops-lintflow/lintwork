@@ -22,26 +22,24 @@ class Aosp(object):
         self._spec = config.config_file.get(ConfigFile.SPEC, None)
         if self._spec is None:
             raise AospException("spec invalid")
+        self._instance = self._instantiate()
 
     def _dump(self, data):
         printer = Printer()
         printer.run(data=data, name=self._config.output_file, append=False)
 
-    def _instance(self):
+    def _instantiate(self):
         buf = {}
         if Strings.__name__.lower() in self._spec:
             buf[Strings.__name__.lower()] = Strings(self._config)
         return buf
 
     def routine(self, data):
-        if data is None or not isinstance(data, list) or len(data) == 0:
+        if data is None or not isinstance(data, str) or len(data) == 0:
             raise AospException("data invalid")
         buf = {}
-        for key, val in self._instance().items():
-            b = []
-            for item in data:
-                b.append(val.run(item))
-            buf[key] = b
+        for key, val in self._instance.items():
+            buf[key] = val.run(data)
         if len(self._config.output_file) != 0:
             self._dump(buf)
         return buf

@@ -13,7 +13,7 @@
 """
 
 
-class ErrorFormat:
+class Format:
     COLNUM = "colnum"
     ERRORDETAILS = "errordetails"
     ERRORNUM = "errornum"
@@ -22,7 +22,7 @@ class ErrorFormat:
     LINENUM = "linenum"
 
 
-class ErrorType:
+class Type:
     ERROR = "E"
     INFO = "I"
     WARN = "W"

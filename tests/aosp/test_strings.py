@@ -19,8 +19,10 @@ def test_strings():
 
     try:
         strings = Strings(config)
-        _exec = strings._execution(data)
+        result = strings._execution(data)
     except StringsException as _:
         assert False
     else:
         assert True
+
+    assert result is not None

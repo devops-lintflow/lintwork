@@ -38,7 +38,7 @@ def main():
     if len(config.listen_url) != 0:
         try:
             flow = Flow(config)
-            flow.run(aosp.routine, config.input_text)
+            flow.run(aosp.routine)
         except FlowException as e:
             Logger.error(str(e))
             return -3

@@ -23,7 +23,7 @@ def test_queue():
     else:
         assert True
 
-    args = ["args"]
+    args = "args"
 
     try:
         q.run(routine, args)
@@ -40,7 +40,7 @@ def test_workerexception():
 
 def test_worker():
     _queue = queue.Queue(1)
-    _queue.put((routine, ["args"]))
+    _queue.put((routine, "args"))
 
     try:
         _ = Worker(_queue=_queue)

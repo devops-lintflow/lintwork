@@ -3,6 +3,9 @@
 import queue
 import threading
 
+QUEUE_NUM = 1
+ROUTINE_NUM = 1
+
 
 class QueueException(Exception):
     def __init__(self, info):
@@ -14,14 +17,11 @@ class QueueException(Exception):
 
 
 class Queue(object):
-    queue_num = 1
-    routine_num = 1
-
     def __init__(self, config):
         if config is None:
             pass
-        self._queue = queue.Queue(self.queue_num)
-        for _ in range(self.routine_num):
+        self._queue = queue.Queue(QUEUE_NUM)
+        for _ in range(ROUTINE_NUM):
             Worker(self._queue)
 
     def _add(self, routine, args):
@@ -31,9 +31,7 @@ class Queue(object):
         self._queue.join()
 
     def run(self, routine, args=None):
-        if args is None:
-            args = []
-        for _ in range(self.queue_num):
+        for _ in range(QUEUE_NUM):
             self._add(routine, args)
         self._wait()
 

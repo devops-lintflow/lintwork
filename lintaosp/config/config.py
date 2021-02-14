@@ -29,7 +29,7 @@ class ConfigException(Exception):
 class Config(object):
     def __init__(self):
         self._config_file = None
-        self._input_text = []
+        self._input_text = ""
         self._listen_url = ""
         self._output_file = ""
 
@@ -58,7 +58,7 @@ class Config(object):
     def input_text(self, text):
         if not isinstance(text, str):
             raise ConfigException("text invalid")
-        self._input_text = text.strip().split(INPUT_TEXT_SEP)
+        self._input_text = text.strip()
 
     @property
     def listen_url(self):

@@ -30,11 +30,7 @@ def test_aosp():
     else:
         assert True
 
-    buf = aosp._instance()
-    assert buf is not None
-    assert len(buf.keys()) != 0
-
-    data = ["PHN0cmluZyBuYW1lPSJsaW50X2Fvc3AiPkxpbnQgQU9TUDwvc3RyaW5nPg=="]
+    data = "PHN0cmluZyBuYW1lPSJsaW50X2Fvc3AiPkxpbnQgQU9TUDwvc3RyaW5nPg=="
 
     try:
         buf = aosp.routine(data)
@@ -44,7 +40,6 @@ def test_aosp():
         assert True
 
     assert buf is not None
-    assert len(buf.keys()) != 0
 
     assert os.path.isfile(config.output_file)
     os.remove(config.output_file)

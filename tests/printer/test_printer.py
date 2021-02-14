@@ -3,7 +3,7 @@
 import os
 
 from lintaosp.printer.printer import Printer, PrinterException
-from lintaosp.proto.proto import ErrorFormat, ErrorType
+from lintaosp.proto.proto import Format, Type
 
 
 def test_exception():
@@ -13,13 +13,13 @@ def test_exception():
 
 def test_printer():
     buf = {
-        "strings": {
-            ErrorFormat.FILENAME: "/path/to/file",
-            ErrorFormat.LINENUM: 1,
-            ErrorFormat.COLNUM: 1,
-            ErrorFormat.ERRORNUM: "strings",
-            ErrorFormat.ERRORDETAILS: "details",
-            ErrorFormat.ERRORTYPE: ErrorType.ERROR,
+        "aosp": {
+            Format.FILENAME: "/path/to/file",
+            Format.LINENUM: 1,
+            Format.COLNUM: 1,
+            Format.ERRORNUM: "strings",
+            Format.ERRORDETAILS: "details",
+            Format.ERRORTYPE: Type.ERROR,
         }
     }
 
