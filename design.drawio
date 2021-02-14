@@ -1,4 +1,4 @@
-<mxfile host="65bd71144e" modified="2021-02-12T02:56:59.317Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.53.2 Chrome/87.0.4280.141 Electron/11.2.1 Safari/537.36" etag="3ZxVGN9L0W_AFPSE73XJ" version="14.2.4" type="embed">
+<mxfile host="65bd71144e" modified="2021-02-14T14:20:58.396Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.53.2 Chrome/87.0.4280.141 Electron/11.2.1 Safari/537.36" etag="S42aCFFg9jfkChPyWqKJ" version="14.2.4" type="embed">
     <diagram id="6hGFLwfOUW9BJ-s0fimq" name="Page-1">
         <mxGraphModel dx="2489" dy="812" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
@@ -23,7 +23,7 @@
                     <mxGeometry x="440" y="30" width="120" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="LINT FLOW&lt;br&gt;(MASTER)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="210" width="240" height="80" as="geometry"/>
+                    <mxGeometry x="160" y="210" width="360" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="27" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -73,9 +73,6 @@
                 <mxCell id="25" value="REST" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="350" y="160" width="80" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" value="ETCD" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;" parent="1" vertex="1">
-                    <mxGeometry x="160" y="220" width="60" height="60" as="geometry"/>
-                </mxCell>
                 <mxCell id="31" value="LINT LANG&lt;br&gt;(WORKER)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="350" y="410" width="120" height="80" as="geometry"/>
                 </mxCell>
@@ -89,12 +86,6 @@
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="680" y="250" as="sourcePoint"/>
                         <mxPoint x="730" y="200" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="35" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="26" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-130" y="440" as="sourcePoint"/>
-                        <mxPoint x="280" y="250" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
             </root>
