@@ -19,9 +19,12 @@ class Aosp(object):
         if config is None:
             raise AospException("config invalid")
         self._config = config
-        self._spec = config.config_file.get(ConfigFile.SPEC, None)
-        if self._spec is None:
+        buf = config.config_file.get(ConfigFile.SPEC, None)
+        if buf is None:
             raise AospException("spec invalid")
+        self._spec = buf.get(Aosp.__name__.lower(), None)
+        if self._spec is None:
+            raise AospException("aosp invalid")
         self._instance = self._instantiate()
 
     def _dump(self, data):
