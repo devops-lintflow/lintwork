@@ -3,26 +3,22 @@
 
 """Prototype
 {
-  "fileName": "/path/to/file",
-  "lineNum": 1,
-  "colNum": 1,
-  "errorNum": "strings",
-  "errorDetails": "details",
-  "errorType": "E"
+  "file": "/path/to/file",
+  "line": 1,
+  "type": "Error",
+  "details": "text"
 }
 """
 
 
 class Format:
-    COLNUM = "colnum"
-    ERRORDETAILS = "errordetails"
-    ERRORNUM = "errornum"
-    ERRORTYPE = "errortype"
-    FILENAME = "filename"
-    LINENUM = "linenum"
+    DETAILS = "details"
+    FILE = "file"
+    LINE = "line"
+    TYPE = "type"
 
 
 class Type:
-    ERROR = "E"
-    INFO = "I"
-    WARN = "W"
+    ERROR = "Error"
+    INFO = "Info"
+    WARN = "Warning"

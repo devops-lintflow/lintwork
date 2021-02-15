@@ -14,7 +14,10 @@ from concurrent import futures
 
 class FlowProto(FlowProtoServicer):
     def SendFlow(self, request, _):
-        if request.message == "lintaosp/strings":
+        if (
+            request.message
+            == "lintaosp/PHN0cmluZyBuYW1lPSJsaW50X2Fvc3AiPkxpbnQgQU9TUDwvc3RyaW5nPg=="
+        ):
             return FlowReply(message="message")
         else:
             return FlowReply(message="")

@@ -13,13 +13,11 @@ def test_exception():
 
 def test_printer():
     buf = {
-        "aosp": {
-            Format.FILENAME: "/path/to/file",
-            Format.LINENUM: 1,
-            Format.COLNUM: 1,
-            Format.ERRORNUM: "strings",
-            Format.ERRORDETAILS: "details",
-            Format.ERRORTYPE: Type.ERROR,
+        "sdk": {
+            Format.FILE: "/path/to/file",
+            Format.LINE: 1,
+            Format.TYPE: Type.ERROR,
+            Format.DETAILS: "text",
         }
     }
 

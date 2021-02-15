@@ -3,7 +3,7 @@
 from lintaosp.aosp.abstract import AospAbstract
 
 
-class StringsException(Exception):
+class SdkException(Exception):
     def __init__(self, info):
         super().__init__(self)
         self._info = info
@@ -12,9 +12,9 @@ class StringsException(Exception):
         return self._info
 
 
-class Strings(AospAbstract):
+class Sdk(AospAbstract):
     def __init__(self, config):
         super().__init__(config)
 
     def _execution(self, data):
-        return "strings"
+        return "sdk"

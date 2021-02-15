@@ -9,7 +9,6 @@ from lintaosp.flow.flow_pb2_grpc import (
     FlowProtoServicer,
 )
 
-MSG_LEN = 2
 MSG_PREFIX = "lintaosp"
 MSG_SEP = "/"
 
@@ -52,10 +51,10 @@ class FlowProto(FlowProtoServicer):
         ):
             return FlowReply(message="")
         msg = MSG_SEP.split(request.message)
-        if len(msg) == 1:
-            buf = ""
-        elif len(msg) == MSG_LEN:
-            buf = self._routine(msg[1])
+        if len(msg) == len(MSG_SEP.split(MSG_PREFIX)):
+            return FlowReply(message="")
+        elif len(msg) == len(MSG_SEP.split(MSG_PREFIX) + 1):
+            buf = self._routine(msg[-1])
         else:
             buf = ""
         return FlowReply(message=buf)

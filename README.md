@@ -16,6 +16,7 @@
 
 ## Prerequisites
 
+- Android lint >= 4.1
 - Python >= 3.7
 
 
@@ -108,7 +109,20 @@ kind: worker
 metadata:
   name: lintaosp
 spec:
-  - strings
+  sdk:
+    - Correctness
+    - Correctness:Messages
+    - Security
+    - Compliance
+    - Performance
+    - Performance:Application Size
+    - Usability:Typography
+    - Usability:Icons
+    - Usability
+    - Productivity
+    - Accessibility
+    - Internationalization
+    - Internationalization:Bidirectional Text
 ```
 
 
@@ -133,19 +147,17 @@ W: Warning
 
 ```json
 {
-  "fileName": "/path/to/file",
-  "lineNum": 1,
-  "colNum": 1,
-  "errorNum": "strings",
-  "errorDetails": "details",
-  "errorType": "E"
+  "file": "/path/to/file",
+  "line": 1,
+  "type": "Error",
+  "details": "text"
 }
 ```
 
 - **Text format**
 
 ```text
-{fileName}:{lineNum}:{colNum}:{errorNum}:{errorDetails}:{errorType}
+{file}:{line}:{type}:{details}
 ```
 
 
@@ -158,6 +170,7 @@ Project License can be found [here](LICENSE).
 
 ## Reference
 
+- [Android lint](https://developer.android.com/studio/write/lint)
 - [errorformat](https://github.com/reviewdog/errorformat)
 - [gRPC](https://grpc.io/docs/languages/python/)
 - [protocol-buffers](https://developers.google.com/protocol-buffers/docs/proto3)

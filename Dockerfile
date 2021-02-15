@@ -5,8 +5,8 @@ RUN apt update && \
     apt install -y upx
 RUN make install
 
-FROM nginx as production-stage
-WORKDIR /usr/dist/bin
-RUN mkdir -p /usr/dist/bin
+FROM craftslab/androiddocker as production-stage
+USER craftslab
+WORKDIR /home/craftslab
 COPY --from=build-stage /usr/src/app/dist/* ./
 COPY --from=build-stage /usr/src/app/lintaosp/config/*.yml ./

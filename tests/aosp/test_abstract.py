@@ -11,7 +11,7 @@ def test_aospabstract():
             super().__init__(config)
 
         def _execution(self, _):
-            return {Format.COLNUM: 1}
+            return {Format.FILE: "/path/to/file"}
 
     config = Config()
     aosp = AospTest(config)

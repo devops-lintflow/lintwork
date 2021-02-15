@@ -9,12 +9,10 @@ from lintaosp.proto.proto import Format
 from openpyxl.styles import Alignment, Font
 
 head = {
-    "A": Format.FILENAME,
-    "B": Format.LINENUM,
-    "C": Format.COLNUM,
-    "D": Format.ERRORNUM,
-    "E": Format.ERRORDETAILS,
-    "F": Format.ERRORTYPE,
+    "A": Format.FILE,
+    "B": Format.LINE,
+    "C": Format.TYPE,
+    "D": Format.DETAILS,
 }
 
 

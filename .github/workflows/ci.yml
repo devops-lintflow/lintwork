@@ -41,5 +41,7 @@ jobs:
       run: flake8 --ignore=E501,F841,W503,W605 --max-line-length=88 lintaosp
     #- name: Run mypy
     #  run: mypy lintaosp
+    - name: Install SDK
+      run: make sdk
     - name: Run pytest
       run: pytest
