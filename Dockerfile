@@ -5,7 +5,7 @@ RUN apt update && \
     apt install -y upx
 RUN make install
 
-FROM craftslab/androiddocker as production-stage
+FROM craftslab/androiddocker:android-30 as production-stage
 USER craftslab
 WORKDIR /home/craftslab
 COPY --from=build-stage /usr/src/app/dist/* ./
