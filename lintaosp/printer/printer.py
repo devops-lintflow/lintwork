@@ -51,7 +51,8 @@ class Printer(object):
         with open(name, "w", encoding="utf8") as f:
             f.write("")
             for key, val in data.items():
-                _txt_helper(key, val, f)
+                for v in val:
+                    _txt_helper(key, v, f)
 
     def _xlsx(self, data, name):
         def _styling_head(sheet):
@@ -77,7 +78,8 @@ class Printer(object):
                 key.upper(),
                 time.strftime("%Y-%m-%d", time.localtime(time.time())),
             )
-            ws.append([val[head[key]] for key in sorted(head.keys())])
+            for v in val:
+                ws.append([v[head[key]] for key in sorted(head.keys())])
             _styling_head(ws)
             _styling_data(ws, len(val))
         wb.save(filename=name)
