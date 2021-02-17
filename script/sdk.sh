@@ -14,4 +14,4 @@ unzip $NAME
 #CHECK="Correctness,Correctness:Messages,Security,Compliance,Performance,Performance:Application Size,Usability:Typography,Usability:Icons,Usability,Productivity,Accessibility,Internationalization,Internationalization:Bidirectional Text"
 #PROJECT="/path/to/project"
 #find $PROJECT -type f -name "build.gradle" -exec rm -f {} \;
-#./cmdline-tools/bin/lint --check "$CHECK" --disable "LintError" --nolines --quiet $PROJECT
+#./cmdline-tools/bin/lint --check "$CHECK" --disable LintError --nolines --quiet $PROJECT

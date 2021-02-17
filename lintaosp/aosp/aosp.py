@@ -36,7 +36,7 @@ class Aosp(object):
     def _instantiate(self):
         buf = {}
         if Sdk.__name__.lower() in self._spec:
-            buf[Sdk.__name__.lower()] = Sdk(self._config)
+            buf[Sdk.__name__.lower()] = Sdk(self._spec[Sdk.__name__.lower()])
         return buf
 
     def routine(self, project):

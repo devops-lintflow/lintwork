@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import os
+import pprint
 
 from lintaosp.aosp.sdk import Sdk, SdkException
-from lintaosp.config.config import Config
 
 
 def test_exception():
@@ -12,8 +12,21 @@ def test_exception():
 
 
 def test_sdk():
-    config = Config()
-    config.config_file = os.path.join(os.path.dirname(__file__), "../data/config.yml")
+    config = [
+        "Correctness",
+        "Correctness:Messages",
+        "Security",
+        "Compliance",
+        "Performance",
+        "Performance:Application Size",
+        "Usability:Typography",
+        "Usability:Icons",
+        "Usability",
+        "Productivity",
+        "Accessibility",
+        "Internationalization",
+        "Internationalization:Bidirectional Text",
+    ]
 
     try:
         sdk = Sdk(config)
@@ -26,3 +39,4 @@ def test_sdk():
         assert True
 
     assert result is not None
+    pprint.pprint(result)
