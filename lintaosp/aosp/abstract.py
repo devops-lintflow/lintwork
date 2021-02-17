@@ -8,8 +8,8 @@ class AospAbstract(abc.ABC):
         self._config = config
 
     @abc.abstractmethod
-    def _execution(self, data):
+    def _execution(self, project):
         pass
 
-    def run(self, data):
-        return self._execution(data)
+    def run(self, project):
+        return self._execution(project)

@@ -29,7 +29,7 @@ class ConfigException(Exception):
 class Config(object):
     def __init__(self):
         self._config_file = None
-        self._input_text = ""
+        self._lint_project = ""
         self._listen_url = ""
         self._output_file = ""
 
@@ -51,14 +51,14 @@ class Config(object):
             raise ConfigException("config invalid")
 
     @property
-    def input_text(self):
-        return self._input_text
+    def lint_project(self):
+        return self._lint_project
 
-    @input_text.setter
-    def input_text(self, text):
-        if not isinstance(text, str):
-            raise ConfigException("text invalid")
-        self._input_text = text.strip()
+    @lint_project.setter
+    def lint_project(self, name):
+        if not isinstance(name, str) or not os.path.exists(name):
+            raise ConfigException("name invalid")
+        self._lint_project = name.strip()
 
     @property
     def listen_url(self):

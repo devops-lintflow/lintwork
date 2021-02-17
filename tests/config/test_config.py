@@ -51,14 +51,21 @@ def test_config():
         assert True
 
     try:
-        config.input_text = 0
+        config.lint_project = 0
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.input_text = "base64"
+        config.lint_project = "/invalid/project"
+    except ConfigException as _:
+        assert True
+    else:
+        assert False
+
+    try:
+        config.lint_project = os.path.join(os.path.dirname(__file__), "../data/project")
     except ConfigException as _:
         assert False
     else:

@@ -3,7 +3,7 @@
 
 """Prototype
 {
-  "file": "/path/to/file",
+  "file": "name",
   "line": 1,
   "type": "Error",
   "details": "text"

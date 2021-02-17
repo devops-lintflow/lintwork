@@ -30,7 +30,7 @@ git clone https://github.com/craftslab/lintaosp.git
 
 cd lintaosp
 pip install -Ur requirements.txt
-python aosp.py --config-file="config.yml" --input-text="{base64}" --output-file="output.json"
+python aosp.py --config-file="config.yml" --lint-project="project" --output-file="output.json"
 ```
 
 
@@ -56,7 +56,7 @@ git clone https://github.com/craftslab/lintaosp.git
 
 cd lintaosp
 docker build --no-cache -f Dockerfile -t craftslab/lintaosp:latest .
-docker run -it -v /tmp:/tmp craftslab/lintaosp:latest ./lintaosp --config-file="config.yml" --input-text="{base64}" --output-file="/tmp/output.json"
+docker run -it -v /tmp:/tmp craftslab/lintaosp:latest ./lintaosp --config-file="config.yml" --lint-project="/tmp/project" --output-file="/tmp/output.json"
 ```
 
 
@@ -77,7 +77,7 @@ docker run -it -p 9090:9090 craftslab/lintaosp:latest ./lintaosp --config-file="
 
 ```
 usage: aosp.py [-h] --config-file CONFIG_FILE
-               [--input-text INPUT_TEXT | --listen-url LISTEN_URL]
+               [--lint-project LINT_PROJECT | --listen-url LISTEN_URL]
                [--output-file OUTPUT_FILE] [-v]
 
 Lint AOSP
@@ -86,8 +86,8 @@ optional arguments:
   -h, --help            show this help message and exit
   --config-file CONFIG_FILE
                         config file (.yml)
-  --input-text INPUT_TEXT
-                        input text (base64)
+  --lint-project LINT_PROJECT
+                        lint project (/path/to/project)
   --listen-url LISTEN_URL
                         listen url (host:port)
   --output-file OUTPUT_FILE
@@ -109,20 +109,21 @@ kind: worker
 metadata:
   name: lintaosp
 spec:
-  sdk:
-    - Correctness
-    - Correctness:Messages
-    - Security
-    - Compliance
-    - Performance
-    - Performance:Application Size
-    - Usability:Typography
-    - Usability:Icons
-    - Usability
-    - Productivity
-    - Accessibility
-    - Internationalization
-    - Internationalization:Bidirectional Text
+  aosp:
+    sdk:
+      - Correctness
+      - Correctness:Messages
+      - Security
+      - Compliance
+      - Performance
+      - Performance:Application Size
+      - Usability:Typography
+      - Usability:Icons
+      - Usability
+      - Productivity
+      - Accessibility
+      - Internationalization
+      - Internationalization:Bidirectional Text
 ```
 
 
@@ -147,7 +148,7 @@ W: Warning
 
 ```json
 {
-  "file": "/path/to/file",
+  "file": "name",
   "line": 1,
   "type": "Error",
   "details": "text"

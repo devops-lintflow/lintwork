@@ -15,11 +15,11 @@ def test_sdk():
     config = Config()
     config.config_file = os.path.join(os.path.dirname(__file__), "../data/config.yml")
 
-    data = "PHN0cmluZyBuYW1lPSJsaW50X2Fvc3AiPkxpbnQgQU9TUDwvc3RyaW5nPg=="
-
     try:
         sdk = Sdk(config)
-        result = sdk._execution(data)
+        result = sdk._execution(
+            os.path.join(os.path.dirname(__file__), "../data/project")
+        )
     except SdkException as _:
         assert False
     else:

@@ -14,7 +14,7 @@ def test_exception():
 def test_printer():
     buf = {
         "sdk": {
-            Format.FILE: "/path/to/file",
+            Format.FILE: "name",
             Format.LINE: 1,
             Format.TYPE: Type.ERROR,
             Format.DETAILS: "text",

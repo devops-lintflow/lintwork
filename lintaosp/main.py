@@ -20,7 +20,7 @@ def main():
     try:
         config = Config()
         config.config_file = arg.config_file
-        config.input_text = arg.input_text
+        config.lint_project = arg.lint_project
         config.listen_url = arg.listen_url
         config.output_file = arg.output_file
     except ConfigException as e:
@@ -45,7 +45,7 @@ def main():
     else:
         try:
             queue = Queue(config)
-            queue.run(aosp.routine, config.input_text)
+            queue.run(aosp.routine, config.lint_project)
         except QueueException as e:
             Logger.error(str(e))
             return -4

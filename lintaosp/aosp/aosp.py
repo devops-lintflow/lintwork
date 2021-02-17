@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 from lintaosp.aosp.sdk import Sdk
 from lintaosp.config.config import ConfigFile
 from lintaosp.printer.printer import Printer
@@ -19,9 +21,12 @@ class Aosp(object):
         if config is None:
             raise AospException("config invalid")
         self._config = config
-        self._spec = config.config_file.get(ConfigFile.SPEC, None)
-        if self._spec is None:
+        buf = config.config_file.get(ConfigFile.SPEC, None)
+        if buf is None:
             raise AospException("spec invalid")
+        self._spec = buf.get(Aosp.__name__.lower(), None)
+        if self._spec is None:
+            raise AospException("aosp invalid")
         self._instance = self._instantiate()
 
     def _dump(self, data):
@@ -34,13 +39,13 @@ class Aosp(object):
             buf[Sdk.__name__.lower()] = Sdk(self._config)
         return buf
 
-    def routine(self, data):
-        if data is None or not isinstance(data, str) or len(data) == 0:
-            raise AospException("data invalid")
+    def routine(self, project):
+        if not isinstance(project, str) or not os.path.exists(project):
+            raise AospException("project invalid")
         buf = {}
         for key in self._spec.keys():
             if key in self._instance.keys():
-                buf[key] = self._instance[key].run(data)
+                buf[key] = self._instance[key].run(project)
         if len(self._config.output_file) != 0:
             self._dump(buf)
         return buf

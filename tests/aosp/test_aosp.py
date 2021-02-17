@@ -30,10 +30,8 @@ def test_aosp():
     else:
         assert True
 
-    data = "PHN0cmluZyBuYW1lPSJsaW50X2Fvc3AiPkxpbnQgQU9TUDwvc3RyaW5nPg=="
-
     try:
-        buf = aosp.routine(data)
+        buf = aosp.routine(os.path.join(os.path.dirname(__file__), "../data/project"))
     except AospException as _:
         assert False
     else:

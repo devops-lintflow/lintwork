@@ -3,17 +3,18 @@ kind: worker
 metadata:
   name: lintaosp
 spec:
-  sdk:
-    - Correctness
-    - Correctness:Messages
-    - Security
-    - Compliance
-    - Performance
-    - Performance:Application Size
-    - Usability:Typography
-    - Usability:Icons
-    - Usability
-    - Productivity
-    - Accessibility
-    - Internationalization
-    - Internationalization:Bidirectional Text
+  aosp:
+    sdk:
+      - Correctness
+      - Correctness:Messages
+      - Security
+      - Compliance
+      - Performance
+      - Performance:Application Size
+      - Usability:Typography
+      - Usability:Icons
+      - Usability
+      - Productivity
+      - Accessibility
+      - Internationalization
+      - Internationalization:Bidirectional Text

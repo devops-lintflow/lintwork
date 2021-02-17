@@ -20,11 +20,11 @@ class Argument(object):
         )
         group = self._parser.add_mutually_exclusive_group()
         group.add_argument(
-            "--input-text",
+            "--lint-project",
             action="store",
             default="",
-            dest="input_text",
-            help="input text (base64)",
+            dest="lint_project",
+            help="lint project (/path/to/project)",
             required=False,
         )
         group.add_argument(

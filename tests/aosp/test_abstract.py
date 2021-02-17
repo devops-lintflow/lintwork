@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 from lintaosp.aosp.abstract import AospAbstract
 from lintaosp.config.config import Config
 from lintaosp.proto.proto import Format
@@ -11,12 +13,10 @@ def test_aospabstract():
             super().__init__(config)
 
         def _execution(self, _):
-            return {Format.FILE: "/path/to/file"}
+            return {Format.FILE: "name"}
 
     config = Config()
     aosp = AospTest(config)
 
-    data = "PHN0cmluZyBuYW1lPSJsaW50X2Fvc3AiPkxpbnQgQU9TUDwvc3RyaW5nPg=="
-
-    result = aosp.run(data)
+    result = aosp.run(os.path.join(os.path.dirname(__file__), "../data/project"))
     assert result is not None
