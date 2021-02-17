@@ -41,18 +41,18 @@ class Printer(object):
             f.write(json.dumps(data, ensure_ascii=False, indent=2))
 
     def _txt(self, data, name):
-        def _txt_helper(title, data, out):
+        def _txt_helper(data, out):
             global head
-            out.write(u"%s\n" % title)
             for key in sorted(head.keys()):
                 out.write(u"%s: %s\n" % (head[key], data[head[key]]))
-            out.write("\n")
 
         with open(name, "w", encoding="utf8") as f:
             f.write("")
             for key, val in data.items():
                 for v in val:
-                    _txt_helper(key, v, f)
+                    f.write(u"%s\n" % key)
+                    _txt_helper(v, f)
+                    f.write("\n")
 
     def _xlsx(self, data, name):
         def _styling_head(sheet):
