@@ -44,4 +44,6 @@ jobs:
     - name: Install SDK
       run: make sdk
     - name: Run pytest
-      run: pytest
+      run: |
+        export PATH=$PWD/cmdline-tools/bin:$PATH
+        pytest
