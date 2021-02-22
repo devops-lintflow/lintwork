@@ -66,7 +66,9 @@ class Printer(object):
         def _styling_data(sheet, rows):
             for key in head.keys():
                 for row in range(rows):
-                    sheet[key + str(row + 2)].alignment = Alignment(vertical="center")
+                    sheet[key + str(row + 2)].alignment = Alignment(
+                        horizontal="center", vertical="center"
+                    )
                     sheet[key + str(row + 2)].font = Font(bold=False, name="Calibri")
 
         wb = openpyxl.Workbook()
