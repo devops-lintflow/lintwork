@@ -16,9 +16,7 @@ from lintaosp.flow.flow_pb2_grpc import (
 )
 
 MAX_WORKERS = 10
-
-MSG_PREFIX = "lintaosp/aosp"
-MSG_SEP = "/"
+STORE_PREFIX = "lintaosp"
 
 
 class FlowException(Exception):
@@ -61,7 +59,7 @@ class FlowProto(FlowProtoServicer):
         if len(data) == 0:
             return None
         buf = json.loads(data)
-        root = tempfile.mkdtemp(prefix=MSG_PREFIX.replace("/", "-") + "-")
+        root = tempfile.mkdtemp(prefix=STORE_PREFIX + "-")
         for key, val in buf.items():
             _helper(root, os.path.dirname(key), os.path.basename(key), val)
 
@@ -72,19 +70,11 @@ class FlowProto(FlowProtoServicer):
             shutil.rmtree(project)
 
     def SendFlow(self, request, _):
-        if len(request.message) == 0 or not request.message.startswith(MSG_PREFIX):
+        if len(request.message) == 0:
             return FlowReply(message="")
-        msg = MSG_SEP.split(request.message)
-        if len(msg) == len(MSG_SEP.split(MSG_PREFIX)):
+        project = self._build(request.message.strip())
+        if project is None or not os.path.exists(project):
             return FlowReply(message="")
-        elif len(msg) > len(MSG_SEP.split(MSG_PREFIX)):
-            project = self._build(
-                request.message.replace(MSG_PREFIX + MSG_SEP, "").strip()
-            )
-            if project is None or not os.path.exists(project):
-                return FlowReply(message="")
-            buf = self._routine(project)
-            self._clean(project)
-        else:
-            buf = ""
+        buf = self._routine(project)
+        self._clean(project)
         return FlowReply(message=buf)
