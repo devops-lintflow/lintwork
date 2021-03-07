@@ -77,4 +77,4 @@ class FlowProto(FlowProtoServicer):
             return FlowReply(message="")
         buf = self._routine(project)
         self._clean(project)
-        return FlowReply(message=buf)
+        return FlowReply(message=json.dumps(buf))
