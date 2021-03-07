@@ -17,6 +17,7 @@
 ## Prerequisites
 
 - Android lint >= 4.1
+- gRPC >= 1.36.0
 - Python >= 3.7
 
 
