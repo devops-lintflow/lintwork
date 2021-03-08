@@ -15,8 +15,8 @@ from lintaosp.flow.flow_pb2_grpc import (
     FlowProtoServicer,
 )
 
+LINT_NAME = "lintaosp"
 MAX_WORKERS = 10
-STORE_PREFIX = "lintaosp"
 
 
 class FlowException(Exception):
@@ -59,7 +59,7 @@ class FlowProto(FlowProtoServicer):
         if len(data) == 0:
             return None
         buf = json.loads(data)
-        root = tempfile.mkdtemp(prefix=STORE_PREFIX + "-")
+        root = tempfile.mkdtemp(prefix=LINT_NAME + "-")
         for key, val in buf.items():
             _helper(root, os.path.dirname(key), os.path.basename(key), val)
 
@@ -77,4 +77,4 @@ class FlowProto(FlowProtoServicer):
             return FlowReply(message="")
         buf = self._routine(project)
         self._clean(project)
-        return FlowReply(message=json.dumps(buf))
+        return FlowReply(message=json.dumps({LINT_NAME: buf}))

@@ -8,6 +8,8 @@ import time
 from lintaosp.proto.proto import Format
 from openpyxl.styles import Alignment, Font
 
+LINT_NAME = "lintaosp"
+
 head = {
     "A": Format.FILE,
     "B": Format.LINE,
@@ -91,4 +93,4 @@ class Printer(object):
             raise PrinterException("append not supported")
         func = Printer.__dict__.get(os.path.splitext(name)[1].replace(".", "_"), None)
         if func is not None:
-            func(self, data, name)
+            func(self, {LINT_NAME: data}, name)

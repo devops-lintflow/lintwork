@@ -16,9 +16,9 @@
 
 ## Prerequisites
 
-- Android lint >= 4.1
+- Android lint >= 4.1.0
 - gRPC >= 1.36.0
-- Python >= 3.7
+- Python >= 3.7.0
 
 
 
@@ -148,17 +148,21 @@ W: Warning
 
 ```json
 {
-  "file": "name",
-  "line": 1,
-  "type": "Error",
-  "details": "text"
+  "lintaosp": [
+    {
+      "file": "name",
+      "line": 1,
+      "type": "Error",
+      "details": "text"
+    }
+  ]
 }
 ```
 
 - **Text format**
 
 ```text
-{file}:{line}:{type}:{details}
+lintaosp:{file}:{line}:{type}:{details}
 ```
 
 

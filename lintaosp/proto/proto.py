@@ -3,10 +3,14 @@
 
 """Prototype
 {
-  "file": "name",
-  "line": 1,
-  "type": "Error",
-  "details": "text"
+  "lintaosp": [
+    {
+      "file": "name",
+      "line": 1,
+      "type": "Error",
+      "details": "text"
+    }
+  ]
 }
 """
 

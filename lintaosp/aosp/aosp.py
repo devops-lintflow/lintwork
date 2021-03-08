@@ -39,10 +39,10 @@ class Aosp(object):
     def routine(self, project):
         if not isinstance(project, str) or not os.path.exists(project):
             raise AospException("project invalid")
-        buf = {}
+        buf = []
         for key in self._spec.keys():
             if key in self._instance.keys():
-                buf[key] = self._instance[key].run(project)
+                buf.extend(self._instance[key].run(project))
         if len(self._config.output_file) != 0:
             self._dump(buf)
         return buf
