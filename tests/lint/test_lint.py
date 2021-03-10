@@ -3,18 +3,18 @@
 import os
 
 from lintaosp.config.config import Config
-from lintaosp.flow.flow import Flow, FlowException, FlowProto
+from lintaosp.lint.lint import Lint, LintException, LintProto
 
 
 def test_exception():
-    exception = FlowException("exception")
+    exception = LintException("exception")
     assert str(exception) == "exception"
 
 
-def test_flow():
+def test_lint():
     try:
-        _ = Flow(None)
-    except FlowException as _:
+        _ = Lint(None)
+    except LintException as _:
         assert True
     else:
         assert False
@@ -23,15 +23,15 @@ def test_flow():
     config.config_file = os.path.join(os.path.dirname(__file__), "../data/config.yml")
 
     try:
-        _ = Flow(config)
-    except FlowException as _:
+        _ = Lint(config)
+    except LintException as _:
         assert False
     else:
         assert True
 
 
-def test_flowproto():
-    proto = FlowProto(None)
+def test_lintproto():
+    proto = LintProto(None)
 
     data = ""
     project = proto._build(data)

@@ -9,8 +9,8 @@ import shutil
 import tempfile
 
 from concurrent import futures
-from lintaosp.flow.flow_pb2 import LintReply
-from lintaosp.flow.flow_pb2_grpc import (
+from lintaosp.lint.lint_pb2 import LintReply
+from lintaosp.lint.lint_pb2_grpc import (
     add_LintProtoServicer_to_server,
     LintProtoServicer,
 )
@@ -19,7 +19,7 @@ LINT_NAME = "lintaosp"
 MAX_WORKERS = 10
 
 
-class FlowException(Exception):
+class LintException(Exception):
     def __init__(self, info):
         super().__init__(self)
         self._info = info
@@ -28,15 +28,15 @@ class FlowException(Exception):
         return self._info
 
 
-class Flow(object):
+class Lint(object):
     def __init__(self, config):
         if config is None:
-            raise FlowException("config invalid")
+            raise LintException("config invalid")
         self._config = config
 
     def _serve(self, routine):
         server = grpc.server(futures.ThreadPoolExecutor(max_workers=MAX_WORKERS))
-        add_LintProtoServicer_to_server(FlowProto(routine), server)
+        add_LintProtoServicer_to_server(LintProto(routine), server)
         server.add_insecure_port(self._config.listen_url)
         server.start()
         server.wait_for_termination()
@@ -45,7 +45,7 @@ class Flow(object):
         self._serve(routine)
 
 
-class FlowProto(LintProtoServicer):
+class LintProto(LintProtoServicer):
     def __init__(self, routine):
         self._routine = routine
 
@@ -69,7 +69,7 @@ class FlowProto(LintProtoServicer):
         if os.path.exists(project):
             shutil.rmtree(project)
 
-    def SendFlow(self, request, _):
+    def SendLint(self, request, _):
         if len(request.message) == 0:
             return LintReply(message="")
         project = self._build(request.message.strip())
