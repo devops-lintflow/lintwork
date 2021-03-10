@@ -40,7 +40,8 @@ class Config(object):
     @config_file.setter
     def config_file(self, name):
         if not isinstance(name, str) or len(name.strip()) == 0:
-            raise ConfigException("name invalid")
+            raise ConfigException("config invalid")
+        name = name.strip()
         if not name.endswith(".yml") and not name.endswith(".yaml"):
             raise ConfigException("suffix invalid")
         if not os.path.exists(name):
@@ -56,9 +57,12 @@ class Config(object):
 
     @lint_project.setter
     def lint_project(self, name):
-        if not isinstance(name, str) or not os.path.exists(name):
-            raise ConfigException("name invalid")
-        self._lint_project = name.strip()
+        if not isinstance(name, str):
+            raise ConfigException("project invalid")
+        name = name.strip()
+        if len(name) != 0 and not os.path.exists(name):
+            raise ConfigException("%s not found" % name)
+        self._lint_project = name
 
     @property
     def listen_url(self):
@@ -77,8 +81,9 @@ class Config(object):
     @output_file.setter
     def output_file(self, name):
         if not isinstance(name, str):
-            raise ConfigException("name invalid")
-        if len(name.strip()) != 0:
+            raise ConfigException("output invalid")
+        name = name.strip()
+        if len(name) != 0:
             if (
                 not name.endswith(".json")
                 and not name.endswith(".txt")
@@ -87,4 +92,4 @@ class Config(object):
                 raise ConfigException("suffix invalid")
             if os.path.exists(name):
                 raise ConfigException("%s already exist" % name)
-        self._output_file = name.strip()
+        self._output_file = name
