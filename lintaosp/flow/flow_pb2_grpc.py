@@ -5,7 +5,7 @@ import grpc
 import lintaosp.flow.flow_pb2 as flow__pb2
 
 
-class FlowProtoStub(object):
+class LintProtoStub(object):
     """The service definition."""
 
     def __init__(self, channel):
@@ -14,43 +14,43 @@ class FlowProtoStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.SendFlow = channel.unary_unary(
-            "/flow.FlowProto/SendFlow",
-            request_serializer=flow__pb2.FlowRequest.SerializeToString,
-            response_deserializer=flow__pb2.FlowReply.FromString,
+        self.SendLint = channel.unary_unary(
+            "/flow.LintProto/SendLint",
+            request_serializer=flow__pb2.LintRequest.SerializeToString,
+            response_deserializer=flow__pb2.LintReply.FromString,
         )
 
 
-class FlowProtoServicer(object):
+class LintProtoServicer(object):
     """The service definition."""
 
-    def SendFlow(self, request, context):
-        """Sends flow"""
+    def SendLint(self, request, context):
+        """Sends lint"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
 
-def add_FlowProtoServicer_to_server(servicer, server):
+def add_LintProtoServicer_to_server(servicer, server):
     rpc_method_handlers = {
-        "SendFlow": grpc.unary_unary_rpc_method_handler(
-            servicer.SendFlow,
-            request_deserializer=flow__pb2.FlowRequest.FromString,
-            response_serializer=flow__pb2.FlowReply.SerializeToString,
+        "SendLint": grpc.unary_unary_rpc_method_handler(
+            servicer.SendLint,
+            request_deserializer=flow__pb2.LintRequest.FromString,
+            response_serializer=flow__pb2.LintReply.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-        "flow.FlowProto", rpc_method_handlers
+        "flow.LintProto", rpc_method_handlers
     )
     server.add_generic_rpc_handlers((generic_handler,))
 
 
 # This class is part of an EXPERIMENTAL API.
-class FlowProto(object):
+class LintProto(object):
     """The service definition."""
 
     @staticmethod
-    def SendFlow(
+    def SendLint(
         request,
         target,
         options=(),
@@ -65,9 +65,9 @@ class FlowProto(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            "/flow.FlowProto/SendFlow",
-            flow__pb2.FlowRequest.SerializeToString,
-            flow__pb2.FlowReply.FromString,
+            "/flow.LintProto/SendLint",
+            flow__pb2.LintRequest.SerializeToString,
+            flow__pb2.LintReply.FromString,
             options,
             channel_credentials,
             insecure,

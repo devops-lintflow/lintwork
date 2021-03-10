@@ -9,10 +9,10 @@ import shutil
 import tempfile
 
 from concurrent import futures
-from lintaosp.flow.flow_pb2 import FlowReply
+from lintaosp.flow.flow_pb2 import LintReply
 from lintaosp.flow.flow_pb2_grpc import (
-    add_FlowProtoServicer_to_server,
-    FlowProtoServicer,
+    add_LintProtoServicer_to_server,
+    LintProtoServicer,
 )
 
 LINT_NAME = "lintaosp"
@@ -36,7 +36,7 @@ class Flow(object):
 
     def _serve(self, routine):
         server = grpc.server(futures.ThreadPoolExecutor(max_workers=MAX_WORKERS))
-        add_FlowProtoServicer_to_server(FlowProto(routine), server)
+        add_LintProtoServicer_to_server(FlowProto(routine), server)
         server.add_insecure_port(self._config.listen_url)
         server.start()
         server.wait_for_termination()
@@ -45,7 +45,7 @@ class Flow(object):
         self._serve(routine)
 
 
-class FlowProto(FlowProtoServicer):
+class FlowProto(LintProtoServicer):
     def __init__(self, routine):
         self._routine = routine
 
@@ -71,10 +71,10 @@ class FlowProto(FlowProtoServicer):
 
     def SendFlow(self, request, _):
         if len(request.message) == 0:
-            return FlowReply(message="")
+            return LintReply(message="")
         project = self._build(request.message.strip())
         if project is None or not os.path.exists(project):
-            return FlowReply(message="")
+            return LintReply(message="")
         buf = self._routine(project)
         self._clean(project)
-        return FlowReply(message=json.dumps({LINT_NAME: buf}))
+        return LintReply(message=json.dumps({LINT_NAME: buf}))

@@ -18,13 +18,13 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\nflow.proto\x12\x04\x66low"\x1e\n\x0b\x46lowRequest\x12\x0f\n\x07message\x18\x01 \x01(\t"\x1c\n\tFlowReply\x12\x0f\n\x07message\x18\x01 \x01(\t2=\n\tFlowProto\x12\x30\n\x08SendFlow\x12\x11.flow.FlowRequest\x1a\x0f.flow.FlowReply"\x00\x62\x06proto3',
+    serialized_pb=b'\n\nflow.proto\x12\x04\x66low"\x1e\n\x0bLintRequest\x12\x0f\n\x07message\x18\x01 \x01(\t"\x1c\n\tLintReply\x12\x0f\n\x07message\x18\x01 \x01(\t2=\n\tLintProto\x12\x30\n\x08SendLint\x12\x11.flow.LintRequest\x1a\x0f.flow.LintReply"\x00\x62\x06proto3',
 )
 
 
-_FLOWREQUEST = _descriptor.Descriptor(
-    name="FlowRequest",
-    full_name="flow.FlowRequest",
+_LINTREQUEST = _descriptor.Descriptor(
+    name="LintRequest",
+    full_name="flow.LintRequest",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
@@ -32,7 +32,7 @@ _FLOWREQUEST = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="message",
-            full_name="flow.FlowRequest.message",
+            full_name="flow.LintRequest.message",
             index=0,
             number=1,
             type=9,
@@ -63,9 +63,9 @@ _FLOWREQUEST = _descriptor.Descriptor(
 )
 
 
-_FLOWREPLY = _descriptor.Descriptor(
-    name="FlowReply",
-    full_name="flow.FlowReply",
+_LINTREPLY = _descriptor.Descriptor(
+    name="LintReply",
+    full_name="flow.LintReply",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
@@ -73,7 +73,7 @@ _FLOWREPLY = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="message",
-            full_name="flow.FlowReply.message",
+            full_name="flow.LintReply.message",
             index=0,
             number=1,
             type=9,
@@ -103,36 +103,36 @@ _FLOWREPLY = _descriptor.Descriptor(
     serialized_end=80,
 )
 
-DESCRIPTOR.message_types_by_name["FlowRequest"] = _FLOWREQUEST
-DESCRIPTOR.message_types_by_name["FlowReply"] = _FLOWREPLY
+DESCRIPTOR.message_types_by_name["LintRequest"] = _LINTREQUEST
+DESCRIPTOR.message_types_by_name["LintReply"] = _LINTREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-FlowRequest = _reflection.GeneratedProtocolMessageType(
-    "FlowRequest",
+LintRequest = _reflection.GeneratedProtocolMessageType(
+    "LintRequest",
     (_message.Message,),
     {
-        "DESCRIPTOR": _FLOWREQUEST,
+        "DESCRIPTOR": _LINTREQUEST,
         "__module__": "flow_pb2"
-        # @@protoc_insertion_point(class_scope:flow.FlowRequest)
+        # @@protoc_insertion_point(class_scope:flow.LintRequest)
     },
 )
-_sym_db.RegisterMessage(FlowRequest)
+_sym_db.RegisterMessage(LintRequest)
 
-FlowReply = _reflection.GeneratedProtocolMessageType(
-    "FlowReply",
+LintReply = _reflection.GeneratedProtocolMessageType(
+    "LintReply",
     (_message.Message,),
     {
-        "DESCRIPTOR": _FLOWREPLY,
+        "DESCRIPTOR": _LINTREPLY,
         "__module__": "flow_pb2"
-        # @@protoc_insertion_point(class_scope:flow.FlowReply)
+        # @@protoc_insertion_point(class_scope:flow.LintReply)
     },
 )
-_sym_db.RegisterMessage(FlowReply)
+_sym_db.RegisterMessage(LintReply)
 
 
-_FLOWPROTO = _descriptor.ServiceDescriptor(
-    name="FlowProto",
-    full_name="flow.FlowProto",
+_LINTPROTO = _descriptor.ServiceDescriptor(
+    name="LintProto",
+    full_name="flow.LintProto",
     file=DESCRIPTOR,
     index=0,
     serialized_options=None,
@@ -141,19 +141,19 @@ _FLOWPROTO = _descriptor.ServiceDescriptor(
     serialized_end=143,
     methods=[
         _descriptor.MethodDescriptor(
-            name="SendFlow",
-            full_name="flow.FlowProto.SendFlow",
+            name="SendLint",
+            full_name="flow.LintProto.SendLint",
             index=0,
             containing_service=None,
-            input_type=_FLOWREQUEST,
-            output_type=_FLOWREPLY,
+            input_type=_LINTREQUEST,
+            output_type=_LINTREPLY,
             serialized_options=None,
             create_key=_descriptor._internal_create_key,
         ),
     ],
 )
-_sym_db.RegisterServiceDescriptor(_FLOWPROTO)
+_sym_db.RegisterServiceDescriptor(_LINTPROTO)
 
-DESCRIPTOR.services_by_name["FlowProto"] = _FLOWPROTO
+DESCRIPTOR.services_by_name["LintProto"] = _LINTPROTO
 
 # @@protoc_insertion_point(module_scope)
