@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import lintaosp.flow.flow_pb2 as flow__pb2
+import lintaosp.lint.lint_pb2 as lint__pb2
 
 
 class LintProtoStub(object):
@@ -15,9 +15,9 @@ class LintProtoStub(object):
             channel: A grpc.Channel.
         """
         self.SendLint = channel.unary_unary(
-            "/flow.LintProto/SendLint",
-            request_serializer=flow__pb2.LintRequest.SerializeToString,
-            response_deserializer=flow__pb2.LintReply.FromString,
+            "/lint.LintProto/SendLint",
+            request_serializer=lint__pb2.LintRequest.SerializeToString,
+            response_deserializer=lint__pb2.LintReply.FromString,
         )
 
 
@@ -35,12 +35,12 @@ def add_LintProtoServicer_to_server(servicer, server):
     rpc_method_handlers = {
         "SendLint": grpc.unary_unary_rpc_method_handler(
             servicer.SendLint,
-            request_deserializer=flow__pb2.LintRequest.FromString,
-            response_serializer=flow__pb2.LintReply.SerializeToString,
+            request_deserializer=lint__pb2.LintRequest.FromString,
+            response_serializer=lint__pb2.LintReply.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-        "flow.LintProto", rpc_method_handlers
+        "lint.LintProto", rpc_method_handlers
     )
     server.add_generic_rpc_handlers((generic_handler,))
 
@@ -65,9 +65,9 @@ class LintProto(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            "/flow.LintProto/SendLint",
-            flow__pb2.LintRequest.SerializeToString,
-            flow__pb2.LintReply.FromString,
+            "/lint.LintProto/SendLint",
+            lint__pb2.LintRequest.SerializeToString,
+            lint__pb2.LintReply.FromString,
             options,
             channel_credentials,
             insecure,

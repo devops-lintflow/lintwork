@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package flow;
+package lint;
 
 // The service definition.
 service LintProto {
