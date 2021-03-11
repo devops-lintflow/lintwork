@@ -1,4 +1,4 @@
-FROM python:3.9.0 as build-stage
+FROM python:3.6.9 as build-stage
 WORKDIR /usr/src/app
 COPY . .
 RUN apt update && \
