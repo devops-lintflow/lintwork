@@ -1,12 +1,18 @@
-FROM python:3.6.9 as build-stage
-WORKDIR /usr/src/app
-COPY . .
+FROM craftslab/androiddocker:android-30
+
+USER root
 RUN apt update && \
     apt install -y upx
-RUN make install
+RUN ln -s /usr/bin/pip3 /usr/bin/pip && \
+    ln -s /usr/bin/python3 /usr/bin/python
+RUN python -m pip install -U pip
 
-FROM craftslab/androiddocker:android-30 as production-stage
 USER craftslab
 WORKDIR /home/craftslab
-COPY --from=build-stage /usr/src/app/dist/* ./
-COPY --from=build-stage /usr/src/app/lintaosp/config/*.yml ./
+ENV PATH /home/craftslab/.local/bin:$PATH
+RUN mkdir src
+COPY . src
+RUN cd src; make install; cd .. && \
+    cp src/dist/* . && \
+    cp src/lintaosp/config/*.yml . && \
+    sudo rm -rf src
