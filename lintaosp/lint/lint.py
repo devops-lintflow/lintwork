@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import base64
+import datetime
 import grpc
 import json
 import os
 import pathlib
 import shutil
-import tempfile
 
 from concurrent import futures
 from lintaosp.lint.lint_pb2 import LintReply
@@ -59,7 +59,11 @@ class LintProto(LintProtoServicer):
         if len(data) == 0:
             return None
         buf = json.loads(data)
-        root = tempfile.mkdtemp(prefix=LINT_NAME + "-")
+        root = os.path.join(
+            os.getcwd(),
+            LINT_NAME + "-" + datetime.datetime.now().strftime("%Y%m%m%H%M%S"),
+        )
+        pathlib.Path(root).mkdir(parents=True, exist_ok=True)
         for key, val in buf.items():
             _helper(root, os.path.dirname(key), os.path.basename(key), val)
 
