@@ -3,7 +3,7 @@
 
 """Prototype
 {
-  "lintaosp": [
+  "lintwork": [
     {
       "file": "name",
       "line": 1,

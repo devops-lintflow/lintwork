@@ -3,7 +3,7 @@
 import abc
 
 
-class AospAbstract(abc.ABC):
+class WorkAbstract(abc.ABC):
     def __init__(self, config):
         self._config = config
 

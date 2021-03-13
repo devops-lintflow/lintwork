@@ -5,10 +5,10 @@ import openpyxl
 import os
 import time
 
-from lintaosp.proto.proto import Format
+from lintwork.proto.proto import Format
 from openpyxl.styles import Alignment, Font
 
-LINT_NAME = "lintaosp"
+LINT_NAME = "lintwork"
 
 head = {
     "A": Format.FILE,

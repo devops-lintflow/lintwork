@@ -2,19 +2,19 @@
 
 import os
 
-from lintaosp.aosp.aosp import Aosp, AospException
-from lintaosp.config.config import Config
+from lintwork.config.config import Config
+from lintwork.work.work import Work, WorkException
 
 
 def test_exception():
-    exception = AospException("exception")
+    exception = WorkException("exception")
     assert str(exception) == "exception"
 
 
-def test_aosp():
+def test_work():
     try:
-        _ = Aosp(None)
-    except AospException as _:
+        _ = Work(None)
+    except WorkException as _:
         assert True
     else:
         assert False
@@ -24,15 +24,15 @@ def test_aosp():
     config.output_file = "output.json"
 
     try:
-        aosp = Aosp(config)
-    except AospException as _:
+        work = Work(config)
+    except WorkException as _:
         assert False
     else:
         assert True
 
     try:
-        buf = aosp.routine(os.path.join(os.path.dirname(__file__), "../data/project"))
-    except AospException as _:
+        buf = work.routine(os.path.join(os.path.dirname(__file__), "../data/project"))
+    except WorkException as _:
         assert False
     else:
         assert True

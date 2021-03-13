@@ -2,13 +2,13 @@
 
 import sys
 
-from lintaosp.aosp.aosp import Aosp, AospException
-from lintaosp.cmd.argument import Argument
-from lintaosp.cmd.banner import BANNER
-from lintaosp.config.config import Config, ConfigException
-from lintaosp.lint.lint import Lint, LintException
-from lintaosp.logger.logger import Logger
-from lintaosp.queue.queue import Queue, QueueException
+from lintwork.cmd.argument import Argument
+from lintwork.cmd.banner import BANNER
+from lintwork.config.config import Config, ConfigException
+from lintwork.lint.lint import Lint, LintException
+from lintwork.logger.logger import Logger
+from lintwork.queue.queue import Queue, QueueException
+from lintwork.work.work import Work, WorkException
 
 
 def main():
@@ -28,8 +28,8 @@ def main():
         return -1
 
     try:
-        aosp = Aosp(config)
-    except AospException as e:
+        work = Work(config)
+    except WorkException as e:
         Logger.error(str(e))
         return -2
 
@@ -38,14 +38,14 @@ def main():
     if len(config.listen_url) != 0:
         try:
             lint = Lint(config)
-            lint.run(aosp.routine)
+            lint.run(work.routine)
         except LintException as e:
             Logger.error(str(e))
             return -3
     else:
         try:
             queue = Queue(config)
-            queue.run(aosp.routine, config.lint_project)
+            queue.run(work.routine, config.lint_project)
         except QueueException as e:
             Logger.error(str(e))
             return -4

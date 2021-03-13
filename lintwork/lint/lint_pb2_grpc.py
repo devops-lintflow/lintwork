@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import lintaosp.lint.lint_pb2 as lint__pb2
+import lintwork.lint.lint_pb2 as lint__pb2
 
 
 class LintProtoStub(object):

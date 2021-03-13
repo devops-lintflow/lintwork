@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from lintaosp.cmd.argument import Argument
+from lintwork.cmd.argument import Argument
 
 
 def test_argument():

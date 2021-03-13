@@ -2,12 +2,12 @@
 
 import argparse
 
-from lintaosp.__version__ import __version__
+from lintwork.__version__ import __version__
 
 
 class Argument(object):
     def __init__(self):
-        self._parser = argparse.ArgumentParser(description="Lint AOSP")
+        self._parser = argparse.ArgumentParser(description="Lint Work")
         self._add()
 
     def _add(self):

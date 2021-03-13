@@ -2,8 +2,8 @@
 
 import os
 
-from lintaosp.config.config import Config
-from lintaosp.lint.lint import Lint, LintException, LintProto
+from lintwork.config.config import Config
+from lintwork.lint.lint import Lint, LintException, LintProto
 
 
 def test_exception():

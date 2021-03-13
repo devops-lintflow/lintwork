@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from lintaosp.logger.logger import Logger
+from lintwork.logger.logger import Logger
 
 
 def test_debug(capsys):

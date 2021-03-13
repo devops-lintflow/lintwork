@@ -3,7 +3,7 @@
 import os
 import pprint
 
-from lintaosp.aosp.sdk import Sdk, SdkException
+from lintwork.work.aosp.sdk import Sdk, SdkException
 
 
 def test_exception():
@@ -31,7 +31,7 @@ def test_sdk():
     try:
         sdk = Sdk(config)
         result = sdk._execution(
-            os.path.join(os.path.dirname(__file__), "../data/project")
+            os.path.join(os.path.dirname(__file__), "../../data/project")
         )
     except SdkException as _:
         assert False

@@ -3,8 +3,8 @@
 import subprocess
 import sys
 
-from lintaosp.aosp.abstract import AospAbstract
-from lintaosp.proto.proto import Format, Type
+from lintwork.work.abstract import WorkAbstract
+from lintwork.proto.proto import Format, Type
 
 CHECK_SEP = ","
 
@@ -22,7 +22,7 @@ class SdkException(Exception):
         return self._info
 
 
-class Sdk(AospAbstract):
+class Sdk(WorkAbstract):
     def __init__(self, config):
         if config is None:
             raise SdkException("config invalid")

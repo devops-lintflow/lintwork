@@ -1,6 +1,6 @@
 #!/bin/bash
 
-list="lintaosp,tests"
+list="lintwork,tests"
 
 old=$IFS IFS=$','
 for item in $list; do

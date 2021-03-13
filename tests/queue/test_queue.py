@@ -2,8 +2,8 @@
 
 import queue
 
-from lintaosp.queue.queue import Queue, QueueException
-from lintaosp.queue.queue import Worker, WorkerException
+from lintwork.queue.queue import Queue, QueueException
+from lintwork.queue.queue import Worker, WorkerException
 
 
 def routine(_):

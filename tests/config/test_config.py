@@ -2,7 +2,7 @@
 
 import os
 
-from lintaosp.config.config import Config, ConfigException
+from lintwork.config.config import Config, ConfigException
 
 
 def test_exception():

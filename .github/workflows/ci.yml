@@ -36,13 +36,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run black
-      run: black --check --line-length=88 lintaosp
+      run: black --check --line-length=88 lintwork
     - name: Run flake8
-      run: flake8 --ignore=E501,F841,W503,W605 --max-line-length=88 lintaosp
+      run: flake8 --ignore=E501,F841,W503,W605 --max-line-length=88 lintwork
     #- name: Run mypy
-    #  run: mypy lintaosp
-    - name: Install SDK
-      run: make sdk
+    #  run: mypy lintwork
+    - name: Install tool
+      run: make tool
     - name: Run pytest
       run: |
         export PATH=$PWD/cmdline-tools/bin:$PATH

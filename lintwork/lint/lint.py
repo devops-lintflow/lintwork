@@ -9,13 +9,13 @@ import pathlib
 import shutil
 
 from concurrent import futures
-from lintaosp.lint.lint_pb2 import LintReply
-from lintaosp.lint.lint_pb2_grpc import (
+from lintwork.lint.lint_pb2 import LintReply
+from lintwork.lint.lint_pb2_grpc import (
     add_LintProtoServicer_to_server,
     LintProtoServicer,
 )
 
-LINT_NAME = "lintaosp"
+LINT_NAME = "lintwork"
 MAX_WORKERS = 10
 
 

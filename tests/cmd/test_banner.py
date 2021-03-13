@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from lintaosp.cmd.banner import BANNER
+from lintwork.cmd.banner import BANNER
 
 
 def test_banner():

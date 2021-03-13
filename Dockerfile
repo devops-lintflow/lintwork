@@ -14,5 +14,5 @@ RUN mkdir src
 COPY . src
 RUN cd src; make install; cd .. && \
     cp src/dist/* . && \
-    cp src/lintaosp/config/*.yml . && \
+    cp src/lintwork/config/*.yml . && \
     sudo rm -rf src

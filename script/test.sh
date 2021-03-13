@@ -1,3 +1,3 @@
 #!/bin/bash
 
-coverage run --source=lintaosp,tests -m pytest
+coverage run --source=lintwork,tests -m pytest

@@ -15,6 +15,6 @@ install:
   - rm -rf build
 script:
   - cd $TRAVIS_BUILD_DIR
-  - coverage run --source=lintaosp,tests -m pytest
+  - coverage run --source=lintwork,tests -m pytest
 after_success:
   coveralls

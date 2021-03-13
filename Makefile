@@ -2,9 +2,6 @@
 
 .PHONY: FORCE
 
-sdk: py-sdk
-.PHONY: sdk
-
 clean: py-clean
 .PHONY: clean
 
@@ -23,11 +20,11 @@ proto: py-proto
 test: py-test
 .PHONY: test
 
+tool: py-tool
+.PHONY: toll
+
 
 # Non-PHONY targets (real files)
-
-py-sdk: FORCE
-	./script/sdk.sh
 
 py-clean: FORCE
 	./script/clean.sh
@@ -46,3 +43,6 @@ py-proto: FORCE
 
 py-test: FORCE
 	./script/test.sh
+
+py-tool: FORCE
+	./script/tool.sh
