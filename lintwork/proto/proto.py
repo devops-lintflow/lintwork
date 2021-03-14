@@ -15,6 +15,12 @@
 """
 
 
+class Base64:
+    CONTENT = ".base64"
+    MESSAGE = "message.base64"
+    PATCH = "patch.base64"
+
+
 class Format:
     DETAILS = "details"
     FILE = "file"
