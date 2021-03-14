@@ -1,0 +1,35 @@
+From c5d3440911e06ed4fc60252bd89e7756f9ae67ee Mon Sep 17 00:00:00 2001
+From: Jia Jia <angersax@sina.com>
+Date: Wed, 03 Mar 2021 15:17:57 +0800
+Subject: [PATCH] Change for lintflow test 202103031531
+
+Change-Id: Ia0d84b05a10f46ba3f09fcec1418464b2510d060
+---
+
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index 5e7c97c..5c87b96 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -6,8 +6,7 @@
+
+     <original-package android:name="com.android.settings" />
+
+-    <uses-permission android:name="android.permission.REQUEST_NETWORK_SCORES" />
+-    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
++    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE"
+     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+diff --git a/src/com/android/settings/ActivityPicker.java b/src/com/android/settings/ActivityPicker.java
+index ae61944..bc9d284 100644
+--- a/src/com/android/settings/ActivityPicker.java
++++ b/src/com/android/settings/ActivityPicker.java
+@@ -16,7 +16,7 @@
+
+ package com.android.settings;
+
+-import android.app.Activity;
++import android.app.Activity
+ import android.content.Context;
+ import android.content.DialogInterface;
+ import android.content.Intent;
