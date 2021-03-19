@@ -20,9 +20,6 @@ proto: py-proto
 test: py-test
 .PHONY: test
 
-tool: py-tool
-.PHONY: toll
-
 
 # Non-PHONY targets (real files)
 
@@ -43,6 +40,3 @@ py-proto: FORCE
 
 py-test: FORCE
 	./script/test.sh
-
-py-tool: FORCE
-	./script/tool.sh
