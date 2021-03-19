@@ -111,50 +111,27 @@ metadata:
 spec:
   aosp:
     sdk:
-      - Correctness
-      - Correctness:Messages
-      - Security
-      - Compliance
-      - Performance
-      - Performance:Application Size
-      - Usability:Typography
-      - Usability:Icons
-      - Usability
-      - Productivity
-      - Accessibility
-      - Internationalization
-      - Internationalization:Bidirectional Text
+      - --check Correctness,Correctness:Messages,Security,Compliance,Performance,Performance:Application Size,Usability:Typography,Usability:Icons,Usability,Productivity,Accessibility,Internationalization,Internationalization:Bidirectional Text
+      - --disable LintError
+      - --nolines
+      - --quiet
     strings:
   cpp:
     cpplint:
-      - --linelength=120
-  golang:
-    golangci-lint:
-      - --config ~/opt/golangci-lint/config.yml
-  groovy:
-    groovylint:
-      - --codenarc-version 1.2.1
-      - --gmetrics-version 1.0
-      - --slf4j-version 1.7.25
-      - -includes="./Jenkinsfile,**/*.groovy,**/*.gradle"
   java:
     checkstyle:
-      - -c=~/opt/checkstyle/config.xml
-    spotbugs:
-      - -effort:default
+      - -jar ~/opt/checkstyle/lib/checkstyle.jar
+      - -c=~/opt/checkstyle/etc/google_checks.xml
   linux:
     checkpatch:
-      - --ignore MSLEEP
+      - --no-summary
+      - --no-tree
+      - --terse
   python:
     flake8:
-      - --ignore=E501,F841,W503,W605
-      - --max-line-length=88
-  rust:
-    clippy:
-      - -D clippy::assign_ops
   shell:
     shellcheck:
-      - disable=SC2086
+      - --format=gcc
 ```
 
 
@@ -206,7 +183,23 @@ Project License can be found [here](LICENSE).
 
 ## Reference
 
-- [Android lint](https://developer.android.com/studio/write/lint)
+### Linter
+
+- [android-lint](https://developer.android.com/studio/write/lint)
+- [checkpatch](https://github.com/torvalds/linux/blob/master/scripts/checkpatch.pl)
+- [checkstyle](https://checkstyle.org/)
+- [cpplint](https://github.com/cpplint/cpplint)
+- [flake8](https://flake8.pycqa.org/)
+- [golangci-lint](https://golangci-lint.run/)
+- [groovylint](https://github.com/Ableton/groovylint)
+- [rust-clippy](https://rust-lang.github.io/rust-clippy/)
+- [shellcheck](https://www.shellcheck.net/)
+- [spotbugs](https://spotbugs.github.io/)
+
+
+
+### Misc
+
 - [errorformat](https://github.com/reviewdog/errorformat)
 - [gRPC](https://grpc.io/docs/languages/python/)
 - [protocol-buffers](https://developers.google.com/protocol-buffers/docs/proto3)

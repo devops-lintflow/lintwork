@@ -65,12 +65,7 @@ class Sdk(WorkAbstract):
     def _lint(self, project):
         cmd = [
             "lint.bat" if "win" in sys.platform else "lint",
-            "--check",
-            ",".join(self._config),
-            "--disable",
-            "LintError",
-            "--nolines",
-            "--quiet",
+            " ".join(self._config),
             project,
         ]
         with self._popen(cmd) as proc:

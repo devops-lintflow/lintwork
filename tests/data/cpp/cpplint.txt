@@ -1,0 +1,37 @@
+adb/daemon/main.cpp:53:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/main.cpp:114:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/main.cpp:115:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/main.cpp:142:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/main.cpp:164:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/main.cpp:195:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/main.cpp:242:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+Done processing adb/daemon/main.cpp
+adb/daemon/mdns.cpp:24:  <chrono> is an unapproved C++11 header.  [build/c++11] [5]
+adb/daemon/mdns.cpp:25:  <mutex> is an unapproved C++11 header.  [build/c++11] [5]
+adb/daemon/mdns.cpp:26:  <thread> is an unapproved C++11 header.  [build/c++11] [5]
+adb/daemon/mdns.cpp:31:  Do not use namespace using-directives.  Use using-declarations instead.  [build/namespaces] [5]
+adb/daemon/mdns.cpp:45:  Extra space for operator !   [whitespace/operators] [4]
+adb/daemon/mdns.cpp:95:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
+Done processing adb/daemon/mdns.cpp
+Done processing adb/daemon/mdns.h
+adb/daemon/usb.cpp:34:  <chrono> is an unapproved C++11 header.  [build/c++11] [5]
+adb/daemon/usb.cpp:35:  <condition_variable> is an unapproved C++11 header.  [build/c++11] [5]
+adb/daemon/usb.cpp:36:  <mutex> is an unapproved C++11 header.  [build/c++11] [5]
+adb/daemon/usb.cpp:37:  <thread> is an unapproved C++11 header.  [build/c++11] [5]
+adb/daemon/usb.cpp:46:  Do not use namespace using-directives.  Use using-declarations instead.  [build/namespaces] [5]
+adb/daemon/usb.cpp:247:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/usb.cpp:248:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/usb.cpp:259:  At least two spaces is best between code and comments  [whitespace/comments] [2]
+adb/daemon/usb.cpp:269:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/usb.cpp:275:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/usb.cpp:278:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/usb.cpp:285:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/usb.cpp:288:  Should have a space between // and comment  [whitespace/comments] [4]
+adb/daemon/usb.cpp:306:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+adb/daemon/usb.cpp:308:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+Done processing adb/daemon/usb.cpp
+adb/daemon/usb.h:20:  <condition_variable> is an unapproved C++11 header.  [build/c++11] [5]
+adb/daemon/usb.h:21:  <mutex> is an unapproved C++11 header.  [build/c++11] [5]
+adb/daemon/usb.h:39:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+Done processing adb/daemon/usb.h
+Total errors found: 31

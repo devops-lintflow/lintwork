@@ -1,0 +1,33 @@
+No typos will be found - file '/home/craftslab/.local/bin/spelling.txt': No such file or directory
+No structs that should be const will be found - file '/home/craftslab/.local/bin/const_structs.checkpatch': No such file or directory
+init/calibrate.c:19: ERROR: space required after that ',' (ctx:VxV)
+init/calibrate.c:19: ERROR: space required after that ',' (ctx:VxV)
+init/calibrate.c:19: WARNING: simple_strtoul is obsolete, use kstrtoul instead
+init/calibrate.c:48: ERROR: space prohibited before that close parenthesis ')'
+init/calibrate.c:99: WARNING: Prefer [subsystem eg: netdev]_notice([subsystem]dev, ... then dev_notice(dev, ... then pr_notice(...  to printk(KERN_NOTICE ...
+init/calibrate.c:99: WARNING: Prefer using '"%s...", __func__' to using 'calibrate_delay_direct', this function's name, in a string
+init/calibrate.c:100: WARNING: quoted string split across lines
+init/calibrate.c:101: WARNING: quoted string split across lines
+init/calibrate.c:138: WARNING: Prefer [subsystem eg: netdev]_notice([subsystem]dev, ... then dev_notice(dev, ... then pr_notice(...  to printk(KERN_NOTICE ...
+init/calibrate.c:138: WARNING: Prefer using '"%s...", __func__' to using 'calibrate_delay_direct', this function's name, in a string
+init/calibrate.c:139: WARNING: quoted string split across lines
+init/calibrate.c:144: WARNING: Prefer [subsystem eg: netdev]_notice([subsystem]dev, ... then dev_notice(dev, ... then pr_notice(...  to printk(KERN_NOTICE ...
+init/calibrate.c:144: WARNING: Prefer using '"%s...", __func__' to using 'calibrate_delay_direct', this function's name, in a string
+init/calibrate.c:145: WARNING: quoted string split across lines
+init/calibrate.c:164: WARNING: Prefer [subsystem eg: netdev]_notice([subsystem]dev, ... then dev_notice(dev, ... then pr_notice(...  to printk(KERN_NOTICE ...
+init/calibrate.c:164: WARNING: Prefer using '"%s...", __func__' to using 'calibrate_delay_direct', this function's name, in a string
+init/calibrate.c:165: WARNING: quoted string split across lines
+init/calibrate.c:166: WARNING: quoted string split across lines
+init/calibrate.c:197: WARNING: Comparing jiffies is almost always wrong; prefer time_after, time_before and friends
+init/calibrate.c:208: WARNING: Comparing jiffies is almost always wrong; prefer time_after, time_before and friends
+init/calibrate.c:229: WARNING: Comparing jiffies is almost always wrong; prefer time_after, time_before and friends
+init/calibrate.c:233: WARNING: Comparing jiffies is almost always wrong; prefer time_after, time_before and friends
+init/calibrate.c:261: WARNING: Prefer __weak over __attribute__((weak))
+init/calibrate.c:271: WARNING: Prefer __weak over __attribute__((weak))
+init/calibrate.c:285: WARNING: quoted string split across lines
+init/calibrate.c:290: WARNING: quoted string split across lines
+init/calibrate.c:294: WARNING: quoted string split across lines
+init/calibrate.c:295: ERROR: do not use assignment in if condition
+init/calibrate.c:297: ERROR: do not use assignment in if condition
+init/calibrate.c:300: WARNING: quoted string split across lines
+init/calibrate.c:308: WARNING: Avoid logging continuation uses where feasible

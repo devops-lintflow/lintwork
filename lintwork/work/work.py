@@ -6,6 +6,7 @@ from lintwork.config.config import ConfigFile
 from lintwork.printer.printer import Printer
 from lintwork.work.aosp.sdk import Sdk
 from lintwork.work.cpp.cpplint import Cpplint
+from lintwork.work.golang.golangcilint import Golangcilint
 
 
 class WorkException(Exception):
@@ -39,6 +40,11 @@ class Work(object):
             "cpp": {
                 Cpplint.__name__.lower(): Cpplint(
                     self._spec["cpp"][Cpplint.__name__.lower()]
+                )
+            },
+            "golang": {
+                Golangcilint.__name__.lower(): Golangcilint(
+                    self._spec["golang"][Golangcilint.__name__.lower()]
                 )
             },
         }

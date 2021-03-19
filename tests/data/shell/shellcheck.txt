@@ -1,0 +1,8 @@
+build/rbesetup.sh:1:1: error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive. [SC2148]
+build/rbesetup.sh:8:12: note: Useless echo? Instead of 'echo $(cmd)', just use 'cmd'. [SC2005]
+build/rbesetup.sh:8:18: warning: Remove space after = if trying to assign a value (for empty string, use var='' ... ). [SC1007]
+build/rbesetup.sh:21:4: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+build/rbesetup.sh:22:10: warning: Can't follow non-constant source. Use a directive to specify location. [SC1090]
+build/rbesetup.sh:23:4: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+build/rbesetup.sh:51:3: error: Double quote array expansions to avoid re-splitting elements. [SC2068]
+build/rbesetup.sh:57:9: warning: Declare and assign separately to avoid masking return values. [SC2155]

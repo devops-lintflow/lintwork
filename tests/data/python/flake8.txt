@@ -1,0 +1,46 @@
+repo/hooks.py:24:1: F401 'git_refs.HEAD' imported but unused
+repo/hooks.py:28:3: E111 indentation is not a multiple of
+repo/hooks.py:30:3: E111 indentation is not a multiple of
+repo/hooks.py:31:3: E111 indentation is not a multiple of
+repo/hooks.py:32:3: E111 indentation is not a multiple of
+repo/hooks.py:33:3: E111 indentation is not a multiple of
+repo/hooks.py:34:3: E111 indentation is not a multiple of
+repo/hooks.py:36:1: E302 expected 2 blank lines, found 1
+repo/hooks.py:37:3: E111 indentation is not a multiple of
+repo/hooks.py:50:3: E111 indentation is not a multiple of
+repo/hooks.py:80:7: E111 indentation is not a multiple of
+repo/hooks.py:83:7: E111 indentation is not a multiple of
+repo/hooks.py:85:3: E111 indentation is not a multiple of
+repo/hooks.py:92:80: E501 line too long (80 > 79 characters)
+repo/hooks.py:106:80: E501 line too long (80 > 79 characters)
+repo/hooks.py:109:80: E501 line too long (80 > 79 characters)
+repo/hooks.py:113:3: E111 indentation is not a multiple of
+repo/hooks.py:116:7: E111 indentation is not a multiple of
+repo/hooks.py:118:7: E111 indentation is not a multiple of
+repo/hooks.py:120:3: E111 indentation is not a multiple of
+repo/hooks.py:130:80: E501 line too long (80 > 79 characters)
+repo/hooks.py:140:7: E111 indentation is not a multiple of
+repo/hooks.py:142:7: E111 indentation is not a multiple of
+repo/hooks.py:144:3: E111 indentation is not a multiple of
+repo/hooks.py:169:7: E114 indentation is not a multiple of      (comment)
+repo/hooks.py:170:7: E111 indentation is not a multiple of
+repo/hooks.py:173:7: E111 indentation is not a multiple of
+repo/hooks.py:178:7: E111 indentation is not a multiple of
+repo/hooks.py:182:7: E111 indentation is not a multiple of
+repo/hooks.py:183:7: E111 indentation is not a multiple of
+repo/hooks.py:184:7: E111 indentation is not a multiple of
+repo/hooks.py:186:7: E114 indentation is not a multiple of      (comment)
+repo/hooks.py:187:7: E111 indentation is not a multiple of
+repo/hooks.py:189:7: E111 indentation is not a multiple of
+repo/hooks.py:195:7: E111 indentation is not a multiple of
+repo/hooks.py:200:3: E111 indentation is not a multiple of
+repo/hooks.py:206:3: E111 indentation is not a multiple of
+repo/hooks.py:218:3: E111 indentation is not a multiple of
+repo/hooks.py:234:3: E111 indentation is not a multiple of
+repo/hooks.py:235:3: E111 indentation is not a multiple of
+repo/hooks.py:249:7: E111 indentation is not a multiple of
+repo/hooks.py:255:7: E111 indentation is not a multiple of
+repo/hooks.py:260:7: E111 indentation is not a multiple of
+repo/hooks.py:264:3: E111 indentation is not a multiple of
+repo/hooks.py:296:12: F821 undefined name 'subprocess'
+repo/hooks.py:296:40: F821 undefined name 'subprocess'

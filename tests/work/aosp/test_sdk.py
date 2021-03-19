@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
-
 from lintwork.work.aosp.sdk import Sdk, SdkException
 
 
@@ -11,32 +9,15 @@ def test_exception():
 
 
 def test_sdk():
-    config = [
-        "Correctness",
-        "Correctness:Messages",
-        "Security",
-        "Compliance",
-        "Performance",
-        "Performance:Application Size",
-        "Usability:Typography",
-        "Usability:Icons",
-        "Usability",
-        "Productivity",
-        "Accessibility",
-        "Internationalization",
-        "Internationalization:Bidirectional Text",
-    ]
+    with open("../../data/aosp/sdk.txt", "r") as f:
+        data = f.read()
 
     try:
-        sdk = Sdk(config)
-        result = sdk._execution(
-            os.path.join(
-                os.path.dirname(__file__), "../../data/aosp".replace("/", os.path.sep)
-            )
-        )
+        sdk = Sdk([])
+        buf = sdk._parse(data)
     except SdkException as _:
         assert False
     else:
         assert True
 
-    assert result is not None
+    assert len(buf) != 0

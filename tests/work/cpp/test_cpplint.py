@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
-
 from lintwork.work.cpp.cpplint import Cpplint, CpplintException
 
 
@@ -11,18 +9,15 @@ def test_exception():
 
 
 def test_cpplint():
-    config = ["--linelength=120"]
+    with open("../../data/cpp/cpplint.txt", "r") as f:
+        data = f.read()
 
     try:
-        cpplnt = Cpplint(config)
-        result = cpplnt._execution(
-            os.path.join(
-                os.path.dirname(__file__), "../../data/cpp".replace("/", os.path.sep)
-            )
-        )
+        cpplint = Cpplint([])
+        buf = cpplint._parse(data)
     except CpplintException as _:
         assert False
     else:
         assert True
 
-    assert result is not None
+    assert len(buf) != 0

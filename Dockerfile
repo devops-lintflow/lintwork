@@ -27,7 +27,9 @@ RUN curl -L https://github.com/Ableton/groovylint/archive/0.9.1.tar.gz -o groovy
     cd - && \
     rm -rf groovylint.tar.gz
 RUN curl -L https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.41/checkstyle-8.41-all.jar -o checkstyle.jar && \
-    mkdir -p ~/opt/checkstyle/lib && \
+    curl -L https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/google_checks.xml -o google_checks.xml && \
+    mkdir -p ~/opt/checkstyle/{etc,lib} && \
+    mv google_checks.xml ~/opt/checkstyle/etc/ && \
     mv checkstyle.jar ~/opt/checkstyle/lib/
 RUN curl -L https://github.com/spotbugs/spotbugs/releases/download/4.2.2/spotbugs-4.2.2.tgz -o spotbugs.tgz && \
     tar zxvf spotbugs.tgz && \
