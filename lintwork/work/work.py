@@ -5,6 +5,7 @@ import os
 from lintwork.config.config import ConfigFile
 from lintwork.printer.printer import Printer
 from lintwork.work.aosp.sdk import Sdk
+from lintwork.work.cpp.cpplint import Cpplint
 
 
 class WorkException(Exception):
@@ -34,7 +35,12 @@ class Work(object):
         return {
             "aosp": {
                 Sdk.__name__.lower(): Sdk(self._spec["aosp"][Sdk.__name__.lower()])
-            }
+            },
+            "cpp": {
+                Cpplint.__name__.lower(): Cpplint(
+                    self._spec["cpp"][Cpplint.__name__.lower()]
+                )
+            },
         }
 
     def routine(self, project):

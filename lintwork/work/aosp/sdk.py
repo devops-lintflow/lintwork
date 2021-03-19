@@ -6,8 +6,6 @@ import sys
 from lintwork.work.abstract import WorkAbstract
 from lintwork.proto.proto import Format, Type
 
-CHECK_SEP = ","
-
 LINT_LEN_MIN = 3
 LINT_SEP = ":"
 LINT_TYPE = [Type.ERROR, Type.INFO, Type.WARN]
@@ -65,12 +63,10 @@ class Sdk(WorkAbstract):
         )
 
     def _lint(self, project):
-        tool = "lint.bat" if "win" in sys.platform else "lint"
-        check = CHECK_SEP.join(self._config)
         cmd = [
-            tool,
+            "lint.bat" if "win" in sys.platform else "lint",
             "--check",
-            check,
+            ",".join(self._config),
             "--disable",
             "LintError",
             "--nolines",

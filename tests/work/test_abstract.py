@@ -18,5 +18,9 @@ def test_workabstract():
     config = Config()
     work = WorkTest(config)
 
-    result = work.run(os.path.join(os.path.dirname(__file__), "../data/project"))
+    result = work.run(
+        os.path.join(
+            os.path.dirname(__file__), "../data/aosp".replace("/", os.path.sep)
+        )
+    )
     assert result is not None

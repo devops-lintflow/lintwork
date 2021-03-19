@@ -9,16 +9,12 @@ RUN ln -s /usr/bin/pip3 /usr/bin/pip && \
 
 USER craftslab
 WORKDIR /home/craftslab
-ENV PATH /home/craftslab/.local/bin:/usr/lib/dart/bin:$PATH
+ENV PATH /home/craftslab/.local/bin:$PATH
+ENV PATH /home/craftslab/opt/checkstyle/lib:$PATH
+ENV PATH /home/craftslab/opt/groovylint:$PATH
+ENV PATH /home/craftslab/opt/spotbugs/bin:$PATH
 RUN mkdir -p ~/.local/bin
-RUN curl -LO https://raw.githubusercontent.com/google/styleguide/gh-pages/cpplint/cpplint.py && \
-    chmod +x cpplint.py && \
-    mv cpplint.py ~/.local/bin/
-RUN sudo apt-get install apt-transport-https && \
-    sudo sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' && \
-    sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list' && \
-    sudo apt-get update && \
-    sudo apt-get install dart
+RUN pip install cpplint
 RUN curl -L https://github.com/golangci/golangci-lint/releases/download/v1.38.0/golangci-lint-1.38.0-linux-amd64.deb -o golangci-lint.deb && \
     sudo dpkg -i golangci-lint.deb && \
     rm golangci-lint.deb
@@ -31,17 +27,17 @@ RUN curl -L https://github.com/Ableton/groovylint/archive/0.9.1.tar.gz -o groovy
     cd - && \
     rm -rf groovylint.tar.gz
 RUN curl -L https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.41/checkstyle-8.41-all.jar -o checkstyle.jar && \
-    mkdir ~/opt/checkstyle && \
-    mv checkstyle.jar ~/opt/checkstyle/
+    mkdir -p ~/opt/checkstyle/lib && \
+    mv checkstyle.jar ~/opt/checkstyle/lib/
 RUN curl -L https://github.com/spotbugs/spotbugs/releases/download/4.2.2/spotbugs-4.2.2.tgz -o spotbugs.tgz && \
     tar zxvf spotbugs.tgz && \
     mv spotbugs-4.2.2 ~/opt/spotbugs && \
-    chmod + ~/opt/spotbugs/bin/* && \
+    chmod +x ~/opt/spotbugs/bin/* && \
     rm -rf spotbugs.tgz
 RUN curl -LO https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl && \
     chmod +x checkpatch.pl && \
     mv checkpatch.pl ~/.local/bin/
-RUN python -m pip install flake8
+RUN pip install flake8
 RUN curl -L https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init -o rustup-init && \
     chmod +x rustup-init && \
     ./rustup-init --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile default -y && \

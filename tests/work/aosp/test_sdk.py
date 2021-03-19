@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import os
-import pprint
 
 from lintwork.work.aosp.sdk import Sdk, SdkException
 
@@ -31,7 +30,9 @@ def test_sdk():
     try:
         sdk = Sdk(config)
         result = sdk._execution(
-            os.path.join(os.path.dirname(__file__), "../../data/project")
+            os.path.join(
+                os.path.dirname(__file__), "../../data/aosp".replace("/", os.path.sep)
+            )
         )
     except SdkException as _:
         assert False
@@ -39,4 +40,3 @@ def test_sdk():
         assert True
 
     assert result is not None
-    pprint.pprint(result)

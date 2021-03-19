@@ -20,7 +20,9 @@ def test_work():
         assert False
 
     config = Config()
-    config.config_file = os.path.join(os.path.dirname(__file__), "../data/config.yml")
+    config.config_file = os.path.join(
+        os.path.dirname(__file__), "../data/config.yml".replace("/", os.path.sep)
+    )
     config.output_file = "output.json"
 
     try:
@@ -31,7 +33,11 @@ def test_work():
         assert True
 
     try:
-        buf = work.routine(os.path.join(os.path.dirname(__file__), "../data/project"))
+        buf = work.routine(
+            os.path.join(
+                os.path.dirname(__file__), "../data/aosp".replace("/", os.path.sep)
+            )
+        )
     except WorkException as _:
         assert False
     else:

@@ -43,7 +43,7 @@ def test_config():
 
     try:
         config.config_file = os.path.join(
-            os.path.dirname(__file__), "../data/config.yml"
+            os.path.dirname(__file__), "../data/config.yml".replace("/", os.path.sep)
         )
     except ConfigException as _:
         assert False
@@ -65,7 +65,9 @@ def test_config():
         assert False
 
     try:
-        config.lint_project = os.path.join(os.path.dirname(__file__), "../data/project")
+        config.lint_project = os.path.join(
+            os.path.dirname(__file__), "../data/aosp".replace("/", os.path.sep)
+        )
     except ConfigException as _:
         assert False
     else:

@@ -20,7 +20,9 @@ def test_lint():
         assert False
 
     config = Config()
-    config.config_file = os.path.join(os.path.dirname(__file__), "../data/config.yml")
+    config.config_file = os.path.join(
+        os.path.dirname(__file__), "../data/config.yml".replace("/", os.path.sep)
+    )
 
     try:
         _ = Lint(config)
