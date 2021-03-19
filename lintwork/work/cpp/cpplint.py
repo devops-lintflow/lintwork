@@ -23,7 +23,7 @@ class CpplintException(Exception):
 class Cpplint(WorkAbstract):
     def __init__(self, config):
         if config is None:
-            raise CpplintException("config invalid")
+            config = []
         super().__init__(config)
 
     def _execution(self, project):

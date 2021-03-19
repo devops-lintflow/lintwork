@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 from lintwork.work.linux.checkpatch import Checkpatch, CheckpatchException
 
 
@@ -9,7 +11,9 @@ def test_exception():
 
 
 def test_checkpatch():
-    with open("../../data/linux/checkpatch.txt", "r") as f:
+    with open(
+        os.path.join(os.path.dirname(__file__), "../../data/linux/checkpatch.txt"), "r"
+    ) as f:
         data = f.read()
 
     try:

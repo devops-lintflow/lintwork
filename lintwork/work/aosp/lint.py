@@ -11,7 +11,7 @@ LINT_SEP = ":"
 LINT_TYPE = [Type.ERROR, Type.INFO, Type.WARN]
 
 
-class SdkException(Exception):
+class LintException(Exception):
     def __init__(self, info):
         super().__init__(self)
         self._info = info
@@ -20,10 +20,10 @@ class SdkException(Exception):
         return self._info
 
 
-class Sdk(WorkAbstract):
+class Lint(WorkAbstract):
     def __init__(self, config):
         if config is None:
-            raise SdkException("config invalid")
+            config = []
         super().__init__(config)
 
     def _execution(self, project):
@@ -31,19 +31,28 @@ class Sdk(WorkAbstract):
         return self._lint(project)
 
     def _parse(self, data):
+        def _helper(data):
+            buf = ""
+            for item in LINT_TYPE:
+                if item.lower() in data.lower():
+                    buf = item
+                    break
+            return buf
+
         buf = []
         for item in data.splitlines():
             b = item.strip().split(LINT_SEP)
             if len(b) < LINT_LEN_MIN:
                 continue
             file = b[0].strip()
-            if b[1].strip() in LINT_TYPE:
+            ret = _helper(b[1].strip())
+            if len(ret) != 0:
                 line = 0
-                _type = b[1].strip()
+                _type = ret
                 details = LINT_SEP.join(b[2:]).strip()
             elif type(int(b[1].strip())) == int:
                 line = int(b[1].strip())
-                _type = b[2].strip() if b[2].strip() in LINT_TYPE else ""
+                _type = _helper(b[2].strip())
                 details = LINT_SEP.join(b[3:]).strip()
             else:
                 continue
@@ -71,7 +80,7 @@ class Sdk(WorkAbstract):
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
             if proc.returncode != 0:
-                raise SdkException(err.strip().decode("utf-8"))
+                raise LintException(err.strip().decode("utf-8"))
         return self._parse(out.strip().decode("utf-8"))
 
     def _remove(self, project, file):

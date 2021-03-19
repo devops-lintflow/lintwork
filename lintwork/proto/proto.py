@@ -30,4 +30,4 @@ class Format:
 class Type:
     ERROR = "Error"
     INFO = "Info"
-    WARN = "Warning"
+    WARN = "Warn"

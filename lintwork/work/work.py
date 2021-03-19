@@ -4,9 +4,12 @@ import os
 
 from lintwork.config.config import ConfigFile
 from lintwork.printer.printer import Printer
-from lintwork.work.aosp.sdk import Sdk
+from lintwork.work.aosp.lint import Lint
 from lintwork.work.cpp.cpplint import Cpplint
-from lintwork.work.golang.golangcilint import Golangcilint
+from lintwork.work.java.checkstyle import Checkstyle
+from lintwork.work.linux.checkpatch import Checkpatch
+from lintwork.work.python.flake8 import Flake8
+from lintwork.work.shell.shellcheck import Shellcheck
 
 
 class WorkException(Exception):
@@ -35,16 +38,31 @@ class Work(object):
     def _instantiate(self):
         return {
             "aosp": {
-                Sdk.__name__.lower(): Sdk(self._spec["aosp"][Sdk.__name__.lower()])
+                Lint.__name__.lower(): Lint(self._spec["aosp"][Lint.__name__.lower()])
             },
             "cpp": {
                 Cpplint.__name__.lower(): Cpplint(
                     self._spec["cpp"][Cpplint.__name__.lower()]
                 )
             },
-            "golang": {
-                Golangcilint.__name__.lower(): Golangcilint(
-                    self._spec["golang"][Golangcilint.__name__.lower()]
+            "java": {
+                Checkstyle.__name__.lower(): Checkstyle(
+                    self._spec["java"][Checkstyle.__name__.lower()]
+                )
+            },
+            "linux": {
+                Checkpatch.__name__.lower(): Checkpatch(
+                    self._spec["linux"][Checkpatch.__name__.lower()]
+                )
+            },
+            "python": {
+                Flake8.__name__.lower(): Flake8(
+                    self._spec["python"][Flake8.__name__.lower()]
+                )
+            },
+            "shell": {
+                Shellcheck.__name__.lower(): Shellcheck(
+                    self._spec["shell"][Shellcheck.__name__.lower()]
                 )
             },
         }

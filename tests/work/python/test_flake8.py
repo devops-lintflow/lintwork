@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 from lintwork.work.python.flake8 import Flake8, Flake8Exception
 
 
@@ -9,7 +11,9 @@ def test_exception():
 
 
 def test_flake8():
-    with open("../../data/python/flake8.txt", "r") as f:
+    with open(
+        os.path.join(os.path.dirname(__file__), "../../data/python/flake8.txt"), "r"
+    ) as f:
         data = f.read()
 
     try:

@@ -110,7 +110,7 @@ metadata:
   name: lintwork
 spec:
   aosp:
-    sdk:
+    lint:
       - --check Correctness,Correctness:Messages,Security,Compliance,Performance,Performance:Application Size,Usability:Typography,Usability:Icons,Usability,Productivity,Accessibility,Internationalization,Internationalization:Bidirectional Text
       - --disable LintError
       - --nolines

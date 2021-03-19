@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import subprocess
-import sys
 
 from lintwork.work.abstract import WorkAbstract
 from lintwork.proto.proto import Format, Type
@@ -23,7 +22,7 @@ class Flake8Exception(Exception):
 class Flake8(WorkAbstract):
     def __init__(self, config):
         if config is None:
-            raise Flake8Exception("config invalid")
+            config = []
         super().__init__(config)
 
     def _execution(self, project):
@@ -35,23 +34,12 @@ class Flake8(WorkAbstract):
             b = item.strip().split(LINT_SEP)
             if len(b) < LINT_LEN_MIN:
                 continue
-            file = b[0].strip()
-            if b[1].strip() in LINT_TYPE:
-                line = 0
-                _type = b[1].strip()
-                details = LINT_SEP.join(b[2:]).strip()
-            elif type(int(b[1].strip())) == int:
-                line = int(b[1].strip())
-                _type = b[2].strip() if b[2].strip() in LINT_TYPE else ""
-                details = LINT_SEP.join(b[3:]).strip()
-            else:
-                continue
             buf.append(
                 {
-                    Format.FILE: file,
-                    Format.LINE: line,
-                    Format.TYPE: _type,
-                    Format.DETAILS: details,
+                    Format.FILE: b[0].strip(),
+                    Format.LINE: b[1].strip(),
+                    Format.TYPE: "",
+                    Format.DETAILS: " ".join(b[3:]).strip(),
                 }
             )
         return buf

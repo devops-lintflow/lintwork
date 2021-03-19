@@ -5,10 +5,11 @@ import pathlib
 import subprocess
 
 from lintwork.work.abstract import WorkAbstract
-from lintwork.proto.proto import Format
+from lintwork.proto.proto import Format, Type
 
 LINT_LEN_MIN = 3
 LINT_SEP = ":"
+LINT_TYPE = [Type.ERROR, Type.INFO, Type.WARN]
 
 
 class CheckpatchException(Exception):
@@ -23,13 +24,21 @@ class CheckpatchException(Exception):
 class Checkpatch(WorkAbstract):
     def __init__(self, config):
         if config is None:
-            raise CheckpatchException("config invalid")
+            config = []
         super().__init__(config)
 
     def _execution(self, project):
         return self._lint(project)
 
     def _parse(self, data):
+        def _helper(data):
+            buf = ""
+            for item in LINT_TYPE:
+                if item.lower() in data.lower():
+                    buf = item
+                    break
+            return buf
+
         buf = []
         for item in data.splitlines():
             b = item.strip().split(LINT_SEP)
@@ -39,8 +48,8 @@ class Checkpatch(WorkAbstract):
                 {
                     Format.FILE: b[0].strip(),
                     Format.LINE: b[1].strip(),
-                    Format.TYPE: "",
-                    Format.DETAILS: " ".join(b[2:]).strip(),
+                    Format.TYPE: _helper(b[2].strip()),
+                    Format.DETAILS: " ".join(b[3:]).strip(),
                 }
             )
         return buf

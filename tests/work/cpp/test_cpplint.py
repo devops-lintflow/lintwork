@@ -9,7 +9,9 @@ def test_exception():
 
 
 def test_cpplint():
-    with open("../../data/cpp/cpplint.txt", "r") as f:
+    with open(
+        os.path.join(os.path.dirname(__file__), "../../data/cpp/cpplint.txt"), "r"
+    ) as f:
         data = f.read()
 
     try:
