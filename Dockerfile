@@ -37,8 +37,14 @@ RUN curl -L https://github.com/spotbugs/spotbugs/releases/download/4.2.2/spotbug
     chmod +x ~/opt/spotbugs/bin/* && \
     rm -rf spotbugs.tgz
 RUN curl -LO https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl && \
+    curl -LO https://raw.githubusercontent.com/torvalds/linux/master/scripts/const_structs.checkpatch && \
+    curl -LO https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt && \
     chmod +x checkpatch.pl && \
-    mv checkpatch.pl ~/.local/bin/
+    mv checkpatch.pl ~/.local/bin/ && \
+    chmod -x const_structs.checkpatch && \
+    mv const_structs.checkpatch ~/.local/bin/ && \
+    chmod -x spelling.txt && \
+    mv spelling.txt ~/.local/bin/
 RUN pip install flake8
 RUN curl -L https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init -o rustup-init && \
     chmod +x rustup-init && \

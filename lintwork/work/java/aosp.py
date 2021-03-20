@@ -72,11 +72,9 @@ class Aosp(WorkAbstract):
         )
 
     def _lint(self, project):
-        cmd = [
-            "lint.bat" if "win" in sys.platform else "lint",
-            " ".join(self._config),
-            project,
-        ]
+        cmd = ["lint.bat" if "win" in sys.platform else "lint"]
+        cmd.extend(self._config)
+        cmd.extend([project])
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
             if proc.returncode != 0:

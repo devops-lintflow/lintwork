@@ -61,22 +61,19 @@ class Checkpatch(WorkAbstract):
 
     def _lint(self, project):
         def _helper(name):
-            cmd = [
-                "checkpatch.pl",
-                " ".join(self._config),
-                "-f",
-                name,
-            ]
+            cmd = ["checkpatch.pl"]
+            cmd.extend(self._config)
+            cmd.extend(["-f", name])
             with self._popen(cmd) as proc:
                 out, err = proc.communicate()
                 if proc.returncode == 0:
                     return []
             return self._parse(
-                err.strip().decode("utf-8").replace(project + os.path.sep, "")
+                out.strip().decode("utf-8").replace(project + os.path.sep, "")
             )
 
         buf = []
-        for item in pathlib.Path(project).iterdir():
+        for item in pathlib.Path(project).glob("**/*"):
             if item.is_file():
                 b = _helper(item)
                 if len(b) != 0:

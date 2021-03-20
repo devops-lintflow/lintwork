@@ -50,10 +50,9 @@ class Flake8(WorkAbstract):
         )
 
     def _lint(self, project):
-        cmd = [
-            "flake8",
-            project,
-        ]
+        cmd = ["flake8"]
+        cmd.extend(self._config)
+        cmd.extend([project])
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
             if proc.returncode != 0:

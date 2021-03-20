@@ -60,11 +60,9 @@ class Checkstyle(WorkAbstract):
         )
 
     def _lint(self, project):
-        cmd = [
-            "java",
-            " ".join(self._config),
-            project,
-        ]
+        cmd = ["java"]
+        cmd.extend(self._config)
+        cmd.extend([project])
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
             if proc.returncode != 0:

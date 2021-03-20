@@ -39,8 +39,8 @@ class Work(object):
             raise WorkException("project invalid")
         buf = []
         for key in self._spec.keys():
-            for k, v in self._spec[key].keys():
-                cls = globals().get(k, None)
+            for k, v in self._spec[key].items():
+                cls = globals().get(k.capitalize(), None)
                 if cls is not None:
                     buf.extend(cls(v).run(project))
         if len(self._config.output_file) != 0:
