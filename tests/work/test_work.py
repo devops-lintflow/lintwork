@@ -3,6 +3,7 @@
 import os
 
 from lintwork.config.config import Config
+from lintwork.proto.proto import Format, Type
 from lintwork.work.work import Work, WorkException
 
 
@@ -31,3 +32,22 @@ def test_work():
         assert False
     else:
         assert True
+
+    buf = [
+        {
+            Format.FILE: "name1",
+            Format.LINE: 1,
+            Format.TYPE: Type.ERROR,
+            Format.DETAILS: "text1",
+        },
+        {
+            Format.FILE: "name2",
+            Format.LINE: 2,
+            Format.TYPE: Type.WARN,
+            Format.DETAILS: "text2",
+        },
+    ]
+
+    work._dump(buf)
+    assert os.path.isfile(config.output_file)
+    os.remove(config.output_file)
