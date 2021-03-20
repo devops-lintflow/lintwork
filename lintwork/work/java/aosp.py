@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
 import subprocess
-import sys
 
 from lintwork.work.abstract import WorkAbstract
 from lintwork.proto.proto import Format, Type
@@ -72,14 +72,16 @@ class Aosp(WorkAbstract):
         )
 
     def _lint(self, project):
-        cmd = ["lint.bat" if "win" in sys.platform else "lint"]
+        cmd = ["lint"]
         cmd.extend(self._config)
         cmd.extend([project])
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
             if proc.returncode != 0:
                 raise AospException(err.strip().decode("utf-8"))
-        return self._parse(out.strip().decode("utf-8"))
+        return self._parse(
+            out.strip().decode("utf-8").replace(project + os.path.sep, "")
+        )
 
     def _remove(self, project, file):
         cmd = ["find", project, "-type", "f", "-name", file, "-exec", "rm -f {} \\;"]

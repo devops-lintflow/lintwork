@@ -117,13 +117,14 @@ spec:
     cpplint:
   java:
     aosp:
-      - --check Correctness,Correctness:Messages,Security,Compliance,Performance,Performance:Application Size,Usability:Typography,Usability:Icons,Usability,Productivity,Accessibility,Internationalization,Internationalization:Bidirectional Text
-      - --disable LintError
+      - --disable
+      - LintError
       - --nolines
       - --quiet
     checkstyle:
-      - -jar ~/opt/checkstyle/lib/checkstyle.jar
-      - -c=~/opt/checkstyle/etc/google_checks.xml
+      - -jar
+      - /home/craftslab/opt/checkstyle/lib/checkstyle.jar
+      - -c=/home/craftslab/opt/checkstyle/etc/google_checks.xml
     strings:
   python:
     flake8:

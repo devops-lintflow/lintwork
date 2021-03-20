@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 import subprocess
 
 from lintwork.work.abstract import WorkAbstract
@@ -67,4 +68,6 @@ class Checkstyle(WorkAbstract):
             out, err = proc.communicate()
             if proc.returncode != 0:
                 raise CheckstyleException(err.strip().decode("utf-8"))
-        return self._parse(out.strip().decode("utf-8"))
+        return self._parse(
+            out.strip().decode("utf-8").replace(project + os.path.sep, "")
+        )

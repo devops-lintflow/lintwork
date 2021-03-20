@@ -69,7 +69,7 @@ class Shellcheck(WorkAbstract):
                 if proc.returncode == 0:
                     return []
             return self._parse(
-                err.strip().decode("utf-8").replace(project + os.path.sep, "")
+                out.strip().decode("utf-8").replace(project + os.path.sep, "")
             )
 
         buf = []
