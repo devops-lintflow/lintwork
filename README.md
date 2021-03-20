@@ -56,7 +56,7 @@ git clone https://github.com/craftslab/lintwork.git
 
 cd lintwork
 docker build --no-cache -f Dockerfile -t craftslab/lintwork:latest .
-docker run -it -v /tmp:/tmp craftslab/lintwork:latest ./lintwork--config-file="config.yml" --lint-project="/tmp/project" --output-file="/tmp/output.json"
+docker run -it -v /tmp:/tmp craftslab/lintwork:latest ./lintwork --config-file="config.yml" --lint-project="/tmp/project" --output-file="/tmp/output.json"
 ```
 
 
