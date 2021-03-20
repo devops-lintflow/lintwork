@@ -4,10 +4,10 @@ import os
 
 from lintwork.config.config import ConfigFile
 from lintwork.printer.printer import Printer
-from lintwork.work.aosp.lint import Lint
+from lintwork.work.cpp.checkpatch import Checkpatch
 from lintwork.work.cpp.cpplint import Cpplint
+from lintwork.work.java.aosp import Aosp
 from lintwork.work.java.checkstyle import Checkstyle
-from lintwork.work.linux.checkpatch import Checkpatch
 from lintwork.work.python.flake8 import Flake8
 from lintwork.work.shell.shellcheck import Shellcheck
 
@@ -37,23 +37,19 @@ class Work(object):
 
     def _instantiate(self):
         return {
-            "aosp": {
-                Lint.__name__.lower(): Lint(self._spec["aosp"][Lint.__name__.lower()])
-            },
             "cpp": {
+                Checkpatch.__name__.lower(): Checkpatch(
+                    self._spec["cpp"][Checkpatch.__name__.lower()]
+                ),
                 Cpplint.__name__.lower(): Cpplint(
                     self._spec["cpp"][Cpplint.__name__.lower()]
-                )
+                ),
             },
             "java": {
+                Aosp.__name__.lower(): Aosp(self._spec["java"][Aosp.__name__.lower()]),
                 Checkstyle.__name__.lower(): Checkstyle(
                     self._spec["java"][Checkstyle.__name__.lower()]
-                )
-            },
-            "linux": {
-                Checkpatch.__name__.lower(): Checkpatch(
-                    self._spec["linux"][Checkpatch.__name__.lower()]
-                )
+                ),
             },
             "python": {
                 Flake8.__name__.lower(): Flake8(

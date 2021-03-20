@@ -20,7 +20,7 @@ def test_workabstract():
 
     result = work.run(
         os.path.join(
-            os.path.dirname(__file__), "../data/aosp".replace("/", os.path.sep)
+            os.path.dirname(__file__), "../data/java".replace("/", os.path.sep)
         )
     )
     assert result is not None

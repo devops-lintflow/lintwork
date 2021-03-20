@@ -11,7 +11,7 @@ LINT_SEP = ":"
 LINT_TYPE = [Type.ERROR, Type.INFO, Type.WARN]
 
 
-class LintException(Exception):
+class AospException(Exception):
     def __init__(self, info):
         super().__init__(self)
         self._info = info
@@ -20,7 +20,7 @@ class LintException(Exception):
         return self._info
 
 
-class Lint(WorkAbstract):
+class Aosp(WorkAbstract):
     def __init__(self, config):
         if config is None:
             config = []
@@ -80,7 +80,7 @@ class Lint(WorkAbstract):
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
             if proc.returncode != 0:
-                raise LintException(err.strip().decode("utf-8"))
+                raise AospException(err.strip().decode("utf-8"))
         return self._parse(out.strip().decode("utf-8"))
 
     def _remove(self, project, file):
