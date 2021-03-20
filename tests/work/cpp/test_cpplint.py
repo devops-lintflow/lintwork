@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 from lintwork.work.cpp.cpplint import Cpplint, CpplintException
 
 
