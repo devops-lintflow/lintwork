@@ -47,7 +47,7 @@ class Checkpatch(WorkAbstract):
             buf.append(
                 {
                     Format.FILE: b[0].strip(),
-                    Format.LINE: b[1].strip(),
+                    Format.LINE: int(b[1].strip()),
                     Format.TYPE: _helper(b[2].strip()),
                     Format.DETAILS: " ".join(b[3:]).strip(),
                 }

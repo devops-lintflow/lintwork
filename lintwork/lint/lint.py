@@ -53,7 +53,7 @@ class LintProto(LintProtoServicer):
         def _helper(root, dirs, file, data):
             pathlib.Path(os.path.join(root, dirs)).mkdir(parents=True, exist_ok=True)
             p = pathlib.Path(os.path.join(root, dirs, file))
-            with p.open("w") as f:
+            with p.open("w", encoding="utf-8") as f:
                 f.write(base64.b64decode(data).decode("utf-8"))
 
         if len(data) == 0:

@@ -46,7 +46,7 @@ class Checkstyle(WorkAbstract):
             buf.append(
                 {
                     Format.FILE: b[0].split()[1].strip(),
-                    Format.LINE: b[1].strip(),
+                    Format.LINE: int(b[1].strip()),
                     Format.TYPE: _helper(
                         b[0].strip().split()[0].lstrip("[").rstrip("]")
                     ),

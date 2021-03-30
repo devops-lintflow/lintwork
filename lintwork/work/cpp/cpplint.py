@@ -38,7 +38,7 @@ class Cpplint(WorkAbstract):
             buf.append(
                 {
                     Format.FILE: b[0].strip(),
-                    Format.LINE: b[1].strip(),
+                    Format.LINE: int(b[1].strip()),
                     Format.TYPE: "",
                     Format.DETAILS: " ".join(b[2:]).strip(),
                 }

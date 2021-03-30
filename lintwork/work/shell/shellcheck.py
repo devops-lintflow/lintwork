@@ -47,7 +47,7 @@ class Shellcheck(WorkAbstract):
             buf.append(
                 {
                     Format.FILE: b[0].strip(),
-                    Format.LINE: b[1].strip(),
+                    Format.LINE: int(b[1].strip()),
                     Format.TYPE: _helper(b[3].strip()),
                     Format.DETAILS: " ".join(b[4:]).strip(),
                 }

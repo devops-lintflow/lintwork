@@ -68,7 +68,7 @@ git clone https://github.com/craftslab/lintwork.git
 
 cd lintwork
 docker build --no-cache -f Dockerfile -t craftslab/lintwork:latest .
-docker run -it -p 9090:9090 craftslab/lintwork:latest ./lintwork --config-file="config.yml" --listen-url="127.0.0.1:9090"
+docker run -it --network=host craftslab/lintwork:latest ./lintwork --config-file="config.yml" --listen-url="127.0.0.1:9090"
 ```
 
 
