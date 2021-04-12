@@ -4,11 +4,10 @@ import os
 import subprocess
 
 from lintwork.work.abstract import WorkAbstract
-from lintwork.proto.proto import Format, Type
+from lintwork.proto.proto import Format
 
 LINT_LEN_MIN = 3
 LINT_SEP = ":"
-LINT_TYPE = [Type.ERROR, Type.INFO, Type.WARN]
 
 
 class Flake8Exception(Exception):
