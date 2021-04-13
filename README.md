@@ -143,14 +143,6 @@ spec:
 
 ## Errorformat
 
-- **Error type**
-
-```
-E: Error
-I: Information
-W: Warning
-```
-
 - **JSON format**
 
 ```json
