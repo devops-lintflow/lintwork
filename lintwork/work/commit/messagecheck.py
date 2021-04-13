@@ -4,7 +4,7 @@ import os
 import subprocess
 
 from lintwork.work.abstract import WorkAbstract
-from lintwork.proto.proto import Format
+from lintwork.proto.proto import File, Format
 
 LINT_LEN_MIN = 3
 LINT_SEP = ":"
@@ -52,7 +52,7 @@ class Messagecheck(WorkAbstract):
     def _lint(self, project):
         cmd = ["messagecheck"]
         cmd.extend(self._config)
-        cmd.extend(["-m", project])
+        cmd.extend(["-m", os.path.join(project, File.MESSAGE)])
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
             if proc.returncode == 0:
