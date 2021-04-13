@@ -1,0 +1,2 @@
+file1:22:Error:Conflict character found
+file2:1:Error:No newline at end of file

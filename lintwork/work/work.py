@@ -4,6 +4,8 @@ import os
 
 from lintwork.config.config import ConfigFile
 from lintwork.printer.printer import Printer
+from lintwork.work.commit.contentcheck import Contentcheck  # noqa: F401
+from lintwork.work.commit.messagecheck import Messagecheck  # noqa: F401
 from lintwork.work.cpp.checkpatch import Checkpatch  # noqa: F401
 from lintwork.work.cpp.cpplint import Cpplint  # noqa: F401
 from lintwork.work.java.aosp import Aosp  # noqa: F401

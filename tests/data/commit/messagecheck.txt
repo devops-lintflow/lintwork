@@ -1,0 +1,2 @@
+/COMMIT_MSG:1:Error:Non-ASCII character found in commit message
+/COMMIT_MSG:1:Error:Subject shorter than 25 characters (found 12)
