@@ -55,7 +55,7 @@ class Contentcheck(WorkAbstract):
         cmd.extend(["-c", project])
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
-            if proc.returncode == 0:
+            if proc.returncode != 0:
                 return []
         return self._parse(
             out.strip().decode("utf-8").replace(project + os.path.sep, "")
