@@ -1,4 +1,4 @@
-FROM craftslab/androiddocker:android-30
+FROM craftslab/androiddocker:latest
 
 USER root
 RUN apt update && \
