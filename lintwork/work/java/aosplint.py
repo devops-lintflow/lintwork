@@ -11,7 +11,7 @@ LINT_SEP = ":"
 LINT_TYPE = [Type.ERROR, Type.INFO, Type.WARN]
 
 
-class AospException(Exception):
+class AosplintException(Exception):
     def __init__(self, info):
         super().__init__(self)
         self._info = info
@@ -20,7 +20,7 @@ class AospException(Exception):
         return self._info
 
 
-class Aosp(WorkAbstract):
+class Aosplint(WorkAbstract):
     def __init__(self, config):
         if config is None:
             config = []
@@ -78,7 +78,7 @@ class Aosp(WorkAbstract):
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
             if proc.returncode != 0:
-                raise AospException(err.strip().decode("utf-8"))
+                raise AosplintException(err.strip().decode("utf-8"))
         return self._parse(
             out.strip().decode("utf-8").replace(project + os.path.sep, "")
         )

@@ -116,7 +116,7 @@ spec:
       - --terse
     cpplint:
   java:
-    aosp:
+    aosplint:
       - --disable
       - LintError
       - --nolines
