@@ -10,6 +10,7 @@ from lintwork.work.cpp.checkpatch import Checkpatch  # noqa: F401
 from lintwork.work.cpp.cpplint import Cpplint  # noqa: F401
 from lintwork.work.java.aosplint import Aosplint  # noqa: F401
 from lintwork.work.java.checkstyle import Checkstyle  # noqa: F401
+from lintwork.work.java.stringscheck import Stringscheck  # noqa: F401
 from lintwork.work.python.flake8 import Flake8  # noqa: F401
 from lintwork.work.shell.shellcheck import Shellcheck  # noqa: F401
 

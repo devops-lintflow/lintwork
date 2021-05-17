@@ -125,7 +125,7 @@ spec:
       - -jar
       - /home/craftslab/opt/checkstyle/lib/checkstyle.jar
       - -c=/home/craftslab/opt/checkstyle/etc/google_checks.xml
-    strings:
+    stringscheck:
   python:
     flake8:
   shell:
