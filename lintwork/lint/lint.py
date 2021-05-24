@@ -35,7 +35,13 @@ class Lint(object):
         self._config = config
 
     def _serve(self, routine):
-        server = grpc.server(futures.ThreadPoolExecutor(max_workers=MAX_WORKERS))
+        server = grpc.server(
+            futures.ThreadPoolExecutor(max_workers=MAX_WORKERS),
+            options = [
+                ("grpc.max_receive_message_length", -1),
+                ("grpc.max_send_message_length", -1),
+            ],
+        )
         add_LintProtoServicer_to_server(LintProto(routine), server)
         server.add_insecure_port(self._config.listen_url)
         server.start()
