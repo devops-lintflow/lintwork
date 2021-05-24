@@ -37,7 +37,7 @@ class Lint(object):
     def _serve(self, routine):
         server = grpc.server(
             futures.ThreadPoolExecutor(max_workers=MAX_WORKERS),
-            options = [
+            options=[
                 ("grpc.max_receive_message_length", -1),
                 ("grpc.max_send_message_length", -1),
             ],
