@@ -22,6 +22,8 @@ spec:
     stringscheck:
   python:
     flake8:
+  sca:
+    scancode:
   shell:
     shellcheck:
       - --format=gcc
