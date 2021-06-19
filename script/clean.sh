@@ -1,7 +1,7 @@
 #!/bin/bash
 
 chmod 644 .gitignore .pre-commit-config.yml .travis.yml
-chmod 644 LICENSE Makefile MANIFEST.in README.md requirements.txt setup.cfg tox.ini
+chmod 644 Dockerfile LICENSE Makefile MANIFEST.in README.md requirements.txt setup.cfg tox.ini
 chmod 644 work.py setup.py
 
 find lintwork tests -name "*.py" -exec chmod 644 {} \;
