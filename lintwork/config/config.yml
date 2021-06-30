@@ -23,6 +23,7 @@ spec:
   python:
     flake8:
   sca:
+    licenseclassifier:
     scancode:
   shell:
     shellcheck:
