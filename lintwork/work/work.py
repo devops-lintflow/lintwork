@@ -12,6 +12,8 @@ from lintwork.work.java.aosplint import Aosplint  # noqa: F401
 from lintwork.work.java.checkstyle import Checkstyle  # noqa: F401
 from lintwork.work.java.stringscheck import Stringscheck  # noqa: F401
 from lintwork.work.python.flake8 import Flake8  # noqa: F401
+from lintwork.work.sca.licenseclassifier import Licenseclassifier  # noqa: F401
+from lintwork.work.sca.scancode import Scancode  # noqa: F401
 from lintwork.work.shell.shellcheck import Shellcheck  # noqa: F401
 
 
