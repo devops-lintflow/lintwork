@@ -6,6 +6,15 @@ RUN apt update && \
 RUN ln -s /usr/bin/pip3 /usr/bin/pip && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     python -m pip install -U pip
+RUN apt install -y iptables && \
+    curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/containerd.io_1.4.6-1_amd64.deb && \
+    curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-cli_20.10.7~3-0~ubuntu-focal_amd64.deb && \
+    curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-rootless-extras_20.10.7~3-0~ubuntu-focal_amd64.deb && \
+    curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce_20.10.7~3-0~ubuntu-focal_amd64.deb && \
+    curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-scan-plugin_0.8.0~ubuntu-focal_amd64.deb && \
+    dpkg -i *.deb && \
+    rm *.deb
+RUN usermod -a -G docker craftslab
 
 USER craftslab
 WORKDIR /home/craftslab
