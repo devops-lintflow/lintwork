@@ -2,12 +2,13 @@ FROM craftslab/androiddocker:latest
 
 USER root
 RUN apt update && \
-    apt install -y upx
+    apt install -y bzip2 iptables libgomp1 libpopt0 libxml2-dev libxslt1-dev upx xz-utils zlib1g && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN ln -s /usr/bin/pip3 /usr/bin/pip && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     python -m pip install -U pip
-RUN apt install -y iptables && \
-    curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/containerd.io_1.4.6-1_amd64.deb && \
+RUN curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/containerd.io_1.4.6-1_amd64.deb && \
     curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-cli_20.10.7~3-0~ubuntu-focal_amd64.deb && \
     curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-rootless-extras_20.10.7~3-0~ubuntu-focal_amd64.deb && \
     curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce_20.10.7~3-0~ubuntu-focal_amd64.deb && \
@@ -22,6 +23,7 @@ ENV PATH /home/craftslab/.local/bin:$PATH
 ENV PATH /home/craftslab/opt/checkstyle/lib:$PATH
 ENV PATH /home/craftslab/opt/groovylint:$PATH
 ENV PATH /home/craftslab/opt/spotbugs/bin:$PATH
+ENV PATH /home/craftslab/opt/scancode:$PATH
 RUN mkdir -p ~/.local/bin
 RUN pip install cpplint
 RUN curl -L https://github.com/golangci/golangci-lint/releases/download/v1.38.0/golangci-lint-1.38.0-linux-amd64.deb -o golangci-lint.deb && \
@@ -67,6 +69,12 @@ RUN curl -L https://github.com/koalaman/shellcheck/releases/download/v0.7.1/shel
     chmod +x shellcheck-v0.7.1/shellcheck && \
     mv shellcheck-v0.7.1/shellcheck ~/.local/bin/ && \
     rm -rf shellcheck*
+RUN curl -LO https://github.com/nexB/scancode-toolkit/archive/refs/tags/v21.6.7.zip && \
+    unzip v21.6.7.zip && \
+    rm -f v21.6.7.zip && \
+    mv scancode-toolkit-21.6.7 ~/opt/scancode && \
+        cd ~/opt/scancode && \
+    ./scancode --reindex-licenses
 RUN mkdir src
 COPY . src
 RUN cd src; make install; cd .. && \
