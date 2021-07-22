@@ -73,7 +73,7 @@ RUN curl -LO https://github.com/nexB/scancode-toolkit/archive/refs/tags/v21.6.7.
     unzip v21.6.7.zip && \
     rm -f v21.6.7.zip && \
     mv scancode-toolkit-21.6.7 ~/opt/scancode && \
-        cd ~/opt/scancode && \
+    cd ~/opt/scancode && \
     ./scancode --reindex-licenses
 RUN mkdir src
 COPY . src
