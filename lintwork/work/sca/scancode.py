@@ -50,7 +50,7 @@ class Scancode(WorkAbstract):
         )
 
     def _lint(self, project):
-        cmd = ["scancode"]
+        cmd = ["scancode-toolkit"]
         cmd.extend(self._config)
         cmd.extend(["-s", project])
         with self._popen(cmd) as proc:
