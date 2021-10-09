@@ -22,6 +22,8 @@ spec:
     stringscheck:
   python:
     flake8:
+  sast:
+    rapidscan:
   sca:
     licenseclassifier:
     scancode:
