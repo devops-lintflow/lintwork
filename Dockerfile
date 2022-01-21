@@ -2,7 +2,7 @@ FROM craftslab/androiddocker:latest
 
 USER root
 RUN apt update && \
-    apt install -y bzip2 iptables libgomp1 libpopt0 libxml2-dev libxslt1-dev upx xz-utils zlib1g && \
+    apt install -y bzip2 iptables libgomp1 libpopt0 libxml2-dev libxslt1-dev pandoc upx xz-utils zlib1g && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN ln -s /usr/bin/pip3 /usr/bin/pip && \
@@ -21,11 +21,16 @@ USER craftslab
 WORKDIR /home/craftslab
 ENV PATH /home/craftslab/.local/bin:$PATH
 ENV PATH /home/craftslab/opt/checkstyle/lib:$PATH
+ENV PATH /home/craftslab/opt/go/bin:$PATH
 ENV PATH /home/craftslab/opt/groovylint:$PATH
 ENV PATH /home/craftslab/opt/spotbugs/bin:$PATH
 ENV PATH /home/craftslab/opt/scancode:$PATH
 RUN mkdir -p ~/.local/bin
 RUN pip install cpplint
+RUN curl -L https://go.dev/dl/go1.17.6.linux-amd64.tar.gz -o go.tar.gz && \
+    tar zxvf go.tar.gz && \
+    sudo mv go ~/opt/ && \
+    rm -rf go.tar.gz
 RUN curl -L https://github.com/golangci/golangci-lint/releases/download/v1.38.0/golangci-lint-1.38.0-linux-amd64.deb -o golangci-lint.deb && \
     sudo dpkg -i golangci-lint.deb && \
     rm golangci-lint.deb
@@ -78,6 +83,8 @@ RUN curl -LO https://github.com/nexB/scancode-toolkit/archive/refs/tags/v21.6.7.
 RUN curl -L https://github.com/mrtazz/checkmake/archive/refs/tags/0.2.0.tar.gz -o checkmake.tar.gz && \
     tar zxvf checkmake.tar.gz && \
     pushd checkmake-0.2.0 && \
+    export BUILDER_NAME="name" && \
+    export BUILDER_EMAIL="name@example.com" && \
     go env -w GOPROXY=https://goproxy.cn,direct && \
     sed -i "s/^VERSION :=.*$/VERSION := 0.2.0/g" Makefile && \
     make clean all test && \

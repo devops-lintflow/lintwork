@@ -7,6 +7,8 @@ import subprocess
 from lintwork.work.abstract import WorkAbstract
 from lintwork.proto.proto import Format, Type
 
+LINE_SEP = "\\n"
+
 LINT_LEN_MIN = 4
 LINT_SEP = ":"
 
@@ -31,7 +33,7 @@ class Checkmake(WorkAbstract):
 
     def _parse(self, name, data):
         buf = []
-        for item in data.splitlines():
+        for item in data.strip(LINE_SEP).split(LINE_SEP):
             b = item.strip().split(LINT_SEP)
             if len(b) < LINT_LEN_MIN:
                 continue
@@ -51,7 +53,7 @@ class Checkmake(WorkAbstract):
         )
 
     def _lint(self, project):
-        def _helper(name):
+        def _helper(project, name):
             cmd = ["checkmake"]
             cmd.extend(self._config)
             cmd.extend([name])
@@ -59,12 +61,15 @@ class Checkmake(WorkAbstract):
                 out, err = proc.communicate()
                 if proc.returncode == 0:
                     return []
-            return self._parse(name, out.strip().decode("utf-8").replace(project + os.path.sep, ""))
+            return self._parse(
+                str(name).lstrip(project),
+                out.strip().decode("utf-8").replace(project + os.path.sep, ""),
+            )
 
         buf = []
         for item in pathlib.Path(project).glob("**/*"):
             if item.is_file():
-                b = _helper(item)
+                b = _helper(project, item)
                 if len(b) != 0:
                     buf.extend(b)
         return buf

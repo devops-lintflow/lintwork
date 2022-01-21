@@ -128,7 +128,7 @@ spec:
     stringscheck:
   make:
     checkmake:
-      - --format=":{{.LineNumber}}::{{.Violation}}\n"
+      - --format=:{{.LineNumber}}::{{.Violation}}\n
   python:
     flake8:
   shell:

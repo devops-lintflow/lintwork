@@ -1,0 +1,1 @@
+:21::Missing required phony target "all"\n:21::Missing required phony target "test"\n:16::Target "all" should be declared PHONY.\n
