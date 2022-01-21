@@ -75,6 +75,16 @@ RUN curl -LO https://github.com/nexB/scancode-toolkit/archive/refs/tags/v21.6.7.
     mv scancode-toolkit-21.6.7 ~/opt/scancode && \
     cd ~/opt/scancode && \
     ./scancode --reindex-licenses
+RUN curl -L https://github.com/mrtazz/checkmake/archive/refs/tags/0.2.0.tar.gz -o checkmake.tar.gz && \
+    tar zxvf checkmake.tar.gz && \
+    pushd checkmake-0.2.0 && \
+    go env -w GOPROXY=https://goproxy.cn,direct && \
+    sed -i "s/^VERSION :=.*$/VERSION := 0.2.0/g" Makefile && \
+    make clean all test && \
+    chmod +x checkmake && \
+    mv checkmake ~/.local/bin/ && \
+    popd && \
+    rm -rf checkmake*
 RUN mkdir src
 COPY . src
 RUN cd src; make install; cd .. && \

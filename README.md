@@ -126,6 +126,9 @@ spec:
       - /home/craftslab/opt/checkstyle/lib/checkstyle.jar
       - -c=/home/craftslab/opt/checkstyle/etc/google_checks.xml
     stringscheck:
+  make:
+    checkmake:
+      - --format=":{{.LineNumber}}::{{.Violation}}\n"
   python:
     flake8:
   shell:
@@ -177,6 +180,7 @@ Project License can be found [here](LICENSE).
 ### Linter
 
 - [android-lint](https://developer.android.com/studio/write/lint)
+- [checkmake](https://github.com/mrtazz/checkmake)
 - [checkpatch](https://github.com/torvalds/linux/blob/master/scripts/checkpatch.pl)
 - [checkstyle](https://checkstyle.org/)
 - [cpplint](https://github.com/cpplint/cpplint)

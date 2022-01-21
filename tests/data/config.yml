@@ -20,6 +20,9 @@ spec:
       - /home/craftslab/opt/checkstyle/lib/checkstyle.jar
       - -c=/home/craftslab/opt/checkstyle/etc/google_checks.xml
     stringscheck:
+  make:
+    checkmake:
+      - --format=":{{.LineNumber}}::{{.Violation}}\n"
   python:
     flake8:
   sast:
