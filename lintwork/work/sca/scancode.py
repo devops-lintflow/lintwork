@@ -6,7 +6,7 @@ import subprocess
 from lintwork.work.abstract import WorkAbstract
 from lintwork.proto.proto import Format
 
-LINT_LEN_MIN = 3
+LINT_LEN_MIN = 4
 LINT_SEP = ":"
 
 

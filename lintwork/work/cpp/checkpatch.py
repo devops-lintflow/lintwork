@@ -7,7 +7,7 @@ import subprocess
 from lintwork.work.abstract import WorkAbstract
 from lintwork.proto.proto import Format, Type
 
-LINT_LEN_MIN = 3
+LINT_LEN_MIN = 4
 LINT_SEP = ":"
 LINT_TYPE = [Type.ERROR, Type.INFO, Type.WARN]
 
