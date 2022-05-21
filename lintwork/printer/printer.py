@@ -46,13 +46,13 @@ class Printer(object):
         def _txt_helper(data, out):
             global head
             for key in sorted(head.keys()):
-                out.write(u"%s: %s\n" % (head[key], data[head[key]]))
+                out.write("%s: %s\n" % (head[key], data[head[key]]))
 
         with open(name, "w", encoding="utf8") as f:
             f.write("")
             for key, val in data.items():
                 for v in val:
-                    f.write(u"%s\n" % key)
+                    f.write("%s\n" % key)
                     _txt_helper(v, f)
                     f.write("\n")
 
