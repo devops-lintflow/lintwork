@@ -3,7 +3,6 @@
 [![Actions Status](https://github.com/devops-lintflow/lintwork/workflows/ci/badge.svg?branch=main&event=push)](https://github.com/devops-lintflow/lintwork/actions?query=workflow%3Aci)
 [![Docker](https://img.shields.io/docker/pulls/craftslab/lintwork)](https://hub.docker.com/r/craftslab/lintwork)
 [![License](https://img.shields.io/github/license/devops-lintflow/lintwork.svg?color=brightgreen)](https://github.com/devops-lintflow/lintwork/blob/main/LICENSE)
-[![PyPI](https://img.shields.io/pypi/v/lintwork.svg?color=brightgreen)](https://pypi.org/project/lintwork)
 [![Tag](https://img.shields.io/github/tag/devops-lintflow/lintwork.svg?color=brightgreen)](https://github.com/devops-lintflow/lintwork/tags)
 
 
