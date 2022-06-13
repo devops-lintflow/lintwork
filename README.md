@@ -1,16 +1,16 @@
 # lintwork
 
-[![Actions Status](https://github.com/craftslab/lintwork/workflows/CI/badge.svg?branch=master&event=push)](https://github.com/craftslab/lintwork/actions?query=workflow%3ACI)
+[![Actions Status](https://github.com/devops-lintflow/lintwork/workflows/ci/badge.svg?branch=main&event=push)](https://github.com/devops-lintflow/lintwork/actions?query=workflow%3Aci)
 [![Docker](https://img.shields.io/docker/pulls/craftslab/lintwork)](https://hub.docker.com/r/craftslab/lintwork)
-[![License](https://img.shields.io/github/license/craftslab/lintwork.svg?color=brightgreen)](https://github.com/craftslab/lintwork/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/devops-lintflow/lintwork.svg?color=brightgreen)](https://github.com/devops-lintflow/lintwork/blob/main/LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/lintwork.svg?color=brightgreen)](https://pypi.org/project/lintwork)
-[![Tag](https://img.shields.io/github/tag/craftslab/lintwork.svg?color=brightgreen)](https://github.com/craftslab/lintwork/tags)
+[![Tag](https://img.shields.io/github/tag/devops-lintflow/lintwork.svg?color=brightgreen)](https://github.com/devops-lintflow/lintwork/tags)
 
 
 
 ## Introduction
 
-*lintwork* is a lint worker of *[lintflow](https://github.com/craftslab/lintflow/)* written in Python.
+*lintwork* is a lint worker of *[lintflow](https://github.com/devops-lintflow/lintflow/)* written in Python.
 
 
 
@@ -26,9 +26,6 @@
 - **Local mode**
 
 ```bash
-git clone https://github.com/craftslab/lintwork.git
-
-cd lintwork
 pip install -Ur requirements.txt
 python work.py --config-file="config.yml" --lint-project="project" --output-file="output.json"
 ```
@@ -38,9 +35,6 @@ python work.py --config-file="config.yml" --lint-project="project" --output-file
 - **Service mode**
 
 ```bash
-git clone https://github.com/craftslab/lintwork.git
-
-cd lintwork
 pip install -Ur requirements.txt
 python work.py --config-file="config.yml" --listen-url="127.0.0.1:9090"
 ```
@@ -52,9 +46,6 @@ python work.py --config-file="config.yml" --listen-url="127.0.0.1:9090"
 - **Local mode**
 
 ```bash
-git clone https://github.com/craftslab/lintwork.git
-
-cd lintwork
 docker build --no-cache -f Dockerfile -t craftslab/lintwork:latest .
 docker run -it -v /tmp:/tmp craftslab/lintwork:latest ./lintwork --config-file="config.yml" --lint-project="/tmp/project" --output-file="/tmp/output.json"
 ```
@@ -64,9 +55,6 @@ docker run -it -v /tmp:/tmp craftslab/lintwork:latest ./lintwork --config-file="
 - **Service mode**
 
 ```bash
-git clone https://github.com/craftslab/lintwork.git
-
-cd lintwork
 docker build --no-cache -f Dockerfile -t craftslab/lintwork:latest .
 docker run -it --network=host craftslab/lintwork:latest ./lintwork --config-file="config.yml" --listen-url="127.0.0.1:9090"
 ```
@@ -99,9 +87,9 @@ optional arguments:
 
 ## Settings
 
-*lintwork* parameters can be set in the directory [config](https://github.com/craftslab/lintwork/blob/master/lintwork/config).
+*lintwork* parameters can be set in the directory [config](https://github.com/devops-lintflow/lintwork/blob/main/lintwork/config).
 
-An example of configuration in [config.yml](https://github.com/craftslab/lintwork/blob/master/lintwork/config/config.yml):
+An example of configuration in [config.yml](https://github.com/devops-lintflow/lintwork/blob/main/lintwork/config/config.yml):
 
 ```yaml
 apiVersion: v1

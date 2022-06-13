@@ -27,7 +27,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     description=about['__description__'],
-    download_url='https://github.com/craftslab/lintwork/archive/v%s.tar.gz' % about['__version__'],
+    download_url='https://github.com/devops-lintflow/lintwork/archive/v%s.tar.gz' % about['__version__'],
     entry_points={'console_scripts': ['lintwork=lintwork.main:main']},
     include_package_data=True,
     install_requires=requirements,
