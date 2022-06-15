@@ -7,7 +7,8 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN ln -s /usr/bin/pip3 /usr/bin/pip && \
     ln -s /usr/bin/python3 /usr/bin/python && \
-    python -m pip install -U pip
+    python -m pip install -U pip && \
+    pip install -U pyinstaller
 RUN curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/containerd.io_1.4.6-1_amd64.deb && \
     curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-cli_20.10.7~3-0~ubuntu-focal_amd64.deb && \
     curl -LO https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-rootless-extras_20.10.7~3-0~ubuntu-focal_amd64.deb && \
@@ -21,12 +22,12 @@ USER craftslab
 WORKDIR /home/craftslab
 ENV PATH /home/craftslab/.local/bin:$PATH
 ENV PATH /home/craftslab/opt/checkstyle/lib:$PATH
+ENV PATH /home/craftslab/opt/cpplint/bin:$PATH
 ENV PATH /home/craftslab/opt/go/bin:$PATH
 ENV PATH /home/craftslab/opt/groovylint:$PATH
 ENV PATH /home/craftslab/opt/spotbugs/bin:$PATH
 ENV PATH /home/craftslab/opt/scancode:$PATH
 RUN mkdir -p ~/.local/bin
-RUN pip install cpplint
 RUN curl -L https://go.dev/dl/go1.17.6.linux-amd64.tar.gz -o go.tar.gz && \
     tar zxvf go.tar.gz && \
     sudo mv go ~/opt/ && \
@@ -92,6 +93,15 @@ RUN curl -L https://github.com/mrtazz/checkmake/archive/refs/tags/0.2.0.tar.gz -
     mv checkmake ~/.local/bin/ && \
     popd && \
     rm -rf checkmake*
+RUN curl -L https://github.com/devops-lintflow/cpplint/archive/refs/heads/main.zip -o cpplint.zip && \
+    unzip cpplint.zip && \
+    pushd cpplint-main && \
+    pyinstaller --clean --name cpplint -F cpplint.py && \
+    chmod +x dist/cpplint && \
+    popd && \
+    mkdir -p ~/opt/cpplint/bin && \
+    mv cpplint-main/dist/cpplint ~/opt/cpplint/bin/ && \
+    rm -rf cpplint*
 RUN mkdir src
 COPY . src
 RUN cd src; make install; cd .. && \
