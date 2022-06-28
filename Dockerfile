@@ -25,13 +25,19 @@ ENV PATH /home/craftslab/opt/checkstyle/lib:$PATH
 ENV PATH /home/craftslab/opt/cpplint/bin:$PATH
 ENV PATH /home/craftslab/opt/go/bin:$PATH
 ENV PATH /home/craftslab/opt/groovylint:$PATH
+ENV PATH /home/craftslab/opt/jdk/bin:$PATH
 ENV PATH /home/craftslab/opt/spotbugs/bin:$PATH
 ENV PATH /home/craftslab/opt/scancode:$PATH
+ENV JAVA_HOME /home/craftslab/opt/jdk
 RUN mkdir -p ~/.local/bin
 RUN curl -L https://go.dev/dl/go1.17.6.linux-amd64.tar.gz -o go.tar.gz && \
     tar zxvf go.tar.gz && \
-    sudo mv go ~/opt/ && \
+    mv go ~/opt/ && \
     rm -rf go.tar.gz
+RUN curl -L https://download.java.net/openjdk/jdk17/ri/openjdk-17+35_linux-x64_bin.tar.gz -o openjdk.tar.gz && \
+    tar zxvf openjdk.tar.gz && \
+    mv jdk-17 ~/opt/jdk && \
+    rm -rf openjdk.tar.gz
 RUN curl -L https://github.com/golangci/golangci-lint/releases/download/v1.38.0/golangci-lint-1.38.0-linux-amd64.deb -o golangci-lint.deb && \
     sudo dpkg -i golangci-lint.deb && \
     rm golangci-lint.deb
