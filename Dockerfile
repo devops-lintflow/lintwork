@@ -108,9 +108,10 @@ RUN curl -L https://github.com/devops-lintflow/cpplint/archive/refs/heads/main.z
     mkdir -p ~/opt/cpplint/bin && \
     mv cpplint-main/dist/cpplint ~/opt/cpplint/bin/ && \
     rm -rf cpplint*
-RUN mkdir src
-COPY . src
-RUN cd src; make install; cd .. && \
+RUN curl -L https://github.com/devops-lintflow/lintwork/archive/refs/heads/main.zip -o lintwork.zip && \
+    unzip lintwork.zip && \
+    mv lintwork-main src && \
+    cd src; make install; cd .. && \
     cp src/dist/* . && \
     cp src/lintwork/config/*.yml . && \
-    sudo rm -rf src
+    sudo rm -rf src *.zip
