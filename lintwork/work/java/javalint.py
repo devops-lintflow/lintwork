@@ -37,10 +37,10 @@ class Javalint(WorkAbstract):
                 continue
             buf.append(
                 {
-                    Format.FILE: b[1].strip(),
-                    Format.LINE: int(b[2].strip()),
-                    Format.TYPE: b[3].strip(),
-                    Format.DETAILS: " ".join(b[4:]).strip(),
+                    Format.FILE: b[0].strip(),
+                    Format.LINE: int(b[1].strip()),
+                    Format.TYPE: b[2].strip(),
+                    Format.DETAILS: " ".join(b[3:]).strip(),
                 }
             )
         return buf

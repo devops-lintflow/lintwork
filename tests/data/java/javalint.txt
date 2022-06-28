@@ -1,2 +1,2 @@
-javalint:src/main/resources/Loop.java:4:Error:Possible incorrect condition in range-based for loop
-javalint:src/main/resources/Loop.java:10:Error:Possible incorrect condition in range-based while loop
+src/main/resources/Loop.java:4:Error:Possible incorrect condition in range-based for loop
+src/main/resources/Loop.java:10:Error:Possible incorrect condition in range-based while loop
