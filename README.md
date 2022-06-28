@@ -112,6 +112,7 @@ spec:
       - -jar
       - /home/craftslab/opt/checkstyle/lib/checkstyle.jar
       - -c=/home/craftslab/opt/checkstyle/etc/google_checks.xml
+    javalint:
     stringscheck:
   make:
     checkmake:
