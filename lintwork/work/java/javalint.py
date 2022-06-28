@@ -57,10 +57,10 @@ class Javalint(WorkAbstract):
             cmd.extend([name])
             with self._popen(cmd) as proc:
                 out, err = proc.communicate()
-                if proc.returncode == 0:
+                if proc.returncode != 0:
                     return []
             return self._parse(
-                err.strip().decode("utf-8").replace(project + os.path.sep, "")
+                out.strip().decode("utf-8").replace(project + os.path.sep, "")
             )
 
         buf = []
