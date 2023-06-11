@@ -6,8 +6,7 @@ import lintwork.lint.lint_pb2 as lint__pb2
 
 
 class LintProtoStub(object):
-    """The service definition.
-    """
+    """The service definition."""
 
     def __init__(self, channel):
         """Constructor.
@@ -16,55 +15,65 @@ class LintProtoStub(object):
             channel: A grpc.Channel.
         """
         self.SendLint = channel.unary_unary(
-                '/lint.LintProto/SendLint',
-                request_serializer=lint__pb2.LintRequest.SerializeToString,
-                response_deserializer=lint__pb2.LintReply.FromString,
-                )
+            "/lint.LintProto/SendLint",
+            request_serializer=lint__pb2.LintRequest.SerializeToString,
+            response_deserializer=lint__pb2.LintReply.FromString,
+        )
 
 
 class LintProtoServicer(object):
-    """The service definition.
-    """
+    """The service definition."""
 
     def SendLint(self, request, context):
-        """Sends lint
-        """
+        """Sends lint"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
 
 def add_LintProtoServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'SendLint': grpc.unary_unary_rpc_method_handler(
-                    servicer.SendLint,
-                    request_deserializer=lint__pb2.LintRequest.FromString,
-                    response_serializer=lint__pb2.LintReply.SerializeToString,
-            ),
+        "SendLint": grpc.unary_unary_rpc_method_handler(
+            servicer.SendLint,
+            request_deserializer=lint__pb2.LintRequest.FromString,
+            response_serializer=lint__pb2.LintReply.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'lint.LintProto', rpc_method_handlers)
+        "lint.LintProto", rpc_method_handlers
+    )
     server.add_generic_rpc_handlers((generic_handler,))
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class LintProto(object):
-    """The service definition.
-    """
+    """The service definition."""
 
     @staticmethod
-    def SendLint(request,
+    def SendLint(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/lint.LintProto/SendLint',
+            "/lint.LintProto/SendLint",
             lint__pb2.LintRequest.SerializeToString,
             lint__pb2.LintReply.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )

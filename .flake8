@@ -1,0 +1,4 @@
+[flake8]
+exclude =
+    lint_pb2.py,
+    lint_pb2_grpc.py,
