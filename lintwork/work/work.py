@@ -4,21 +4,20 @@ import os
 
 from lintwork.config.config import ConfigFile
 from lintwork.printer.printer import Printer
-from lintwork.work.ai.lintgpt import Lintgpt  # noqa: F401
-from lintwork.work.commit.contentcheck import Contentcheck  # noqa: F401
-from lintwork.work.commit.messagecheck import Messagecheck  # noqa: F401
-from lintwork.work.cpp.checkpatch import Checkpatch  # noqa: F401
-from lintwork.work.cpp.cpplint import Cpplint  # noqa: F401
-from lintwork.work.java.aosplint import Aosplint  # noqa: F401
-from lintwork.work.java.checkstyle import Checkstyle  # noqa: F401
-from lintwork.work.java.javalint import Javalint  # noqa: F401
-from lintwork.work.java.stringscheck import Stringscheck  # noqa: F401
-from lintwork.work.make.checkmake import Checkmake  # noqa: F401
-from lintwork.work.python.flake8 import Flake8  # noqa: F401
-from lintwork.work.sast.rapidscan import Rapidscan  # noqa: F401
-from lintwork.work.sca.licenseclassifier import Licenseclassifier  # noqa: F401
-from lintwork.work.sca.scancode import Scancode  # noqa: F401
-from lintwork.work.shell.shellcheck import Shellcheck  # noqa: F401
+from lintwork.work.lintai.lintgpt import Lintgpt  # noqa: F401
+from lintwork.work.lintcommit.contentcheck import Contentcheck  # noqa: F401
+from lintwork.work.lintcommit.messagecheck import Messagecheck  # noqa: F401
+from lintwork.work.lintcpp.checkpatch import Checkpatch  # noqa: F401
+from lintwork.work.lintcpp.cpplint import Cpplint  # noqa: F401
+from lintwork.work.lintjava.aosplint import Aosplint  # noqa: F401
+from lintwork.work.lintjava.checkstyle import Checkstyle  # noqa: F401
+from lintwork.work.lintjava.javalint import Javalint  # noqa: F401
+from lintwork.work.lintjava.stringscheck import Stringscheck  # noqa: F401
+from lintwork.work.lintmake.checkmake import Checkmake  # noqa: F401
+from lintwork.work.lintpython.flake8 import Flake8  # noqa: F401
+from lintwork.work.lintsast.rapidscan import Rapidscan  # noqa: F401
+from lintwork.work.lintsca.licenseclassifier import Licenseclassifier  # noqa: F401
+from lintwork.work.lintshell.shellcheck import Shellcheck  # noqa: F401
 
 
 class WorkException(Exception):

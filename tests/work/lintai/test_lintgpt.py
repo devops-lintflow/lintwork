@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.ai.lintgpt import Lintgpt, LintgptException
+from lintwork.work.lintai.lintgpt import Lintgpt, LintgptException
 
 
 def test_exception():
@@ -12,7 +12,7 @@ def test_exception():
 
 def test_lintgpt():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/ai/lintgpt.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "../../data/lintai/lintgpt.txt"), "r"
     ) as f:
         data = f.read()
 

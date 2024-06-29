@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.shell.shellcheck import Shellcheck, ShellcheckException
+from lintwork.work.lintshell.shellcheck import Shellcheck, ShellcheckException
 
 
 def test_exception():
@@ -12,7 +12,8 @@ def test_exception():
 
 def test_shellcheck():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/shell/shellcheck.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "../../data/lintshell/shellcheck.txt"),
+        "r",
     ) as f:
         data = f.read()
 

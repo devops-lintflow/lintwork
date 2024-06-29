@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.java.aosplint import Aosplint, AosplintException
+from lintwork.work.lintjava.aosplint import Aosplint, AosplintException
 
 
 def test_exception():
@@ -12,7 +12,7 @@ def test_exception():
 
 def test_aosplint():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/java/aosplint.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "../../data/lintjava/aosplint.txt"), "r"
     ) as f:
         data = f.read()
 

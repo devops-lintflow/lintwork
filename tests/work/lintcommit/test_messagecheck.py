@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.commit.messagecheck import Messagecheck, MessagecheckException
+from lintwork.work.lintcommit.messagecheck import Messagecheck, MessagecheckException
 
 
 def test_exception():
@@ -12,7 +12,9 @@ def test_exception():
 
 def test_messagecheck():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/commit/messagecheck.txt"),
+        os.path.join(
+            os.path.dirname(__file__), "../../data/lintcommit/messagecheck.txt"
+        ),
         "r",
     ) as f:
         data = f.read()

@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.cpp.checkpatch import Checkpatch, CheckpatchException
+from lintwork.work.lintcpp.checkpatch import Checkpatch, CheckpatchException
 
 
 def test_exception():
@@ -12,7 +12,8 @@ def test_exception():
 
 def test_checkpatch():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/cpp/checkpatch.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "../../data/lintcpp/checkpatch.txt"),
+        "r",
     ) as f:
         data = f.read()
 

@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.cpp.cpplint import Cpplint, CpplintException
+from lintwork.work.lintcpp.cpplint import Cpplint, CpplintException
 
 
 def test_exception():
@@ -12,7 +12,7 @@ def test_exception():
 
 def test_cpplint():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/cpp/cpplint.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "../../data/lintcpp/cpplint.txt"), "r"
     ) as f:
         data = f.read()
 

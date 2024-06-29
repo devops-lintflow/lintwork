@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.java.javalint import Javalint, JavalintException
+from lintwork.work.lintjava.javalint import Javalint, JavalintException
 
 
 def test_exception():
@@ -12,7 +12,7 @@ def test_exception():
 
 def test_javalint():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/java/javalint.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "../../data/lintjava/javalint.txt"), "r"
     ) as f:
         data = f.read()
 

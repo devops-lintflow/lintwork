@@ -66,7 +66,7 @@ def test_config():
 
     try:
         config.lint_project = os.path.join(
-            os.path.dirname(__file__), "../data/java".replace("/", os.path.sep)
+            os.path.dirname(__file__), "../data/lintjava".replace("/", os.path.sep)
         )
     except ConfigException as _:
         assert False

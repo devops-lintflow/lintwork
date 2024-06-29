@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.python.flake8 import Flake8, Flake8Exception
+from lintwork.work.lintpython.flake8 import Flake8, Flake8Exception
 
 
 def test_exception():
@@ -12,7 +12,7 @@ def test_exception():
 
 def test_flake8():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/python/flake8.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "../../data/lintpython/flake8.txt"), "r"
     ) as f:
         data = f.read()
 

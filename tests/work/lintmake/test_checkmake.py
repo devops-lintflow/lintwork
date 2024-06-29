@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.make.checkmake import Checkmake, CheckmakeException
+from lintwork.work.lintmake.checkmake import Checkmake, CheckmakeException
 
 
 def test_exception():
@@ -12,7 +12,8 @@ def test_exception():
 
 def test_checkmake():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/make/checkmake.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "../../data/lintmake/checkmake.txt"),
+        "r",
     ) as f:
         data = f.read()
 

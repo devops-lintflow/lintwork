@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.sca.licenseclassifier import (
+from lintwork.work.lintsca.licenseclassifier import (
     Licenseclassifier,
     LicenseclassifierException,
 )
@@ -15,7 +15,9 @@ def test_exception():
 
 def test_licenseclassifier():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/sca/licenseclassifier.txt"),
+        os.path.join(
+            os.path.dirname(__file__), "../../data/lintsca/licenseclassifier.txt"
+        ),
         "r",
     ) as f:
         data = f.read()

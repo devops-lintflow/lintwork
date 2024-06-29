@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.commit.contentcheck import Contentcheck, ContentcheckException
+from lintwork.work.lintcommit.contentcheck import Contentcheck, ContentcheckException
 
 
 def test_exception():
@@ -12,7 +12,9 @@ def test_exception():
 
 def test_contentcheck():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/commit/contentcheck.txt"),
+        os.path.join(
+            os.path.dirname(__file__), "../../data/lintcommit/contentcheck.txt"
+        ),
         "r",
     ) as f:
         data = f.read()

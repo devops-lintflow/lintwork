@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.java.stringscheck import Stringscheck, StringscheckException
+from lintwork.work.lintjava.stringscheck import Stringscheck, StringscheckException
 
 
 def test_exception():
@@ -12,7 +12,7 @@ def test_exception():
 
 def test_stringscheck():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/java/stringscheck.txt"),
+        os.path.join(os.path.dirname(__file__), "../../data/lintjava/stringscheck.txt"),
         "r",
     ) as f:
         data = f.read()

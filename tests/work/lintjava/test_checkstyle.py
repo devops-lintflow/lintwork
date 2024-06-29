@@ -2,7 +2,7 @@
 
 import os
 
-from lintwork.work.java.checkstyle import Checkstyle, CheckstyleException
+from lintwork.work.lintjava.checkstyle import Checkstyle, CheckstyleException
 
 
 def test_exception():
@@ -12,7 +12,8 @@ def test_exception():
 
 def test_checkstyle():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/java/checkstyle.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "../../data/lintjava/checkstyle.txt"),
+        "r",
     ) as f:
         data = f.read()
 
