@@ -3,7 +3,7 @@
 
 """Prototype
 {
-  "lintwork": [
+  "lint": [
     {
       "file": "name",
       "line": 1,

@@ -96,15 +96,15 @@ kind: worker
 metadata:
   name: lintwork
 spec:
-  ai:
+  lintai:
     lintgpt:
-  cpp:
+  lintcpp:
     checkpatch:
       - --no-summary
       - --no-tree
       - --terse
     cpplint:
-  java:
+  lintjava:
     aosplint:
       - --disable
       - LintError
@@ -119,12 +119,12 @@ spec:
       - /home/craftslab/opt/javalint/lib/javalint.jar
       - --file
     stringscheck:
-  make:
+  lintmake:
     checkmake:
       - --format=:{{.LineNumber}}::{{.Violation}}\n
-  python:
+  lintpython:
     flake8:
-  shell:
+  lintshell:
     shellcheck:
       - --format=gcc
 ```
