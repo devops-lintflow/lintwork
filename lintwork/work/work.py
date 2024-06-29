@@ -4,6 +4,7 @@ import os
 
 from lintwork.config.config import ConfigFile
 from lintwork.printer.printer import Printer
+from lintwork.work.ai.lintgpt import Lintgpt  # noqa: F401
 from lintwork.work.commit.contentcheck import Contentcheck  # noqa: F401
 from lintwork.work.commit.messagecheck import Messagecheck  # noqa: F401
 from lintwork.work.cpp.checkpatch import Checkpatch  # noqa: F401
@@ -12,7 +13,6 @@ from lintwork.work.java.aosplint import Aosplint  # noqa: F401
 from lintwork.work.java.checkstyle import Checkstyle  # noqa: F401
 from lintwork.work.java.javalint import Javalint  # noqa: F401
 from lintwork.work.java.stringscheck import Stringscheck  # noqa: F401
-from lintwork.work.llm.chatopenai import Chatopenai  # noqa: F401
 from lintwork.work.make.checkmake import Checkmake  # noqa: F401
 from lintwork.work.python.flake8 import Flake8  # noqa: F401
 from lintwork.work.sast.rapidscan import Rapidscan  # noqa: F401

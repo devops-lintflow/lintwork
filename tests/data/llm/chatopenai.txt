@@ -1,2 +1,0 @@
-chatopenai.py:3:Warn:The main function is empty. Consider adding functionality to the main function.
-chatopenai.py:1:Warn:The sys module is imported but not used. Consider removing the import statement.

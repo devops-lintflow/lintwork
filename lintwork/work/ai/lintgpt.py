@@ -10,7 +10,7 @@ LINT_LEN_MIN = 4
 LINT_SEP = ":"
 
 
-class ChatopenaiException(Exception):
+class LintgptException(Exception):
     def __init__(self, info):
         super().__init__(self)
         self._info = info
@@ -19,7 +19,7 @@ class ChatopenaiException(Exception):
         return self._info
 
 
-class Chatopenai(WorkAbstract):
+class Lintgpt(WorkAbstract):
     def __init__(self, config):
         if config is None:
             config = []
@@ -50,7 +50,7 @@ class Chatopenai(WorkAbstract):
         )
 
     def _lint(self, project):
-        cmd = ["chatopenai"]
+        cmd = ["lintgpt"]
         cmd.extend(self._config)
         cmd.extend(["-p", project])
         with self._popen(cmd) as proc:

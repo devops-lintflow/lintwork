@@ -96,6 +96,8 @@ kind: worker
 metadata:
   name: lintwork
 spec:
+  ai:
+    lintgpt:
   cpp:
     checkpatch:
       - --no-summary
@@ -141,7 +143,7 @@ spec:
 
 ```json
 {
-  "lintwork": [
+  "lint": [
     {
       "file": "name",
       "line": 1,
@@ -155,7 +157,7 @@ spec:
 - **Text format**
 
 ```text
-lintwork:{file}:{line}:{type}:{details}
+{lint}:{file}:{line}:{type}:{details}
 ```
 
 
