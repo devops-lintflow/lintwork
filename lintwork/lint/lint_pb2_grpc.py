@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import lint_pb2 as lint__pb2
+import lintwork.lint.lint_pb2 as lint__pb2
 
 GRPC_GENERATED_VERSION = "1.64.1"
 GRPC_VERSION = grpc.__version__
