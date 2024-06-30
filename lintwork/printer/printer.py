@@ -6,16 +6,6 @@ import os
 import time
 
 from lintwork.format.format import Report
-from openpyxl.styles import Alignment, Font
-
-LINT_NAME = "lintwork"
-
-head = {
-    "A": Report.FILE,
-    "B": Report.LINE,
-    "C": Report.TYPE,
-    "D": Report.DETAILS,
-}
 
 
 class PrinterException(Exception):
@@ -38,59 +28,41 @@ class Printer(object):
     def format():
         return Printer._format
 
-    def _json(self, data, name):
+    def _json(self, lint, reports, name):
         with open(name, "w", encoding="utf-8") as f:
-            f.write(json.dumps(data, ensure_ascii=False, indent=2))
-
-    def _txt(self, data, name):
-        def _txt_helper(data, out):
-            global head
-            for key in sorted(head.keys()):
-                out.write("%s: %s\n" % (head[key], data[head[key]]))
-
-        with open(name, "w", encoding="utf8") as f:
-            f.write("")
-            for key, val in data.items():
-                for v in val:
-                    f.write("%s\n" % key)
-                    _txt_helper(v, f)
-                    f.write("\n")
-
-    def _xlsx(self, data, name):
-        def _styling_head(sheet):
-            for item in head.keys():
-                sheet[item + "1"].alignment = Alignment(
-                    horizontal="center", shrink_to_fit=True, vertical="center"
+            buf = []
+            for item in reports:
+                buf.append(
+                    {
+                        Report.FILE: item.file,
+                        Report.LINE: item.line,
+                        Report.TYPE: item.type,
+                        Report.DETAILS: item.details,
+                    }
                 )
-                sheet[item + "1"].font = Font(bold=True, name="Calibri")
-            sheet.freeze_panes = sheet["A2"]
+            json.dump({lint: buf}, f)
 
-        def _styling_data(sheet, rows):
-            for key in head.keys():
-                for row in range(rows):
-                    sheet[key + str(row + 2)].alignment = Alignment(
-                        horizontal="center", vertical="center"
-                    )
-                    sheet[key + str(row + 2)].font = Font(bold=False, name="Calibri")
+    def _txt(self, lint, reports, name):
+        with open(name, "w", encoding="utf8") as f:
+            for item in reports:
+                f.write(
+                    "%s:%s:%d:%s:%s"
+                    % (lint, item.file, item.line, item.type, item.details)
+                )
+                f.write("\n")
 
+    def _xlsx(self, lint, reports, name):
         wb = openpyxl.Workbook()
         wb.remove(wb.active)
-        for key, val in data.items():
-            ws = wb.create_sheet()
-            ws.append([head[key].upper() for key in sorted(head.keys())])
-            ws.title = "%s %s" % (
-                key.upper(),
-                time.strftime("%Y-%m-%d", time.localtime(time.time())),
-            )
-            for v in val:
-                ws.append([v[head[key]] for key in sorted(head.keys())])
-            _styling_head(ws)
-            _styling_data(ws, len(val))
+        ws = wb.create_sheet()
+        ws.title = "%s" % time.strftime("%Y-%m-%d", time.localtime(time.time()))
+        for item in reports:
+            ws.append([lint, item.file, item.line, item.type, item.details])
         wb.save(filename=name)
 
-    def run(self, data, name, append=True):
+    def run(self, lint, reports, name, append=True):
         if append is True:
             raise PrinterException("append not supported")
         func = Printer.__dict__.get(os.path.splitext(name)[1].replace(".", "_"), None)
         if func is not None:
-            func(self, {LINT_NAME: data}, name)
+            func(self, lint, reports, name)

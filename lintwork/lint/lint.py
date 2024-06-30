@@ -3,7 +3,6 @@
 import base64
 import datetime
 import grpc
-import json
 import os
 import pathlib
 import shutil
@@ -55,28 +54,31 @@ class LintProto(LintProtoServicer):
     def __init__(self, routine):
         self._routine = routine
 
-    def _build(self, data):
-        def _helper(root, dirs, file, data):
-            pathlib.Path(os.path.join(root, dirs)).mkdir(parents=True, exist_ok=True)
-            p = pathlib.Path(os.path.join(root, dirs, file))
+    def _build(self, files, patch):
+        def _helper(root, dir, file, content):
+            pathlib.Path(os.path.join(root, dir)).mkdir(parents=True, exist_ok=True)
+            p = pathlib.Path(os.path.join(root, dir, file))
             with p.open("w", encoding="utf-8") as f:
-                f.write(base64.b64decode(data).decode("utf-8"))
+                f.write(base64.b64decode(content).decode("utf-8"))
 
-        if len(data) == 0:
-            return None
-        buf = json.loads(data)
         root = os.path.join(
             os.getcwd(),
             LINT_PROJECT + "-" + datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
         )
         pathlib.Path(root).mkdir(parents=True, exist_ok=True)
-        for key, val in buf.items():
+        for item in files:
             _helper(
                 root,
-                os.path.dirname(key),
-                os.path.basename(key).replace(".base64", ""),
-                val,
+                os.path.dirname(item.path),
+                os.path.basename(item.path),
+                item.content,
             )
+        _helper(
+            root,
+            os.path.dirname(patch.path),
+            os.path.basename(patch.path),
+            patch.content,
+        )
 
         return root
 
@@ -85,11 +87,15 @@ class LintProto(LintProtoServicer):
             shutil.rmtree(project)
 
     def SendLint(self, request, _):
-        if len(request.message) == 0:
-            return LintReply(message="")
-        project = self._build(request.message.strip())
+        if (
+            len(request.name) == 0
+            or len(request.lintFiles) == 0
+            or len(request.lintPatch.path) == 0
+        ):
+            return LintReply(name="")
+        project = self._build(request.lintFiles, request.lintPatch)
         if project is None or not os.path.exists(project):
-            return LintReply(message="")
-        buf = self._routine(project)
+            return LintReply(name="")
+        reports = self._routine(request.name, project)
         self._clean(project)
-        return LintReply(message=json.dumps({LINT_NAME: buf}))
+        return LintReply(name=request.name, lintReports=reports)

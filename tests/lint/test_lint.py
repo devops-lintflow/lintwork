@@ -6,6 +6,16 @@ from lintwork.config.config import Config
 from lintwork.lint.lint import Lint, LintException, LintProto
 
 
+class LintFile:
+    path = ""
+    content = ""
+
+
+class LintPatch:
+    path = ""
+    content = ""
+
+
 def test_exception():
     exception = LintException("exception")
     assert str(exception) == "exception"
@@ -35,13 +45,21 @@ def test_lint():
 def test_lintproto():
     proto = LintProto(None)
 
-    data = ""
-    project = proto._build(data)
-    if project is None or not os.path.exists(project):
-        assert True
+    file1 = LintFile()
+    file1.path = "COMMIT_MSG"
+    file1.content = "QWRkIHRlc3QgZmlsZXMgMTE6MTMNCg0KQ2hhbmdlLUlkOiBJZDAyMWI2NjU5YmViMTliODQ0MzcxOTFkMjk0YjcyZDljMjk0ZGYzYg=="
 
-    data = """{"project/AndroidManifest.xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxtYW5pZmVzdCB4bWxuczphbmRyb2lkPSJodHRwOi8vc2NoZW1hcy5hbmRyb2lkLmNvbS9hcGsvcmVzL2FuZHJvaWQiDQogICAgICAgICAgcGFja2FnZT0iY3JhZnRzbGFiLndlcm9ib3QiPg0KICAgIDx1c2VzLXBlcm1pc3Npb24gYW5kcm9pZDpuYW1lPSJhbmRyb2lkLnBlcm1pc3Npb24uRElTQUJMRV9LRVlHVUFSRCIvPg0KPC9tYW5pZmVzdD4NCg=="}"""
-    project = proto._build(data)
+    file2 = LintFile()
+    file2.path = "lintshell/test.sh"
+    file2.content = "IyEvYmluL2Jhc2gNCg0KZWNobyAiSGVsbG8gU2hlbGwhIg0K"
+
+    files = [file1, file2]
+
+    patch = LintPatch()
+    patch.path = "commit.patch"
+    patch.content = "RnJvbSA1MzNjZjVjZmRmZTA0N2QyNjg5ZTMzYzVlNjI0MzI1YzNkOWZmZTM4IE1vbiBTZXAgMTcgMDA6MDA6MDAgMjAwMQ0KRnJvbTogSmlhIEppYSA8YW5nZXJzYXhAc2luYS5jb20+DQpEYXRlOiBTdW4sIDMwIEp1biAyMDI0IDEwOjQyOjIwICswODAwDQpTdWJqZWN0OiBbUEFUQ0hdIEFkZCB0ZXN0IGZpbGVzIDExOjEzDQoNCkNoYW5nZS1JZDogSWQwMjFiNjY1OWJlYjE5Yjg0NDM3MTkxZDI5NGI3MmQ5YzI5NGRmM2INCi0tLQ0KDQpkaWZmIC0tZ2l0IGEvbGludHNoZWxsL3Rlc3Quc2ggYi9saW50c2hlbGwvdGVzdC5zaA0KbmV3IGZpbGUgbW9kZSAxMDA3NTUNCmluZGV4IDAwMDAwMDAuLmJiNTRmZTUNCi0tLSAvZGV2L251bGwNCisrKyBiL2xpbnRzaGVsbC90ZXN0LnNoDQpAQCAtMCwwICsxLDMgQEANCisjIS9iaW4vYmFzaA0KKw0KK2VjaG8gIkhlbGxvIFNoZWxsISINCg=="
+
+    project = proto._build(files, patch)
     if project is not None and os.path.exists(project):
         assert True
 

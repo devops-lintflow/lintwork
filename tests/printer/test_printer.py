@@ -2,8 +2,15 @@
 
 import os
 
-from lintwork.format.format import Report, Type
+from lintwork.format.format import Type
 from lintwork.printer.printer import Printer, PrinterException
+
+
+class LintReport:
+    file = ""
+    line = ""
+    type = ""
+    details = ""
 
 
 def test_exception():
@@ -12,34 +19,35 @@ def test_exception():
 
 
 def test_printer():
-    buf = [
-        {
-            Report.FILE: "name1",
-            Report.LINE: 1,
-            Report.TYPE: Type.ERROR,
-            Report.DETAILS: "text1",
-        },
-        {
-            Report.FILE: "name2",
-            Report.LINE: 2,
-            Report.TYPE: Type.WARN,
-            Report.DETAILS: "text2",
-        },
-    ]
+    lint = "lintshell"
+
+    report1 = LintReport()
+    report1.file = "file1"
+    report1.line = 1
+    report1.type = Type.ERROR
+    report1.details = "details1"
+
+    report2 = LintReport()
+    report2.file = "file2"
+    report2.line = 2
+    report2.type = Type.WARN
+    report2.details = "details2"
+
+    reports = [report1, report2]
 
     printer = Printer()
 
     name = "printer.json"
-    printer.run(data=buf, name=name, append=False)
+    printer.run(lint=lint, reports=reports, name=name, append=False)
     assert os.path.isfile(name)
     os.remove(name)
 
     name = "printer.txt"
-    printer.run(data=buf, name=name, append=False)
+    printer.run(lint=lint, reports=reports, name=name, append=False)
     assert os.path.isfile(name)
     os.remove(name)
 
     name = "printer.xlsx"
-    printer.run(data=buf, name=name, append=False)
+    printer.run(lint=lint, reports=reports, name=name, append=False)
     assert os.path.isfile(name)
     os.remove(name)

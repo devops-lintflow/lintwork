@@ -38,19 +38,23 @@ class Work(object):
         if self._spec is None:
             raise WorkException("spec invalid")
 
-    def _dump(self, data):
+    def _dump(self, lint, reports):
         printer = Printer()
-        printer.run(data=data, name=self._config.output_file, append=False)
+        printer.run(
+            lint=lint, reports=reports, name=self._config.output_file, append=False
+        )
 
-    def routine(self, project):
+    def routine(self, lint, project):
+        # TBD: FIXME
         if not isinstance(project, str) or not os.path.exists(project):
             raise WorkException("project invalid")
-        buf = []
-        for key in self._spec.keys():
-            for k, v in self._spec[key].items():
-                cls = globals().get(k.capitalize(), None)
-                if cls is not None:
-                    buf.extend(cls(v).run(project))
+        if lint not in self._spec.keys():
+            raise WorkException("lint invalid")
+        reports = []
+        for name, args in self._spec[lint].items():
+            cls = globals().get(name.capitalize(), None)
+            if cls is not None:
+                reports.extend(cls(args).run(project))
         if len(self._config.output_file) != 0:
-            self._dump(buf)
-        return buf
+            self._dump(lint, reports)
+        return reports

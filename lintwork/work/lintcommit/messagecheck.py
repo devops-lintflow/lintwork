@@ -3,8 +3,10 @@
 import os
 import subprocess
 
-from lintwork.format.format import File, Report
+from lintwork.format.format import Report
 from lintwork.work.abstract import WorkAbstract
+
+COMMIT_MSG = "COMMIT_MSG"
 
 LINT_LEN_MIN = 4
 LINT_SEP = ":"
@@ -52,7 +54,7 @@ class Messagecheck(WorkAbstract):
     def _lint(self, project):
         cmd = ["messagecheck"]
         cmd.extend(self._config)
-        cmd.extend(["-m", os.path.join(project, File.MESSAGE)])
+        cmd.extend(["-m", os.path.join(project, COMMIT_MSG)])
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
             if proc.returncode != 0:
