@@ -137,9 +137,9 @@ spec:
 
 
 
-## Errorformat
+## Format
 
-- **JSON format**
+- **JSON**
 
 ```json
 {
@@ -154,7 +154,7 @@ spec:
 }
 ```
 
-- **Text format**
+- **Text**
 
 ```text
 {lint}:{file}:{line}:{type}:{details}

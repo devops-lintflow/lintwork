@@ -3,8 +3,8 @@
 import os
 import subprocess
 
+from lintwork.format.format import Format
 from lintwork.work.abstract import WorkAbstract
-from lintwork.proto.proto import Format
 
 LINT_LEN_MIN = 4
 LINT_SEP = ":"

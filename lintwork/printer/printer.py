@@ -5,7 +5,7 @@ import openpyxl
 import os
 import time
 
-from lintwork.proto.proto import Format
+from lintwork.format.format import Format
 from openpyxl.styles import Alignment, Font
 
 LINT_NAME = "lintwork"

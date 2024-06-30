@@ -4,8 +4,8 @@ import os
 import pathlib
 import subprocess
 
+from lintwork.format.format import Format, Type
 from lintwork.work.abstract import WorkAbstract
-from lintwork.proto.proto import Format, Type
 
 LINT_LEN_MIN = 5
 LINT_SEP = ":"

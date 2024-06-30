@@ -2,8 +2,8 @@
 
 import os
 
+from lintwork.format.format import Format, Type
 from lintwork.printer.printer import Printer, PrinterException
-from lintwork.proto.proto import Format, Type
 
 
 def test_exception():

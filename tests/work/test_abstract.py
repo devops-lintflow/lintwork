@@ -3,7 +3,7 @@
 import os
 
 from lintwork.config.config import Config
-from lintwork.proto.proto import Format
+from lintwork.format.format import Format
 from lintwork.work.abstract import WorkAbstract
 
 

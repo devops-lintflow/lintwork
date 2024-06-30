@@ -3,7 +3,7 @@
 import os
 
 from lintwork.config.config import Config
-from lintwork.proto.proto import Format, Type
+from lintwork.format.format import Format, Type
 from lintwork.work.work import Work, WorkException
 
 
