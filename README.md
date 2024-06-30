@@ -35,7 +35,7 @@ python work.py --config-file="tests/data/config.yml" --lint-name="lintshell" --l
 
 ```bash
 pip install -Ur requirements.txt
-python work.py --config-file="config.yml" --listen-url="127.0.0.1:9090"
+python work.py --config-file="tests/data/config.yml" --listen-url="127.0.0.1:9090"
 ```
 
 
