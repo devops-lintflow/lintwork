@@ -3,7 +3,7 @@
 import os
 
 from lintwork.config.config import Config
-from lintwork.format.format import Format
+from lintwork.format.format import Report
 from lintwork.work.abstract import WorkAbstract
 
 
@@ -13,7 +13,7 @@ def test_workabstract():
             super().__init__(config)
 
         def _execution(self, _):
-            return {Format.FILE: "name"}
+            return {Report.FILE: "name"}
 
     config = Config()
     work = WorkTest(config)

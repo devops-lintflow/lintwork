@@ -20,7 +20,7 @@ class File:
     PATCH = "patch"
 
 
-class Format:
+class Report:
     DETAILS = "details"
     FILE = "file"
     LINE = "line"

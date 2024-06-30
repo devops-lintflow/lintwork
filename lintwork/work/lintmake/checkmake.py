@@ -4,7 +4,7 @@ import os
 import pathlib
 import subprocess
 
-from lintwork.format.format import Format, Type
+from lintwork.format.format import Report, Type
 from lintwork.work.abstract import WorkAbstract
 
 LINE_SEP = "\\n"
@@ -39,10 +39,10 @@ class Checkmake(WorkAbstract):
                 continue
             buf.append(
                 {
-                    Format.FILE: name,
-                    Format.LINE: int(b[1].strip()),
-                    Format.TYPE: Type.ERROR,
-                    Format.DETAILS: " ".join(b[3:]).strip(),
+                    Report.FILE: name,
+                    Report.LINE: int(b[1].strip()),
+                    Report.TYPE: Type.ERROR,
+                    Report.DETAILS: " ".join(b[3:]).strip(),
                 }
             )
         return buf

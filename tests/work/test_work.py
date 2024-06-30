@@ -3,7 +3,7 @@
 import os
 
 from lintwork.config.config import Config
-from lintwork.format.format import Format, Type
+from lintwork.format.format import Report, Type
 from lintwork.work.work import Work, WorkException
 
 
@@ -35,16 +35,16 @@ def test_work():
 
     buf = [
         {
-            Format.FILE: "name1",
-            Format.LINE: 1,
-            Format.TYPE: Type.ERROR,
-            Format.DETAILS: "text1",
+            Report.FILE: "name1",
+            Report.LINE: 1,
+            Report.TYPE: Type.ERROR,
+            Report.DETAILS: "text1",
         },
         {
-            Format.FILE: "name2",
-            Format.LINE: 2,
-            Format.TYPE: Type.WARN,
-            Format.DETAILS: "text2",
+            Report.FILE: "name2",
+            Report.LINE: 2,
+            Report.TYPE: Type.WARN,
+            Report.DETAILS: "text2",
         },
     ]
 

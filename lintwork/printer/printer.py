@@ -5,16 +5,16 @@ import openpyxl
 import os
 import time
 
-from lintwork.format.format import Format
+from lintwork.format.format import Report
 from openpyxl.styles import Alignment, Font
 
 LINT_NAME = "lintwork"
 
 head = {
-    "A": Format.FILE,
-    "B": Format.LINE,
-    "C": Format.TYPE,
-    "D": Format.DETAILS,
+    "A": Report.FILE,
+    "B": Report.LINE,
+    "C": Report.TYPE,
+    "D": Report.DETAILS,
 }
 
 

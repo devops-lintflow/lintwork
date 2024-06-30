@@ -4,7 +4,7 @@ import os
 import pathlib
 import subprocess
 
-from lintwork.format.format import Format, Type
+from lintwork.format.format import Report, Type
 from lintwork.work.abstract import WorkAbstract
 
 LINT_LEN_MIN = 4
@@ -46,10 +46,10 @@ class Checkpatch(WorkAbstract):
                 continue
             buf.append(
                 {
-                    Format.FILE: b[0].strip(),
-                    Format.LINE: int(b[1].strip()),
-                    Format.TYPE: _helper(b[2].strip()),
-                    Format.DETAILS: " ".join(b[3:]).strip(),
+                    Report.FILE: b[0].strip(),
+                    Report.LINE: int(b[1].strip()),
+                    Report.TYPE: _helper(b[2].strip()),
+                    Report.DETAILS: " ".join(b[3:]).strip(),
                 }
             )
         return buf

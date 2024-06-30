@@ -3,7 +3,7 @@
 import os
 import subprocess
 
-from lintwork.format.format import Format, Type
+from lintwork.format.format import Report, Type
 from lintwork.work.abstract import WorkAbstract
 
 LINT_LEN_MIN = 4
@@ -58,10 +58,10 @@ class Aosplint(WorkAbstract):
                 continue
             buf.append(
                 {
-                    Format.FILE: file,
-                    Format.LINE: line,
-                    Format.TYPE: _type,
-                    Format.DETAILS: details,
+                    Report.FILE: file,
+                    Report.LINE: line,
+                    Report.TYPE: _type,
+                    Report.DETAILS: details,
                 }
             )
         return buf

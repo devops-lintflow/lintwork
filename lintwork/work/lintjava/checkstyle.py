@@ -3,7 +3,7 @@
 import os
 import subprocess
 
-from lintwork.format.format import Format, Type
+from lintwork.format.format import Report, Type
 from lintwork.work.abstract import WorkAbstract
 
 LINT_LEN_MIN = 4
@@ -45,12 +45,12 @@ class Checkstyle(WorkAbstract):
                 continue
             buf.append(
                 {
-                    Format.FILE: b[0].split()[1].strip(),
-                    Format.LINE: int(b[1].strip()),
-                    Format.TYPE: _helper(
+                    Report.FILE: b[0].split()[1].strip(),
+                    Report.LINE: int(b[1].strip()),
+                    Report.TYPE: _helper(
                         b[0].strip().split()[0].lstrip("[").rstrip("]")
                     ),
-                    Format.DETAILS: " ".join(b[3:]).strip(),
+                    Report.DETAILS: " ".join(b[3:]).strip(),
                 }
             )
         return buf
