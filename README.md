@@ -26,7 +26,7 @@
 
 ```bash
 pip install -Ur requirements.txt
-python work.py --config-file="config.yml" --lint-project="project" --output-file="output.json"
+python work.py --config-file="tests/data/config.yml" --lint-name="lintshell" --lint-project="tests/data/project" --output-file="output.json"
 ```
 
 
@@ -46,7 +46,7 @@ python work.py --config-file="config.yml" --listen-url="127.0.0.1:9090"
 
 ```bash
 docker build --no-cache -f Dockerfile -t craftslab/lintwork:latest .
-docker run -it -v /tmp:/tmp craftslab/lintwork:latest ./lintwork --config-file="config.yml" --lint-project="/tmp/project" --output-file="/tmp/output.json"
+docker run -it -v tests/data:/tmp craftslab/lintwork:latest ./lintwork --config-file="/tmp/config.yml" --lint-name="lintshell" --lint-project="/tmp/project" --output-file="/tmp/output.json"
 ```
 
 
