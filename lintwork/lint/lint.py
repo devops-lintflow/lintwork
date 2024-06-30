@@ -15,7 +15,7 @@ from lintwork.lint.lint_pb2_grpc import (
     LintProtoServicer,
 )
 
-LINT_NAME = "lintwork"
+LINT_PROJECT = "lintwork"
 MAX_WORKERS = 10
 
 
@@ -67,7 +67,7 @@ class LintProto(LintProtoServicer):
         buf = json.loads(data)
         root = os.path.join(
             os.getcwd(),
-            LINT_NAME + "-" + datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
+            LINT_PROJECT + "-" + datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
         )
         pathlib.Path(root).mkdir(parents=True, exist_ok=True)
         for key, val in buf.items():
