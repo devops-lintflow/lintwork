@@ -6,7 +6,7 @@ from lintwork.queue.queue import Queue, QueueException
 from lintwork.queue.queue import Worker, WorkerException
 
 
-def routine(_):
+def routine(_lint, _project):
     pass
 
 
@@ -23,10 +23,11 @@ def test_queue():
     else:
         assert True
 
-    args = "args"
+    lint = "lintshell"
+    project = "../data/project"
 
     try:
-        q.run(routine, args)
+        q.run(routine, lint, project)
     except QueueException as _:
         assert False
     else:
@@ -39,8 +40,11 @@ def test_workerexception():
 
 
 def test_worker():
+    lint = "lintshell"
+    project = "../data/project"
+
     _queue = queue.Queue(1)
-    _queue.put((routine, "args"))
+    _queue.put((routine, lint, project))
 
     try:
         _ = Worker(_queue=_queue)

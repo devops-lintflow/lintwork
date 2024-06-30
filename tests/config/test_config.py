@@ -88,6 +88,20 @@ def test_config():
         assert True
 
     try:
+        config.lint_name = 0
+    except ConfigException as _:
+        assert True
+    else:
+        assert False
+
+    try:
+        config.lint_name = "lintshell"
+    except ConfigException as _:
+        assert False
+    else:
+        assert True
+
+    try:
         config.output_file = 0
     except ConfigException as _:
         assert True

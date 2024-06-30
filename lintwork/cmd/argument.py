@@ -24,7 +24,7 @@ class Argument(object):
             action="store",
             default="",
             dest="lint_project",
-            help="lint project (/path/to/project)",
+            help="lint project (e.g., tests/data/project)",
             required=False,
         )
         group.add_argument(
@@ -33,6 +33,14 @@ class Argument(object):
             default="",
             dest="listen_url",
             help="listen url (host:port)",
+            required=False,
+        )
+        self._parser.add_argument(
+            "--lint-name",
+            action="store",
+            default="",
+            dest="lint_name",
+            help="lint name (e.g., lintshell)",
             required=False,
         )
         self._parser.add_argument(

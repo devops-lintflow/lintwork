@@ -30,24 +30,21 @@ class Printer(object):
 
     def _json(self, lint, reports, name):
         with open(name, "w", encoding="utf-8") as f:
-            buf = []
-            for item in reports:
-                buf.append(
-                    {
-                        Report.FILE: item.file,
-                        Report.LINE: item.line,
-                        Report.TYPE: item.type,
-                        Report.DETAILS: item.details,
-                    }
-                )
-            json.dump({lint: buf}, f)
+            f.write(json.dumps({lint: reports}, ensure_ascii=False, indent=2))
+            f.write("\n")
 
     def _txt(self, lint, reports, name):
         with open(name, "w", encoding="utf8") as f:
             for item in reports:
                 f.write(
                     "%s:%s:%d:%s:%s"
-                    % (lint, item.file, item.line, item.type, item.details)
+                    % (
+                        lint,
+                        item[Report.FILE],
+                        item[Report.LINE],
+                        item[Report.TYPE],
+                        item[Report.DETAILS],
+                    )
                 )
                 f.write("\n")
 
@@ -57,7 +54,15 @@ class Printer(object):
         ws = wb.create_sheet()
         ws.title = "%s" % time.strftime("%Y-%m-%d", time.localtime(time.time()))
         for item in reports:
-            ws.append([lint, item.file, item.line, item.type, item.details])
+            ws.append(
+                [
+                    lint,
+                    item[Report.FILE],
+                    item[Report.LINE],
+                    item[Report.TYPE],
+                    item[Report.DETAILS],
+                ]
+            )
         wb.save(filename=name)
 
     def run(self, lint, reports, name, append=True):

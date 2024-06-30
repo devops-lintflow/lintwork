@@ -29,6 +29,7 @@ class ConfigException(Exception):
 class Config(object):
     def __init__(self):
         self._config_file = None
+        self._lint_name = ""
         self._lint_project = ""
         self._listen_url = ""
         self._output_file = ""
@@ -73,6 +74,16 @@ class Config(object):
         if not isinstance(url, str):
             raise ConfigException("url invalid")
         self._listen_url = url.strip()
+
+    @property
+    def lint_name(self):
+        return self._lint_name
+
+    @lint_name.setter
+    def lint_name(self, name):
+        if not isinstance(name, str):
+            raise ConfigException("name invalid")
+        self._lint_name = name.strip()
 
     @property
     def output_file(self):

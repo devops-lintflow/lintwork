@@ -24,15 +24,15 @@ class Queue(object):
         for _ in range(ROUTINE_NUM):
             Worker(self._queue)
 
-    def _add(self, routine, args):
-        self._queue.put((routine, args))
+    def _add(self, routine, lint, project):
+        self._queue.put((routine, lint, project))
 
     def _wait(self):
         self._queue.join()
 
-    def run(self, routine, args=None):
+    def run(self, routine, lint, project):
         for _ in range(QUEUE_NUM):
-            self._add(routine, args)
+            self._add(routine, lint, project)
         self._wait()
 
 
@@ -54,6 +54,6 @@ class Worker(threading.Thread):
 
     def run(self):
         while True:
-            routine, args = self._queue.get()
-            routine(args)
+            routine, lint, project = self._queue.get()
+            routine(lint, project)
             self._queue.task_done()

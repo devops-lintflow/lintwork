@@ -45,7 +45,6 @@ class Work(object):
         )
 
     def routine(self, lint, project):
-        # TBD: FIXME
         if not isinstance(project, str) or not os.path.exists(project):
             raise WorkException("project invalid")
         if lint not in self._spec.keys():

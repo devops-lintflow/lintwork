@@ -20,6 +20,7 @@ def main():
     try:
         config = Config()
         config.config_file = arg.config_file
+        config.lint_name = arg.lint_name
         config.lint_project = arg.lint_project
         config.listen_url = arg.listen_url
         config.output_file = arg.output_file
@@ -45,7 +46,7 @@ def main():
     else:
         try:
             queue = Queue(config)
-            queue.run(work.routine, config.lint_project)
+            queue.run(work.routine, config.lint_name, config.lint_project)
         except QueueException as e:
             Logger.error(str(e))
             return -4

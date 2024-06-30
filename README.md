@@ -45,7 +45,7 @@ python work.py --config-file="config.yml" --listen-url="127.0.0.1:9090"
 - **Local mode**
 
 ```bash
-docker build -f Dockerfile -t craftslab/lintwork:latest .
+docker build --no-cache -f Dockerfile -t craftslab/lintwork:latest .
 docker run -it -v /tmp:/tmp craftslab/lintwork:latest ./lintwork --config-file="config.yml" --lint-project="/tmp/project" --output-file="/tmp/output.json"
 ```
 
@@ -54,7 +54,7 @@ docker run -it -v /tmp:/tmp craftslab/lintwork:latest ./lintwork --config-file="
 - **Service mode**
 
 ```bash
-docker build -f Dockerfile -t craftslab/lintwork:latest .
+docker build --no-cache -f Dockerfile -t craftslab/lintwork:latest .
 docker run -it --network=host craftslab/lintwork:latest ./lintwork --config-file="config.yml" --listen-url="127.0.0.1:9090"
 ```
 
@@ -63,20 +63,21 @@ docker run -it --network=host craftslab/lintwork:latest ./lintwork --config-file
 ## Usage
 
 ```
-usage: work.py [-h] --config-file CONFIG_FILE
-               [--lint-project LINT_PROJECT | --listen-url LISTEN_URL]
-               [--output-file OUTPUT_FILE] [-v]
+usage: work.py [-h] --config-file CONFIG_FILE [--lint-project LINT_PROJECT | --listen-url LISTEN_URL]
+               [--lint-name LINT_NAME] [--output-file OUTPUT_FILE] [-v]
 
 Lint Work
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   --config-file CONFIG_FILE
                         config file (.yml)
   --lint-project LINT_PROJECT
-                        lint project (/path/to/project)
+                        lint project (e.g., tests/data/project)
   --listen-url LISTEN_URL
                         listen url (host:port)
+  --lint-name LINT_NAME
+                        lint name (e.g., lintshell)
   --output-file OUTPUT_FILE
                         output file (.json|.txt|.xlsx)
   -v, --version         show program's version number and exit
