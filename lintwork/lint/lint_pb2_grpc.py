@@ -34,7 +34,7 @@ if _version_not_supported:
 
 
 class LintProtoStub(object):
-    """The service definition."""
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -51,10 +51,10 @@ class LintProtoStub(object):
 
 
 class LintProtoServicer(object):
-    """The service definition."""
+    """Missing associated documentation comment in .proto file."""
 
     def SendLint(self, request, context):
-        """Sends lint"""
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
@@ -77,7 +77,7 @@ def add_LintProtoServicer_to_server(servicer, server):
 
 # This class is part of an EXPERIMENTAL API.
 class LintProto(object):
-    """The service definition."""
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def SendLint(

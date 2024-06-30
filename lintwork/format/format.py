@@ -1,23 +1,8 @@
 # -*- coding: utf-8 -*-
 
 
-"""
-{
-  "lint": [
-    {
-      "file": "name",
-      "line": 1,
-      "type": "Error",
-      "details": "text"
-    }
-  ]
-}
-"""
-
-
 class File:
-    MESSAGE = "message"
-    PATCH = "patch"
+    MESSAGE = "COMMIT_MSG"
 
 
 class Report:

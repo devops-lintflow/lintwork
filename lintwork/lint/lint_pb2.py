@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
-    b'\n\nlint.proto\x12\x04lint"\x1e\n\x0bLintRequest\x12\x0f\n\x07message\x18\x01 \x01(\t"\x1c\n\tLintReply\x12\x0f\n\x07message\x18\x01 \x01(\t2=\n\tLintProto\x12\x30\n\x08SendLint\x12\x11.lint.LintRequest\x1a\x0f.lint.LintReply"\x00\x62\x06proto3'
+    b'\n\nlint.proto\x12\x04lint"b\n\x0bLintRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12!\n\tlintFiles\x18\x02 \x03(\x0b\x32\x0e.lint.LintFile\x12"\n\tlintPatch\x18\x03 \x01(\x0b\x32\x0f.lint.LintPatch")\n\x08LintFile\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\x0c"*\n\tLintPatch\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\x0c"@\n\tLintReply\x12\x0c\n\x04name\x18\x01 \x01(\t\x12%\n\x0blintReports\x18\x02 \x03(\x0b\x32\x10.lint.LintReport"G\n\nLintReport\x12\x0c\n\x04\x66ile\x18\x01 \x01(\t\x12\x0c\n\x04line\x18\x02 \x01(\x03\x12\x0c\n\x04type\x18\x03 \x01(\t\x12\x0f\n\x07\x64\x65tails\x18\x04 \x01(\t2=\n\tLintProto\x12\x30\n\x08SendLint\x12\x11.lint.LintRequest\x1a\x0f.lint.LintReply"\x00\x62\x06proto3'
 )
 
 _globals = globals()
@@ -23,9 +23,15 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, "lint_pb2", _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
     DESCRIPTOR._loaded_options = None
     _globals["_LINTREQUEST"]._serialized_start = 20
-    _globals["_LINTREQUEST"]._serialized_end = 50
-    _globals["_LINTREPLY"]._serialized_start = 52
-    _globals["_LINTREPLY"]._serialized_end = 80
-    _globals["_LINTPROTO"]._serialized_start = 82
-    _globals["_LINTPROTO"]._serialized_end = 143
+    _globals["_LINTREQUEST"]._serialized_end = 118
+    _globals["_LINTFILE"]._serialized_start = 120
+    _globals["_LINTFILE"]._serialized_end = 161
+    _globals["_LINTPATCH"]._serialized_start = 163
+    _globals["_LINTPATCH"]._serialized_end = 205
+    _globals["_LINTREPLY"]._serialized_start = 207
+    _globals["_LINTREPLY"]._serialized_end = 271
+    _globals["_LINTREPORT"]._serialized_start = 273
+    _globals["_LINTREPORT"]._serialized_end = 344
+    _globals["_LINTPROTO"]._serialized_start = 346
+    _globals["_LINTPROTO"]._serialized_end = 407
 # @@protoc_insertion_point(module_scope)
