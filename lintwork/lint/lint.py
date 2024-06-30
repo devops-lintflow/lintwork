@@ -63,7 +63,7 @@ class LintProto(LintProtoServicer):
 
         root = os.path.join(
             os.getcwd(),
-            LINT_PROJECT + "-" + datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
+            LINT_PROJECT + "-" + datetime.datetime.now().strftime("%Y%m%d%H%M%S.%f"),
         )
         pathlib.Path(root).mkdir(parents=True, exist_ok=True)
         for item in files:
