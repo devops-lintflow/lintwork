@@ -7,12 +7,12 @@ from lintwork.printer.printer import Printer
 from lintwork.work.lintai.lintgpt import Lintgpt  # noqa: F401
 from lintwork.work.lintcommit.contentcheck import Contentcheck  # noqa: F401
 from lintwork.work.lintcommit.messagecheck import Messagecheck  # noqa: F401
-from lintwork.work.lintcpp.checkpatch import Checkpatch  # noqa: F401
 from lintwork.work.lintcpp.cpplint import Cpplint  # noqa: F401
 from lintwork.work.lintjava.aosplint import Aosplint  # noqa: F401
 from lintwork.work.lintjava.checkstyle import Checkstyle  # noqa: F401
 from lintwork.work.lintjava.javalint import Javalint  # noqa: F401
 from lintwork.work.lintjava.stringscheck import Stringscheck  # noqa: F401
+from lintwork.work.lintkernel.checkpatch import Checkpatch  # noqa: F401
 from lintwork.work.lintmake.checkmake import Checkmake  # noqa: F401
 from lintwork.work.lintpython.flake8 import Flake8  # noqa: F401
 from lintwork.work.lintsast.rapidscan import Rapidscan  # noqa: F401
