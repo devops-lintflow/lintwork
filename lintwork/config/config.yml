@@ -5,6 +5,9 @@ metadata:
 spec:
   lintai:
     lintgpt:
+  lintcommit:
+    contentcheck:
+    messagecheck:
   lintcpp:
     cpplint:
   lintjava:

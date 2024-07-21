@@ -99,11 +99,10 @@ metadata:
 spec:
   lintai:
     lintgpt:
+  lintcommit:
+    contentcheck:
+    messagecheck:
   lintcpp:
-    checkpatch:
-      - --no-summary
-      - --no-tree
-      - --terse
     cpplint:
   lintjava:
     aosplint:
@@ -120,6 +119,11 @@ spec:
       - /home/craftslab/opt/javalint/lib/javalint.jar
       - --file
     stringscheck:
+  lintkernel:
+    checkpatch:
+      - --no-summary
+      - --no-tree
+      - --terse
   lintmake:
     checkmake:
       - --format=:{{.LineNumber}}::{{.Violation}}\n
