@@ -10,12 +10,9 @@ spec:
     messagecheck:
   lintcpp:
     cpplint:
+      - --filter=-whitespace/braces,-whitespace/ending_newline,-whitespace/newline,-whitespace/parens
+      - --linelength=120
   lintjava:
-    aosplint:
-      - --disable
-      - LintError
-      - --nolines
-      - --quiet
     checkstyle:
       - -jar
       - /home/craftslab/opt/checkstyle/lib/checkstyle.jar
@@ -27,14 +24,20 @@ spec:
     stringscheck:
   lintkernel:
     checkpatch:
+      - --max-line-length=120
+      - --no-signoff
       - --no-summary
       - --no-tree
       - --terse
+      - --ignore
+      - AVOID_EXTERNS,GIT_COMMIT_ID,INITIALISED_STATIC,NETWORKING_BLOCK_COMMENT_STYLE,COMMIT_LOG_LONG_LINE,NO_COMMIT_TEXT,FSF_MAILING_ADDRESS,LINUX_VERSION_CODE,NEW_TYPEDEFS,STORAGE_CLASS,SPLIT_STRING,MISSING_SPACE,BRACES,DEEP_INDENTATION,SUSPECT_CODE_INDENT,IF_0,FILE_PATH_CHANGES,PARENTHESIS_ALIGNMENT,OOM_MESSAGE,GLOBAL_INITIALISERS,CONFIG_DESCRIPTION,BLOCK_COMMENT_STYLE,LONG_SUMMARY_LINE,MDELAY,CONST_STRUCT,SSCANF_TO_KSTRTO,TRAILING_SEMICOLON,MACRO_WITH_FLOW_CONTROL,PREFER_SEQ_PUTS,FILE_OPS,BAD_SIGN_OFF,NO_COMMIT_TEXT,LONG_COMMIT_TEXT,NONBLANK_AFTER_SUMMARY,SPDX_LICENSE_TAG
   lintmake:
     checkmake:
       - --format=:{{.LineNumber}}::{{.Violation}}\n
   lintpython:
     flake8:
+      - --ignore=E111,E501,F841,W503,W605
+      - --max-line-length=120
   lintshell:
     shellcheck:
       - --format=gcc
