@@ -6,6 +6,7 @@ import subprocess
 from lintwork.format.format import Report
 from lintwork.work.abstract import WorkAbstract
 
+LINE_EOL = "454F4C"
 LINT_LEN_MIN = 4
 LINT_SEP = ":"
 
@@ -30,7 +31,7 @@ class Lintgpt(WorkAbstract):
 
     def _parse(self, data):
         buf = []
-        for item in data.splitlines():
+        for item in data.split(LINE_EOL):
             b = item.strip().split(LINT_SEP)
             if len(b) < LINT_LEN_MIN:
                 continue
