@@ -12,7 +12,9 @@ def test_exception():
 
 def test_lintgpt():
     with open(
-        os.path.join(os.path.dirname(__file__), "../../data/lintai/lintgpt.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "../../data/lintai/lintgpt.txt"),
+        mode="r",
+        encoding="utf-8",
     ) as f:
         data = f.read()
 
