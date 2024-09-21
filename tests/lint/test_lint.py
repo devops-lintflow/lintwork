@@ -11,6 +11,11 @@ class LintFile:
     content = ""
 
 
+class LintMeta:
+    path = ""
+    content = ""
+
+
 class LintPatch:
     path = ""
     content = ""
@@ -55,11 +60,15 @@ def test_lintproto():
 
     files = [file1, file2]
 
+    meta = LintMeta()
+    meta.path = "42-a4bc7bd.meta"
+    meta.content = "ew0KICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6ODA4MCIsDQogICJwcm9qZWN0IjogImxpbnRzaGVsbCIsDQogICJicmFuY2giOiAibWFzdGVyIiwNCiAgIm93bmVyIjogIm5hbWUiLA0KICAicmV2aXNpb24iOiAiNTMzY2Y1Y2ZkZmUwNDdkMjY4OWUzM2M1ZTYyNDMyNWMzZDlmZmUzOCIsDQogICJ1cGRhdGVkIjogIjIwMjQtMDktMjAgMDc6MTU6NDQuNjM5MDAwMDAwIg0KfQ0K"
+
     patch = LintPatch()
     patch.path = "42-a4bc7bd.patch"
     patch.content = "RnJvbSA1MzNjZjVjZmRmZTA0N2QyNjg5ZTMzYzVlNjI0MzI1YzNkOWZmZTM4IE1vbiBTZXAgMTcgMDA6MDA6MDAgMjAwMQ0KRnJvbTogSmlhIEppYSA8YW5nZXJzYXhAc2luYS5jb20+DQpEYXRlOiBTdW4sIDMwIEp1biAyMDI0IDEwOjQyOjIwICswODAwDQpTdWJqZWN0OiBbUEFUQ0hdIEFkZCB0ZXN0IGZpbGVzIDExOjEzDQoNCkNoYW5nZS1JZDogSWQwMjFiNjY1OWJlYjE5Yjg0NDM3MTkxZDI5NGI3MmQ5YzI5NGRmM2INCi0tLQ0KDQpkaWZmIC0tZ2l0IGEvbGludHNoZWxsL3Rlc3Quc2ggYi9saW50c2hlbGwvdGVzdC5zaA0KbmV3IGZpbGUgbW9kZSAxMDA3NTUNCmluZGV4IDAwMDAwMDAuLmJiNTRmZTUNCi0tLSAvZGV2L251bGwNCisrKyBiL2xpbnRzaGVsbC90ZXN0LnNoDQpAQCAtMCwwICsxLDMgQEANCisjIS9iaW4vYmFzaA0KKw0KK2VjaG8gIkhlbGxvIFNoZWxsISINCg=="
 
-    project = proto._build(files, patch)
+    project = proto._build(files, meta, patch)
     if project is not None and os.path.exists(project):
         assert True
 

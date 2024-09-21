@@ -54,7 +54,7 @@ class LintProto(LintProtoServicer):
     def __init__(self, routine):
         self._routine = routine
 
-    def _build(self, files, patch):
+    def _build(self, files, meta, patch):
         def _helper(root, dir, file, content):
             pathlib.Path(os.path.join(root, dir)).mkdir(parents=True, exist_ok=True)
             p = pathlib.Path(os.path.join(root, dir, file))
@@ -75,6 +75,12 @@ class LintProto(LintProtoServicer):
             )
         _helper(
             root,
+            os.path.dirname(meta.path),
+            os.path.basename(meta.path),
+            meta.content,
+        )
+        _helper(
+            root,
             os.path.dirname(patch.path),
             os.path.basename(patch.path),
             patch.content,
@@ -90,10 +96,11 @@ class LintProto(LintProtoServicer):
         if (
             len(request.name) == 0
             or len(request.lintFiles) == 0
+            or len(request.lintMeta.path) == 0
             or len(request.lintPatch.path) == 0
         ):
             return LintReply(name="")
-        project = self._build(request.lintFiles, request.lintPatch)
+        project = self._build(request.lintFiles, request.lintMeta, request.lintPatch)
         if project is None or not os.path.exists(project):
             return LintReply(name="")
         reports = self._routine(request.name, project)
