@@ -53,7 +53,7 @@ class Lintgpt(WorkAbstract):
     def _lint(self, project):
         cmd = ["lintgpt"]
         cmd.extend(self._config)
-        cmd.extend(["-p", project])
+        cmd.extend(["-r", "-d", "-p", project])
         with self._popen(cmd) as proc:
             out, err = proc.communicate()
             if proc.returncode != 0:
