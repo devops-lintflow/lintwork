@@ -14,7 +14,7 @@ with open('README.md', 'r') as f:
     readme = f.read()
 
 with open('requirements.txt') as f:
-    requirements = [l for l in f.read().splitlines() if l]
+    requirements = [item for item in f.read().splitlines() if item]
 
 setuptools.setup(
     author=about['__author__'],
