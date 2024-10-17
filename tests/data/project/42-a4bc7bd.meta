@@ -2,7 +2,13 @@
   "url": "http://127.0.0.1:8080",
   "project": "lintshell",
   "branch": "master",
-  "owner": "name",
-  "revision": "533cf5cfdfe047d2689e33c5e624325c3d9ffe38",
+  "owner": {
+    "name": "name"
+  },
+  "revisions": {
+    "533cf5cfdfe047d2689e33c5e624325c3d9ffe38": {
+      "_number": 1
+    }
+  },
   "updated": "2024-09-20T07:15:44+08:00"
 }
